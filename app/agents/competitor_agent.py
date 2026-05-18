@@ -6,15 +6,16 @@ client = OpenAI(
     base_url=DEEPSEEK_BASE_URL
 )
 
-def analyze_competitors(topic: str, search_results: list) -> str:
+def analyze_competitors(topic: str,search_results : list) -> str:
     """
     Phân tích đối thủ cạnh tranh với Prompt tối ưu
     """
-    # Gom dữ liệu (Giữ nguyên cách làm của bạn, rất ổn)
+    
     context = "\n".join([
         f"- {r.get('title', '')}: {r.get('snippet', '')}"
         for r in search_results
     ])
+
 
     # PROMPT NÂNG CẤP
     prompt = f"""Dựa trên tập dữ liệu thô dưới đây về thị trường '{topic}':

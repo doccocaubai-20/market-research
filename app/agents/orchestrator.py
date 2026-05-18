@@ -2,7 +2,6 @@ from app.agents.search_agent import search_market
 from app.agents.trend_agent import analyze_trends
 from app.agents.competitor_agent import analyze_competitors
 from app.agents.report_agent import generate_report
-
 def run(topic: str, callback=None) -> dict:
 
     def update(event: dict):

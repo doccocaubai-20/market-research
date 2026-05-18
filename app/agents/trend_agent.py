@@ -6,12 +6,13 @@ client = OpenAI(
     base_url=DEEPSEEK_BASE_URL
 )
 
-def analyze_trends(topic: str, search_results: list) -> str:
+def analyze_trends(topic: str,search_results : list) -> str:
     
     context = "\n".join([
         f"- {r['title']}: {r['snippet']}"
         for r in search_results
     ])
+
 
     prompt = f"""Dựa trên các bài viết sau về {topic}:
 {context}
