@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models import Report
@@ -22,14 +22,18 @@ def get_history(db: Session = Depends(get_db)):
 def get_report(report_id: int, db: Session = Depends(get_db)):
     report = db.query(Report).filter(Report.id == report_id).first()
     if not report:
-        return {"error": "Không tìm thấy báo cáo"}
+        raise HTTPException(status_code=404, detail="Không tìm thấy báo cáo")
+    try:
+        sources = json.loads(report.sources) if report.sources else []
+    except (TypeError, json.JSONDecodeError):
+        sources = []
     return {
         "id": report.id,
         "topic": report.topic,
         "report": report.report,
         "trends": report.trends,
         "competitors": report.competitors,
-        "sources": json.loads(report.sources) if report.sources else [],
+        "sources": sources,
         "created_at": report.created_at.strftime("%d/%m/%Y %H:%M")
     }
 

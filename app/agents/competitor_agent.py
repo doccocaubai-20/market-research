@@ -6,15 +6,20 @@ client = OpenAI(
     base_url=DEEPSEEK_BASE_URL
 )
 
-def analyze_competitors(topic: str,search_results : list) -> str:
+def analyze_competitors(topic: str, search_results) -> str:
     """
     Phân tích đối thủ cạnh tranh với Prompt tối ưu
     """
     
-    context = "\n".join([
-        f"- {r.get('title', '')}: {r.get('snippet', '')}"
-        for r in search_results
-    ])
+    if isinstance(search_results, str):
+        context = search_results.strip()
+    else:
+        context = "\n".join([
+            f"- {r.get('title', '')}: {r.get('snippet', '')}"
+            for r in search_results
+        ])
+    if not context:
+        context = "Chưa có đủ dữ liệu"
 
 
     # PROMPT NÂNG CẤP

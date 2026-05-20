@@ -9,27 +9,28 @@ def run(topic: str, callback=None) -> dict:
         if callback:
             callback(event)
 
-    # Bước 1 — Search Agent
+    # Bước 1 — Tìm kiếm dữ liệu
     update({
         "agent": "search",
         "status": "running",
-        "message": "Đang tìm kiếm thông tin về: " + topic
+        "message": f"🔍 Đang tìm kiếm '{topic}'..."
     })
+
     search_results = search_market(topic)
-    all_results = (
-        search_results.get("overview", []) +
-        search_results.get("trends", []) +
-        search_results.get("competitors", [])
-    )
+    all_results = search_results.get("sources", [])
+    overview_word_count = len(search_results.get("overview", "").split()) if search_results.get("overview") else 0
+    trends_word_count = len(search_results.get("trends", "").split()) if search_results.get("trends") else 0
+    competitors_word_count = len(search_results.get("competitors", "").split()) if search_results.get("competitors") else 0
+
     update({
         "agent": "search",
         "status": "done",
-        "message": f"✅ Tìm được {len(all_results)} kết quả",
+        "message": f"✅ Tổng {len(all_results)} kết quả",
         "output": {
             "total": len(all_results),
-            "overview": [r["title"] for r in search_results.get("overview", [])],
-            "trends": [r["title"] for r in search_results.get("trends", [])],
-            "competitors": [r["title"] for r in search_results.get("competitors", [])]
+            "overview": overview_word_count,
+            "trends": trends_word_count,
+            "competitors": competitors_word_count
         }
     })
 
@@ -38,9 +39,9 @@ def run(topic: str, callback=None) -> dict:
         "agent": "trend",
         "status": "running",
         "message": "📈 Đang phân tích xu hướng...",
-        "input": f"Phân tích {len(search_results.get('trends', []))} bài viết về xu hướng"
+        "input": f"Phân tích {len(search_results.get('trends_sources', []))} nguồn về xu hướng"
     })
-    trends = analyze_trends(topic, search_results.get("trends", []))
+    trends = analyze_trends(topic, search_results.get("trends", ""))
     update({
         "agent": "trend",
         "status": "done",
@@ -53,9 +54,9 @@ def run(topic: str, callback=None) -> dict:
         "agent": "competitor",
         "status": "running",
         "message": "🏆 Đang phân tích đối thủ cạnh tranh...",
-        "input": f"Phân tích {len(search_results.get('competitors', []))} bài viết về đối thủ"
+        "input": f"Phân tích {len(search_results.get('competitors_sources', []))} nguồn về đối thủ"
     })
-    competitors = analyze_competitors(topic, search_results.get("competitors", []))
+    competitors = analyze_competitors(topic, search_results.get("competitors", ""))
     update({
         "agent": "competitor",
         "status": "done",
