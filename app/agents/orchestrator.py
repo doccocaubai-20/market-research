@@ -1,3 +1,5 @@
+from concurrent.futures import ThreadPoolExecutor
+
 from app.agents.search_agent import search_market
 from app.agents.trend_agent import analyze_trends
 from app.agents.competitor_agent import analyze_competitors
@@ -34,29 +36,40 @@ def run(topic: str, callback=None) -> dict:
         }
     })
 
-    # Bước 2 — Trend Agent
+    # Bước 2 + 3 — Trend & Competitor chạy song song sau khi search xong
     update({
         "agent": "trend",
         "status": "running",
         "message": "📈 Đang phân tích xu hướng...",
         "input": f"Phân tích {len(search_results.get('trends_sources', []))} nguồn về xu hướng"
     })
-    trends = analyze_trends(topic, search_results.get("trends", ""))
-    update({
-        "agent": "trend",
-        "status": "done",
-        "message": "✅ Phân tích xu hướng hoàn thành",
-        "output": trends
-    })
-
-    # Bước 3 — Competitor Agent
     update({
         "agent": "competitor",
         "status": "running",
         "message": "🏆 Đang phân tích đối thủ cạnh tranh...",
         "input": f"Phân tích {len(search_results.get('competitors_sources', []))} nguồn về đối thủ"
     })
-    competitors = analyze_competitors(topic, search_results.get("competitors", ""))
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        trend_future = executor.submit(
+            analyze_trends,
+            topic,
+            search_results.get("trends", "")
+        )
+        competitor_future = executor.submit(
+            analyze_competitors,
+            topic,
+            search_results.get("competitors", "")
+        )
+        trends = trend_future.result()
+        competitors = competitor_future.result()
+
+    update({
+        "agent": "trend",
+        "status": "done",
+        "message": "✅ Phân tích xu hướng hoàn thành",
+        "output": trends
+    })
     update({
         "agent": "competitor",
         "status": "done",

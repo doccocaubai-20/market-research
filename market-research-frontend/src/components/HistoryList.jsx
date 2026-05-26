@@ -27,32 +27,35 @@ export default function HistoryList({ onSelect }) {
         setHistory(history.filter(h => h.id !== id));
     };
 
-    if (loading) return <div style={styles.card}>Đang tải lịch sử...</div>;
+    if (loading) return <div className="card">Đang tải lịch sử...</div>;
     if (history.length === 0) return null;
 
     return (
-        <div style={styles.card}>
-            <h3 style={styles.title}>📚 Lịch sử báo cáo ({history.length})</h3>
+        <div className="card history-card">
+            <div className="card-header">
+                <h3>Lịch sử báo cáo</h3>
+                <span>{history.length} báo cáo</span>
+            </div>
             {history.map(item => (
                 <div
                     key={item.id}
                     onClick={() => onSelect(item.id)}
-                    style={styles.item}
+                    className="history-item"
                 >
-                    <div style={styles.itemLeft}>
-                        <div style={styles.itemTopic}>{item.topic}</div>
-                        <div style={styles.itemDate}>🕐 {item.created_at}</div>
+                    <div className="history-item-left">
+                        <div className="history-topic">{item.topic}</div>
+                        <div className="history-date">🕐 {item.created_at}</div>
                     </div>
-                    <div style={styles.itemRight}>
+                    <div className="history-actions">
                         <button
                             onClick={() => onSelect(item.id)}
-                            style={styles.viewBtn}
+                            className="ghost-button"
                         >
                             Xem
                         </button>
                         <button
                             onClick={(e) => handleDelete(item.id, e)}
-                            style={styles.deleteBtn}
+                            className="danger-button"
                         >
                             Xóa
                         </button>
@@ -62,46 +65,3 @@ export default function HistoryList({ onSelect }) {
         </div>
     );
 }
-
-const styles = {
-    card: {
-        background: '#fff',
-        borderRadius: 12,
-        padding: 24,
-        boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
-        marginBottom: 24
-    },
-    title: { margin: '0 0 16px', fontSize: 16, color: '#1a1a2e' },
-    item: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '12px 0',
-        borderBottom: '1px solid #f0f0f0',
-        cursor: 'pointer',
-        borderRadius: 8,
-        transition: 'background 0.2s'
-    },
-    itemLeft: { flex: 1 },
-    itemTopic: { fontWeight: 600, fontSize: 14, color: '#333' },
-    itemDate: { fontSize: 12, color: '#888', marginTop: 4 },
-    itemRight: { display: 'flex', gap: 8 },
-    viewBtn: {
-        background: '#f0f2ff',
-        color: '#667eea',
-        border: '1px solid #d0d5ff',
-        padding: '4px 12px',
-        borderRadius: 6,
-        cursor: 'pointer',
-        fontSize: 13
-    },
-    deleteBtn: {
-        background: '#fff2f0',
-        color: '#ff4d4f',
-        border: '1px solid #ffccc7',
-        padding: '4px 12px',
-        borderRadius: 6,
-        cursor: 'pointer',
-        fontSize: 13
-    }
-};

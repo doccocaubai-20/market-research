@@ -8,7 +8,7 @@ import { getReportById, streamResearch } from '../api/researchApi';
 export default function Dashboard() {
     const [loading, setLoading] = useState(false);
     const [doneSteps, setDoneSteps] = useState([]);
-    const [activeStep, setActiveStep] = useState(null);
+    const [activeSteps, setActiveSteps] = useState([]);
     const [result, setResult] = useState(null);
     const [topic, setTopic] = useState('');
     const [error, setError] = useState('');
@@ -26,7 +26,7 @@ export default function Dashboard() {
     const handleSubmit = async (inputTopic) => {
         setLoading(true);
         setDoneSteps([]);
-        setActiveStep(null);
+        setActiveSteps([]);
         setResult(null);
         setError('');
         setTopic(inputTopic);
@@ -42,11 +42,11 @@ export default function Dashboard() {
         source.addEventListener('progress', (event) => {
             const data = JSON.parse(event.data);
             if (data?.status === 'running') {
-                setActiveStep(data.agent);
+                setActiveSteps((prev) => (prev.includes(data.agent) ? prev : [...prev, data.agent]));
             }
             if (data?.status === 'done') {
                 setDoneSteps((prev) => (prev.includes(data.agent) ? prev : [...prev, data.agent]));
-                setActiveStep((current) => (current === data.agent ? null : current));
+                setActiveSteps((prev) => prev.filter((agent) => agent !== data.agent));
             }
         });
 
@@ -54,7 +54,7 @@ export default function Dashboard() {
             const data = JSON.parse(event.data);
             setResult(data);
             setDoneSteps(stepKeys);
-            setActiveStep(null);
+            setActiveSteps([]);
             setRefreshHistory((r) => r + 1);
             setLoading(false);
             source.close();
@@ -78,27 +78,30 @@ export default function Dashboard() {
             }
         });
         setDoneSteps([]);
-        setActiveStep(null);
+        setActiveSteps([]);
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
     return (
-        <div style={styles.container}>
-            <div style={styles.header}>
-                <h1 style={styles.title}>🔬 Market Research AI Agent</h1>
-                <p style={styles.subtitle}>
-                    Hệ thống nghiên cứu thị trường tự động bằng Multi-Agent AI
-                </p>
+        <div className="app-shell">
+            <div className="app-hero">
+                <div>
+                    <p className="app-eyebrow">Market Intelligence Studio</p>
+                    <h1 className="app-title">Market Research AI Agent</h1>
+                    <p className="app-subtitle">
+                        Hệ thống nghiên cứu thị trường đa tác tử, tổng hợp dữ liệu và tạo báo cáo chiến lược tức thì.
+                    </p>
+                </div>
             </div>
 
             <SearchForm onSubmit={handleSubmit} loading={loading} />
 
-            {(loading || doneSteps.length > 0 || activeStep) && (
-                <ProgressBar doneSteps={doneSteps} activeStep={activeStep} />
+            {(loading || doneSteps.length > 0 || activeSteps.length > 0) && (
+                <ProgressBar doneSteps={doneSteps} activeSteps={activeSteps} />
             )}
 
             {error && (
-                <div style={styles.error}>{error}</div>
+                <div className="app-alert">{error}</div>
             )}
 
             {result && (
@@ -116,38 +119,3 @@ export default function Dashboard() {
         </div>
     );
 }
-
-const styles = {
-    container: {
-        maxWidth: 900,
-        margin: '0 auto',
-        padding: '32px 16px',
-        fontFamily: "'Segoe UI', Arial, sans-serif",
-        background: '#f0f2f5',
-        minHeight: '100vh'
-    },
-    header: {
-        textAlign: 'center',
-        marginBottom: 32
-    },
-    title: {
-        fontSize: 32,
-        background: 'linear-gradient(135deg, #667eea, #764ba2)',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        margin: '0 0 8px'
-    },
-    subtitle: {
-        color: '#888',
-        fontSize: 15,
-        margin: 0
-    },
-    error: {
-        background: '#fff2f0',
-        border: '1px solid #ffccc7',
-        borderRadius: 8,
-        padding: 16,
-        color: '#ff4d4f',
-        marginBottom: 24
-    }
-};

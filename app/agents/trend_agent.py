@@ -20,8 +20,9 @@ def analyze_trends(topic: str, search_results) -> str:
 
 
     prompt = f"""Dựa trên các bài viết sau về {topic}:
+<data>
 {context}
-
+</data>
 Phân tích dưới góc nhìn của một nhà đầu tư đang cân nhắc gia nhập thị trường này:
 
 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT
