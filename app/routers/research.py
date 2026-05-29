@@ -6,6 +6,7 @@ from app.agents.orchestrator import run
 from app.database import get_db, SessionLocal
 from app.models import Report
 import json
+import asyncio
 from queue import Queue
 from threading import Thread
 router = APIRouter()
@@ -14,9 +15,9 @@ class ResearchRequest(BaseModel):
     topic: str
 
 @router.post("/research")
-def research(request: ResearchRequest, db: Session = Depends(get_db)):
+async def research(request: ResearchRequest, db: Session = Depends(get_db)):
 
-    result = run(request.topic)
+    result = await run(request.topic)
     report = Report(
         topic=result["topic"],
         report=result["report"],
@@ -46,7 +47,8 @@ def research_stream(topic: str):
         def worker():
             db = SessionLocal()
             try:
-                result = run(topic, callback)
+                # Run the async orchestrator in this worker thread.
+                result = asyncio.run(run(topic, callback))
                 report = Report(
                     topic=result["topic"],
                     report=result["report"],

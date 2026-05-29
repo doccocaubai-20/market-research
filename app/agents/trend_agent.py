@@ -1,12 +1,12 @@
-from openai import OpenAI
+from openai import AsyncOpenAI 
 from app.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
 
-client = OpenAI(
+client = AsyncOpenAI(
     api_key=DEEPSEEK_API_KEY,
     base_url=DEEPSEEK_BASE_URL
 )
 
-def analyze_trends(topic: str, search_results) -> str:
+async def analyze_trends(topic: str, search_results) -> str:
 
     if isinstance(search_results, str):
         context = search_results.strip()
@@ -15,9 +15,9 @@ def analyze_trends(topic: str, search_results) -> str:
             f"- {r['title']}: {r['snippet']}"
             for r in search_results
         ])
+        
     if not context:
         context = "Chưa có đủ thông tin"
-
 
     prompt = f"""Dựa trên các bài viết sau về {topic}:
 <data>
@@ -44,8 +44,7 @@ Phân tích dưới góc nhìn của một nhà đầu tư đang cân nhắc gia
 Chỉ phân tích dựa trên thông tin có trong bài viết.
 Nếu không có đủ dữ liệu, ghi rõ "Chưa có đủ thông tin".
 Trả lời bằng tiếng Việt, súc tích, có thể dùng ngay để ra quyết định kinh doanh."""
-
-    response = client.chat.completions.create(
+    response = await client.chat.completions.create(
         model=DEEPSEEK_MODEL,
         messages=[
             {"role": "system", "content": "Bạn là chuyên gia phân tích thị trường Việt Nam."},

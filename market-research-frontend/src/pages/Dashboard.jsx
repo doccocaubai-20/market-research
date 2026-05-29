@@ -9,11 +9,13 @@ export default function Dashboard() {
     const [loading, setLoading] = useState(false);
     const [doneSteps, setDoneSteps] = useState([]);
     const [activeSteps, setActiveSteps] = useState([]);
+    const [progressPercent, setProgressPercent] = useState(0);
     const [result, setResult] = useState(null);
     const [topic, setTopic] = useState('');
     const [error, setError] = useState('');
     const [refreshHistory, setRefreshHistory] = useState(0);
     const eventSourceRef = useRef(null);
+    const stepKeys = ['search', 'trend', 'competitor', 'report'];
 
     useEffect(() => {
         return () => {
@@ -27,6 +29,7 @@ export default function Dashboard() {
         setLoading(true);
         setDoneSteps([]);
         setActiveSteps([]);
+        setProgressPercent(0);
         setResult(null);
         setError('');
         setTopic(inputTopic);
@@ -35,16 +38,15 @@ export default function Dashboard() {
             eventSourceRef.current.close();
         }
 
-        const stepKeys = ['search', 'trend', 'competitor', 'report'];
         const source = streamResearch(inputTopic);
         eventSourceRef.current = source;
 
         source.addEventListener('progress', (event) => {
             const data = JSON.parse(event.data);
-            if (data?.status === 'running') {
+            if (data?.status === 'running' && stepKeys.includes(data.agent)) {
                 setActiveSteps((prev) => (prev.includes(data.agent) ? prev : [...prev, data.agent]));
             }
-            if (data?.status === 'done') {
+            if (data?.status === 'done' && stepKeys.includes(data.agent)) {
                 setDoneSteps((prev) => (prev.includes(data.agent) ? prev : [...prev, data.agent]));
                 setActiveSteps((prev) => prev.filter((agent) => agent !== data.agent));
             }
@@ -53,8 +55,9 @@ export default function Dashboard() {
         source.addEventListener('done', (event) => {
             const data = JSON.parse(event.data);
             setResult(data);
-            setDoneSteps(stepKeys);
+            setDoneSteps((prev) => (prev.includes('report') ? prev : [...prev, 'report']));
             setActiveSteps([]);
+            setProgressPercent(100);
             setRefreshHistory((r) => r + 1);
             setLoading(false);
             source.close();
@@ -66,6 +69,14 @@ export default function Dashboard() {
             source.close();
         });
     };
+
+    useEffect(() => {
+        const totalSteps = stepKeys.length;
+        const activeWeight = 0.5;
+        const rawPercent = ((doneSteps.length + activeSteps.length * activeWeight) / totalSteps) * 100;
+        const bounded = Math.max(0, Math.min(99, Math.round(rawPercent)));
+        setProgressPercent((prev) => (loading ? Math.max(prev, bounded) : prev));
+    }, [doneSteps, activeSteps, loading, stepKeys.length]);
     const handleSelectHistory = async (id) => {
         const data = await getReportById(id);
         setTopic(data.topic);
@@ -97,7 +108,11 @@ export default function Dashboard() {
             <SearchForm onSubmit={handleSubmit} loading={loading} />
 
             {(loading || doneSteps.length > 0 || activeSteps.length > 0) && (
-                <ProgressBar doneSteps={doneSteps} activeSteps={activeSteps} />
+                <ProgressBar
+                    doneSteps={doneSteps}
+                    activeSteps={activeSteps}
+                    progressPercent={progressPercent}
+                />
             )}
 
             {error && (

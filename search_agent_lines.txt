@@ -1,0 +1,280 @@
+1: import asyncio
+2: import re
+3: from datetime import datetime
+4: import httpx
+5: from app.config import SERP_API_KEY
+6: 
+7: def _collect_text_pairs(node, collected: list):
+8:     if isinstance(node, dict):
+9:         title = node.get("title") or node.get("heading") or node.get("name")
+10:         snippet = node.get("snippet") or node.get("text") or node.get("description")
+11:         if title and snippet:
+12:             collected.append(f"{title}: {snippet}")
+13:         elif snippet:
+14:             collected.append(snippet)
+15:         elif title:
+16:             collected.append(title)
+17:         for value in node.values():
+18:             _collect_text_pairs(value, collected)
+19:     elif isinstance(node, list):
+20:         for item in node:
+21:             _collect_text_pairs(item, collected)
+22: 
+23: def _extract_block_texts(text_blocks: list) -> list:
+24:     texts = []
+25:     for block in text_blocks:
+26:         if not isinstance(block, dict):
+27:             continue
+28:         block_type = block.get("type")
+29:         if block_type == "list":
+30:             items = block.get("list", [])
+31:             for item in items:
+32:                 if not isinstance(item, dict):
+33:                     continue
+34:                 snippet = item.get("snippet") or item.get("text") or item.get("title") or item.get("heading")
+35:                 if snippet:
+36:                     texts.append(snippet)
+37:         snippet = block.get("snippet") or block.get("text")
+38:         title = block.get("title") or block.get("heading")
+39:         if title and snippet:
+40:             texts.append(f"{title}: {snippet}")
+41:         elif snippet:
+42:             texts.append(snippet)
+43:         elif title:
+44:             texts.append(title)
+45:     return texts
+46: 
+47: def _extract_reference_links(text_blocks: list, references: list) -> list:
+48:     links = []
+49:     def _append_link(value):
+50:         if isinstance(value, str) and value:
+51:             links.append(value)
+52:     def _append_link_items(items):
+53:         for item in items:
+54:             if isinstance(item, dict) and item.get("link"):
+55:                 links.append(item.get("link"))
+56:             elif isinstance(item, str) and item:
+57:                 links.append(item)
+58:     for block in text_blocks:
+59:         if not isinstance(block, dict):
+60:             continue
+61:         for ref in block.get("reference_links", []) or []:
+62:             _append_link_items([ref])
+63:         _append_link_items(block.get("snippet_links", []) or [])
+64:         for ref_index in block.get("reference_indexes", []) or []:
+65:             if isinstance(ref_index, int) and 0 <= ref_index < len(references):
+66:                 ref = references[ref_index]
+67:                 _append_link_items([ref])
+68:         if block.get("type") == "list":
+69:             for item in block.get("list", []) or []:
+70:                 if not isinstance(item, dict):
+71:                     continue
+72:                 for ref in item.get("reference_links", []) or []:
+73:                     _append_link_items([ref])
+74:                 _append_link_items(item.get("snippet_links", []) or [])
+75:                 for ref_index in item.get("reference_indexes", []) or []:
+76:                     if isinstance(ref_index, int) and 0 <= ref_index < len(references):
+77:                         ref = references[ref_index]
+78:                         _append_link_items([ref])
+79:     return links
+80: 
+81: def extract_year(topic: str) -> int:
+82:     match = re.search(r'\b(20\d{2})\b', topic)
+83:     if match:
+84:         return int(match.group(1))
+85:     return datetime.now().year  
+86: 
+87: # 1. Chuyển đổi sang hàm async và truyền AsyncClient vào để tái sử dụng connection pool
+88: async def search(query: str, client: httpx.AsyncClient) -> dict:
+89:     url = "https://serpapi.com/search.json"
+90:     params = {
+91:         "api_key": SERP_API_KEY,
+92:         "q": query,
+93:         "engine": "google_ai_mode"
+94:     }
+95:     try:
+96:         # Thay thế requests.get bằng client.get bất đồng bộ của HTTPX
+97:         response = await client.get(url, params=params, timeout=45)
+98:         response.raise_for_status()
+99:         data = response.json()
+100:         
+101:         search_id = data.get("search_metadata", {}).get("id")
+102:         html_url = f"https://serpapi.com/searches/{search_id}.html" if search_id else ""
+103:         text_blocks = data.get("text_blocks", [])
+104:         references = data.get("references", [])
+105:         
+106:         if not text_blocks:
+107:             return {"text": "", "sources": [], "html_url": html_url}
+108:             
+109:         block_texts = _extract_block_texts(text_blocks)
+110:         reference_links = _extract_reference_links(text_blocks, references)
+111:         sources = []
+112:         
+113:         for i, block in enumerate(text_blocks, start=1):
+114:             if not isinstance(block, dict):
+115:                 continue
+116:             nested_texts = []
+117:             _collect_text_pairs(block, nested_texts)
+118:             combined_text = "\n".join([t for t in nested_texts if t]).strip()
+119:             sources.append({
+120:                 "position": i,
+121:                 "title": block.get("title", "") or block.get("heading", ""),
+122:                 "link": block.get("link", "") or block.get("source", ""),
+123:                 "redirect_link": "",
+124:                 "displayed_link": block.get("source", ""),
+125:                 "date": "",
+126:                 "source": block.get("source", ""),
+127:                 "snippet": combined_text or block.get("text", "") or block.get("snippet", "")
+128:             })
+129:             
+130:         for i, link in enumerate(reference_links, start=1):
+131:             sources.append({
+132:                 "position": i,
+133:                 "title": "",
+134:                 "link": link,
+135:                 "redirect_link": "",
+136:                 "displayed_link": "",
+137:                 "date": "",
+138:                 "source": "",
+139:                 "snippet": ""
+140:             })
+141:             
+142:         if block_texts and not any(s.get("snippet") for s in sources):
+143:             sources = [
+144:                 {
+145:                     "position": i,
+146:                     "title": "",
+147:                     "link": "",
+148:                     "redirect_link": "",
+149:                     "displayed_link": "",
+150:                     "date": "",
+151:                     "source": "",
+152:                     "snippet": text
+153:                 }
+154:                 for i, text in enumerate(block_texts, start=1)
+155:             ]
+156:             
+157:         text = "\n\n".join([s.get("snippet", "") for s in sources if s.get("snippet")]).strip()
+158:         if not text and block_texts:
+159:             text = "\n\n".join(block_texts).strip()
+160:             
+161:         return {"text": text, "sources": sources, "html_url": html_url}
+162:         
+163:     except Exception as e:
+164:         error_body = ""
+165:         if hasattr(e, "response") and e.response is not None:
+166:             try:
+167:                 error_body = e.response.text
+168:             except Exception:
+169:                 error_body = ""
+170:         print(f"Search Agent lỗi: {e} {error_body}")
+171:         
+172:         # Cơ chế Retry bất đồng bộ
+173:         try:
+174:             response = await client.get(url, params=params, timeout=90)
+175:             response.raise_for_status()
+176:             data = response.json()
+177:             
+178:             search_id = data.get("search_metadata", {}).get("id")
+179:             html_url = f"https://serpapi.com/searches/{search_id}.html" if search_id else ""
+180:             text_blocks = data.get("text_blocks", [])
+181:             references = data.get("references", [])
+182:             
+183:             if not text_blocks:
+184:                 return {"text": "", "sources": [], "html_url": html_url}
+185:                 
+186:             block_texts = _extract_block_texts(text_blocks)
+187:             reference_links = _extract_reference_links(text_blocks, references) # Sửa lỗi thiếu references ở hàm cũ
+188:             sources = []
+189:             
+190:             for i, block in enumerate(text_blocks, start=1):
+191:                 if not isinstance(block, dict):
+192:                     continue
+193:                 nested_texts = []
+194:                 _collect_text_pairs(block, nested_texts)
+195:                 combined_text = "\n".join([t for t in nested_texts if t]).strip()
+196:                 sources.append({
+197:                     "position": i,
+198:                     "title": block.get("title", "") or block.get("heading", ""),
+199:                     "link": block.get("link", "") or block.get("source", ""),
+200:                     "redirect_link": "",
+201:                     "displayed_link": block.get("source", ""),
+202:                     "date": "",
+203:                     "source": block.get("source", ""),
+204:                     "snippet": combined_text or block.get("text", "") or block.get("snippet", "")
+205:                 })
+206:                 
+207:             for i, link in enumerate(reference_links, start=1):
+208:                 sources.append({
+209:                     "position": i,
+210:                     "title": "",
+211:                     "link": link,
+212:                     "redirect_link": "",
+213:                     "displayed_link": "",
+214:                     "date": "",
+215:                     "source": "",
+216:                     "snippet": ""
+217:                 })
+218:                 
+219:             if block_texts and not any(s.get("snippet") for s in sources):
+220:                 sources = [
+221:                     {
+222:                         "position": i,
+223:                         "title": "",
+224:                         "link": "",
+225:                         "redirect_link": "",
+226:                         "displayed_link": "",
+227:                         "date": "",
+228:                         "source": "",
+229:                         "snippet": text
+230:                     }
+231:                     for i, text in enumerate(block_texts, start=1)
+232:                 ]
+233:                 
+234:             text = "\n\n".join([s.get("snippet", "") for s in sources if s.get("snippet")]).strip()
+235:             if not text and block_texts:
+236:                 text = "\n\n".join(block_texts).strip()
+237:                 
+238:             return {"text": text, "sources": sources, "html_url": html_url}
+239:             
+240:         except Exception as retry_error:
+241:             print(f"Search Agent retry lỗi: {retry_error}")
+242:             return {"text": "", "sources": [], "html_url": ""}
+243: 
+244: # 2. Khai báo hàm async tối cao để Orchestrator thực hiện await
+245: async def search_market(topic: str) -> dict:
+246:     year = extract_year(topic) 
+247:     
+248:     # Sử dụng context manager httpx.AsyncClient để quản lý connection pool phi nghẽn mạng
+249:     async with httpx.AsyncClient() as client:
+250:         # Tạo cấu trúc luồng chạy song song (Parallel tasks) cho cả 3 từ khóa
+251:         task_overview = search(f"{topic} tổng quan thị trường", client)
+252:         task_trends = search(f"{topic} xu hướng {year}", client)
+253:         task_competitors = search(f"{topic} doanh nghiệp thương hiệu lớn {year}", client)
+254:         
+255:         # Đồng loạt phát lệnh kích hoạt mạng phi trạng thái và thu hồi kết quả cùng một lúc
+256:         overview, trends, competitors = await asyncio.gather(
+257:             task_overview, 
+258:             task_trends, 
+259:             task_competitors
+260:         )
+261:     
+262:     # Tổ chức lại cấu trúc dữ liệu trả về tương thích 100% với trạng thái memory cũ
+263:     results = {}
+264:     results["overview"] = overview["text"]
+265:     results["trends"] = trends["text"]
+266:     results["competitors"] = competitors["text"]
+267:     results["overview_sources"] = overview["sources"]
+268:     results["trends_sources"] = trends["sources"]
+269:     results["competitors_sources"] = competitors["sources"]
+270:     results["sources"] = (
+271:         overview["sources"] +
+272:         trends["sources"] +
+273:         competitors["sources"]
+274:     )
+275:     results["html_pages"] = [
+276:         {"label": "Overview", "url": overview.get("html_url", "")},
+277:         {"label": "Trends", "url": trends.get("html_url", "")},
+278:         {"label": "Competitors", "url": competitors.get("html_url", "")}
+279:     ]
+280:     return results

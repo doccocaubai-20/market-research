@@ -200,10 +200,114 @@ input {
   color: var(--accent-strong);
 }
 
-.progress-card .card-header span {
+.progress-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.progress-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+
+.progress-top h3 {
+  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  color: var(--accent-strong);
+}
+
+.progress-percent {
+  display: grid;
+  justify-items: end;
+  gap: 4px;
+  padding: 10px 14px;
+  border-radius: 14px;
   background: rgba(47, 93, 98, 0.1);
-  padding: 6px 10px;
+  border: 1px solid rgba(47, 93, 98, 0.25);
+}
+
+.progress-percent span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent-strong);
+}
+
+.progress-percent small {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
+
+.progress-orbit {
+  position: relative;
+  margin-bottom: 22px;
+}
+
+.progress-orbit-track {
+  height: 10px;
   border-radius: 999px;
+  background: rgba(47, 93, 98, 0.12);
+  overflow: hidden;
+}
+
+.progress-orbit-fill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #2f5d62 0%, #c07c63 100%);
+  transition: width 0.35s ease;
+}
+
+.progress-orbit-glow {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  height: 16px;
+  transform: translateY(-50%);
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(47, 93, 98, 0.35) 0%, rgba(47, 93, 98, 0) 70%);
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.progress-grid {
+  display: grid;
+  gap: 12px;
+}
+
+.progress-agent {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(29, 27, 22, 0.08);
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.agent-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(110, 107, 102, 0.4);
+}
+
+.agent-label {
+  font-weight: 600;
+}
+
+.agent-desc {
+  font-size: 12px;
+  color: var(--muted);
 }
 
 .progress-step {

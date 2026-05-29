@@ -1,12 +1,12 @@
-from openai import OpenAI
+from openai import AsyncOpenAI
 from app.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
 
-client = OpenAI(
+client = AsyncOpenAI(
     api_key=DEEPSEEK_API_KEY,
     base_url=DEEPSEEK_BASE_URL
 )
 
-def generate_report(topic: str, trends: str, competitors: str, sources: list) -> dict:
+async def generate_report(topic: str, trends: str, competitors: str, sources: list) -> dict:
 
     prompt = f"""Dựa trên các phân tích đầu vào dưới đây về thị trường '{topic}':
 
@@ -50,7 +50,7 @@ Hãy tổng hợp thành một Báo cáo Cố vấn Chiến lược toàn diện
 4. Ưu tiên viết đủ ý, sâu hơn trước khi kết luận ngắn gọn.
 """
 
-    response = client.chat.completions.create(
+    response = await client.chat.completions.create(
         model=DEEPSEEK_MODEL,
         messages=[
             {"role": "system", "content": "Bạn là Chuyên gia Tư vấn Chiến lược Cấp cao (Senior Management Consultant). Bạn xuất sắc trong việc chắt lọc thông tin phức tạp thành các hành động kinh doanh thực tiễn."},
@@ -62,7 +62,6 @@ Hãy tổng hợp thành một Báo cáo Cố vấn Chiến lược toàn diện
 
     report_content = response.choices[0].message.content
 
-    # Thêm kiểm tra kiểu dữ liệu dict để tránh lỗi nếu danh sách sources chứa định dạng lạ
     url_candidates = []
     for item in sources:
         if not isinstance(item, dict):
