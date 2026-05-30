@@ -84,7 +84,6 @@ def extract_year(topic: str) -> int:
         return int(match.group(1))
     return datetime.now().year  
 
-# 1. Chuyển đổi sang hàm async và truyền AsyncClient vào để tái sử dụng connection pool
 async def search(query: str, client: httpx.AsyncClient) -> dict:
     url = "https://serpapi.com/search.json"
     params = {
@@ -93,7 +92,6 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
         "engine": "google_ai_mode"
     }
     try:
-        # Thay thế requests.get bằng client.get bất đồng bộ của HTTPX
         response = await client.get(url, params=params, timeout=45)
         response.raise_for_status()
         data = response.json()
@@ -184,7 +182,7 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
                 return {"text": "", "sources": [], "html_url": html_url}
                 
             block_texts = _extract_block_texts(text_blocks)
-            reference_links = _extract_reference_links(text_blocks, references) # Sửa lỗi thiếu references ở hàm cũ
+            reference_links = _extract_reference_links(text_blocks, references)
             sources = []
             
             for i, block in enumerate(text_blocks, start=1):
@@ -241,25 +239,20 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
             print(f"Search Agent retry lỗi: {retry_error}")
             return {"text": "", "sources": [], "html_url": ""}
 
-# 2. Khai báo hàm async tối cao để Orchestrator thực hiện await
 async def search_market(topic: str) -> dict:
     year = extract_year(topic) 
     
-    # Sử dụng context manager httpx.AsyncClient để quản lý connection pool phi nghẽn mạng
     async with httpx.AsyncClient() as client:
-        # Tạo cấu trúc luồng chạy song song (Parallel tasks) cho cả 3 từ khóa
         task_overview = search(f"{topic} tổng quan thị trường", client)
         task_trends = search(f"{topic} xu hướng {year}", client)
         task_competitors = search(f"{topic} doanh nghiệp thương hiệu lớn {year}", client)
         
-        # Đồng loạt phát lệnh kích hoạt mạng phi trạng thái và thu hồi kết quả cùng một lúc
         overview, trends, competitors = await asyncio.gather(
             task_overview, 
             task_trends, 
             task_competitors
         )
     
-    # Tổ chức lại cấu trúc dữ liệu trả về tương thích 100% với trạng thái memory cũ
     results = {}
     results["overview"] = overview["text"]
     results["trends"] = trends["text"]

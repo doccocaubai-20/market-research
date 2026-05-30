@@ -106,8 +106,8 @@ KỊCH BẢN B: Khi hệ thống gặp lỗi search rỗng và bạn quyết đ�
         system_state['history'].append(action)
         
         if action == "CALL_SEARCH":
-            update({"agent": "orchestrator", "status": "deciding", "message": f"🤖 Tư duy: {thought}"})
-            update({"agent": "search", "status": "running", "message": f"🔍 Đang thu thập dữ liệu về '{topic}'..."})
+            update({"agent": "orchestrator", "status": "deciding", "message": f"Tư duy: {thought}"})
+            update({"agent": "search", "status": "running", "message": f"Đang thu thập dữ liệu về '{topic}'..."})
             
 
             search_results = await search_market(topic) 
@@ -115,7 +115,7 @@ KỊCH BẢN B: Khi hệ thống gặp lỗi search rỗng và bạn quyết đ�
             update({
                 "agent": "search",
                 "status": "debug",
-                "message": "🧾 Search response (truncated)",
+                "message": "Search response (truncated)",
                 "data": {
                     "overview": _truncate(search_results.get("overview")),
                     "trends": _truncate(search_results.get("trends")),
@@ -126,19 +126,19 @@ KỊCH BẢN B: Khi hệ thống gặp lỗi search rỗng và bạn quyết đ�
             })
             
             if not search_results.get("sources"):
-                update({"agent": "search", "status": "failed", "message": "❌ Thất bại. Không tìm thấy dữ liệu nguồn."})
+                update({"agent": "search", "status": "failed", "message": "Thất bại. Không tìm thấy dữ liệu nguồn."})
                 system_state['history'].append("SEARCH_FAILED")
                 continue
                 
             system_state["search_data"] = search_results
-            update({"agent": "search", "status": "done", "message": "✅ Thu thập dữ liệu Internet thành công."})
+            update({"agent": "search", "status": "done", "message": "Thu thập dữ liệu Internet thành công."})
         elif action == "REFORMULATE_QUERY":
             new_topic = decision.get("new_topic")
-            update({"agent": "orchestrator", "status": "replanning", "message": f"🤖 Tự sửa lỗi: Chuyển từ khóa từ '{topic}' sang '{new_topic}'"})
+            update({"agent": "orchestrator", "status": "replanning", "message": f"Tự sửa lỗi: Chuyển từ khóa từ '{topic}' sang '{new_topic}'"})
             topic = new_topic
         elif action == "CALL_ANALYZE_PARALLEL":
-            update({"agent": "orchestrator", "status": "deciding", "message": f"🤖 Tư duy: {thought}"})
-            update({"agent": "orchestrator", "status": "running", "message": f"⚡ Kích hoạt luồng song song: Trend Agent & Competitor Agent..."})
+            update({"agent": "orchestrator", "status": "deciding", "message": f"Tư duy: {thought}"})
+            update({"agent": "orchestrator", "status": "running", "message": f"Kích hoạt luồng song song: Trend Agent & Competitor Agent..."})
             
             task_trend = analyze_trends(topic, system_state["search_data"].get("trends", ""))
             task_competitor = analyze_competitors(topic, system_state["search_data"].get("competitors", ""))
@@ -148,23 +148,23 @@ KỊCH BẢN B: Khi hệ thống gặp lỗi search rỗng và bạn quyết đ�
             update({
                 "agent": "trend",
                 "status": "debug",
-                "message": "🧾 Trend response (truncated)",
+                "message": "Trend response (truncated)",
                 "data": _truncate(trends_res)
             })
             update({
                 "agent": "competitor",
                 "status": "debug",
-                "message": "🧾 Competitor response (truncated)",
+                "message": "Competitor response (truncated)",
                 "data": _truncate(competitors_res)
             })
             
             system_state["trends_data"] = trends_res
             system_state["competitors_data"] = competitors_res
-            update({"agent": "orchestrator", "status": "done", "message": "✅ Luồng song song hoàn thành cấu trúc nháp."})
+            update({"agent": "orchestrator", "status": "done", "message": "Luồng song song hoàn thành cấu trúc nháp."})
 
         elif action == "CALL_REPORT":
-            update({"agent": "orchestrator", "status": "deciding", "message": f"🤖 Tư duy: {thought}"})
-            update({"agent": "report", "status": "running", "message": "📄 Report Agent đang tổng hợp báo cáo chiến lược cuối cùng..."})
+            update({"agent": "orchestrator", "status": "deciding", "message": f"Tư duy: {thought}"})
+            update({"agent": "report", "status": "running", "message": "Report Agent đang tổng hợp báo cáo chiến lược cuối cùng..."})
             
             report = await generate_report(
                 topic, 
@@ -176,7 +176,7 @@ KỊCH BẢN B: Khi hệ thống gặp lỗi search rỗng và bạn quyết đ�
             update({
                 "agent": "report",
                 "status": "debug",
-                "message": "🧾 Report response (truncated)",
+                "message": "Report response (truncated)",
                 "data": {
                     "content": _truncate(report.get("content")),
                     "sources_count": len(report.get("sources", []))
@@ -184,10 +184,10 @@ KỊCH BẢN B: Khi hệ thống gặp lỗi search rỗng và bạn quyết đ�
             })
             
             system_state["final_report"] = report
-            update({"agent": "report", "status": "done", "message": "✅ Báo cáo kinh doanh đã được tạo dựng."})
+            update({"agent": "report", "status": "done", "message": "Báo cáo kinh doanh đã được tạo dựng."})
 
         elif action == "FINISH":
-            update({"agent": "orchestrator", "status": "completed", "message": "🎉 Hệ thống đa tác tử tự chủ đã hoàn thành xuất sắc nhiệm vụ!"})
+            update({"agent": "orchestrator", "status": "completed", "message": "Finish Task!"})
             break
 
     return {

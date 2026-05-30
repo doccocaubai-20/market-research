@@ -10,5 +10,5 @@ class Report(Base):
     report = Column(Text)
     trends = Column(Text)
     competitors = Column(Text)
-    sources = Column(Text)  # lưu dạng JSON string
+    sources = Column(Text)
     created_at = Column(DateTime, default=datetime.now)
