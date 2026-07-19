@@ -1,0 +1,79 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-08 | CẤU HÌNH: baseline_2 ===
+Chủ đề: 'Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hệ thống chưa có dữ liệu tìm kiếm, cần kích hoạt Search Agent để thu thập thông tin thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản'
+Data: {
+  "original_topic": "Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản",
+  "search_queries": {
+    "overview": [
+      "Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản tổng quan",
+      "Loofah handicraft export market Japan overview"
+    ],
+    "trend": [
+      "Xu hướng xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản",
+      "Trends loofah craft export Japan 2025"
+    ],
+    "competition": [
+      "Đối thủ cạnh tranh xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản",
+      "Competitors loofah handicraft Japan market"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường Nhật Bản là một trong những điểm đến xuất khẩu lớn nhất và ổn định nhất của sản phẩm thủ công mỹ nghệ từ xơ mướp Việt Nam nhờ xu hướng tiêu dùng xanh mạnh mẽ.\n\nCác thương hiệu lớn trong nước (như dự án Làng mướp của Đỗ Đăng Khoa hay Mộc Xơ của Võ Thị Ngọc Thư) đều ghi nhận Nhật Bản là thị trường chiến lược, tiêu thụ số lượng lớn các sản phẩm từ xơ mướp tự nhiên phối hợp thủ công.\nLàng mướp\nMộc Xơ\n\nDưới đây là bức tranh tổng quan về thị trường xuất khẩu tiềm năng này:\n\n1. Nhu cầu và Xu hướng Tiêu dùng tại Nhật Bản\n\nPhong cách sống \"Green Living\": Người Nhật cực kỳ chuộng lối sống xanh, bền vững và bảo vệ môi trường.\nƯu tiên sản phẩm tự nhiên: Các phụ phẩm nông nghiệp như xơ mướp có khả năng phân hủy sinh học 100%, đáp ứng đúng tiêu chuẩn giảm thiểu rác thải nhựa của chính phủ và ...",
+  "trends": "Xu hướng xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản năm 2026 đang tăng trưởng mạnh mẽ nhờ làn sóng tiêu dùng xanh. Người tiêu dùng Nh
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công (Không qua kiểm duyệt).
+----------------------------------------
+[ORCHESTRATOR] status=warning | Lỗi gọi LLM/Parse JSON (Lượt 1/3): Expecting ',' delimiter: line 2 column 152 (char 153). Đang thử lại sau 2 giây...
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã có, cần kích hoạt phân tích xu hướng và đối thủ đồng thời để tiết kiệm thời gian. Hành động CALL_ANALYZE_PARALLEL chưa được thực hiện trong lịch sử, đảm bảo không lặp vô hạn.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "## PHÂN TÍCH THỊ TRƯỜNG XƠ MƯỚP NHẬT BẢN (GÓC NHÌN NHÀ ĐẦU TƯ)\n\n### 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n\n- **Nhóm khách hàng mục tiêu chính:** Người tiêu dùng Nhật Bản theo đuổi lối sống xanh, ưa chuộng sản phẩm tự nhiên, phân hủy sinh học, có ý thức về sức khỏe và môi trường. Cụ thể: các gia đình (thay mới dụng cụ nhà bếp định kỳ), người quan tâm chăm sóc da (nhà tắm), khách hàng của các chuỗi lifestyle như MUJI, Daiso, Loft.\n- **Họ tìm kiếm:** Sản phẩm 100% tự nhiên, an toàn (không kích ứng da, không hóa chất bảo quản), bền, thiết kế kết hợp truyền thống và hiện đại, bao bì tối giản (giấy tái chế/tự hủy).\n- **Hành vi mua thay đổi:** Tần suất tái mua cao nhất ở phân khúc nhà bếp; ưu tiên sản phẩm có chứng nhận xanh; chuyển dịch sang mua sắm qua thương mại điện tử xuyên biên giới (Amazon Nhật, R..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# Báo cáo Cạnh tranh Thị trường Xuất khẩu Sản phẩm Thủ công Mỹ nghệ từ Xơ mướp sang Nhật Bản – Năm 2026\n\n---\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\n**Nhận định mức độ khốc liệt của thị trường:**  \nThị trường đang trong giai đoạn tăng trưởng vượt bậc nhờ xu hướng tiêu dùng xanh (Green Living) tại Nhật Bản. Yêu cầu khắt khe về tiêu chuẩn kỹ thuật (VietGAP, hữu cơ, chứng nhận quốc tế) và thị hiếu tinh tế của người Nhật tạo ra rào cản gia nhập đáng kể. Tuy nhiên, sự xuất hiện của nhiều doanh nghiệp Việt Nam có vùng nguyên liệu và hệ sinh thái sản phẩm đa dạng cho thấy mức độ cạnh tranh đang gia tăng, đặc biệt ở phân khúc sản phẩm chất lượng cao và chế tác thủ công tinh xảo.\n\n**Top 3 thương hiệu/thương hiệu dẫn đầu (dựa trên thông tin từ dữ liệu):**\n\n| Thương hiệu | Người sáng lập | Đặc điểm nổ..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Tất cả dữ liệu cần thiết đã có: dữ liệu tìm kiếm, phân tích xu hướng và phân tích đối thủ. Báo cáo chưa được tạo. Do đó, hành động tiếp theo là kích hoạt Report Agent để tổng hợp báo cáo chiến lược cuối cùng.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>Báo cáo Cố vấn Chiến lược: Thị trường Xuất khẩu Sản phẩm Thủ công Mỹ nghệ từ Xơ mướp sang Nhật Bản</h1>\n\n<h2>1. TÓM TẮT THỰC THI (EXECUTIVE SUMMARY)</h2>\n<p>Thị trường xơ mướp Nhật Bản đang trong giai đoạn tăng trưởng mạnh nhờ làn sóng tiêu dùng xanh, tạo ra <strong>cơ hội lớn nhất</strong> cho các doanh nghiệp xuất khẩu Việt Nam ở phân khúc nhà bếp tái mua cao và kênh thương mại điện tử. Tuy nhiên, <strong>rủi ro chí mạng</strong> là không đáp ứng được tiêu chuẩn kỹ thuật khắt khe về chống ẩm mốc và bao bì thân thiện môi trường. Ba đối thủ dẫn đầu hiện tại (Làng Mướp, KB EcoLife, Mộc Xơ) đã chiếm lĩnh các lợi thế về đa dạng hóa, quy mô nguyên liệu và kênh B2B ngách. <strong>Khuyến nghị hành động</strong> ngay lập tức: tập trung vào phân khúc quà tặng, souvenir cao cấp và hợp tác ODM/O...",
+  "sources_count": 14
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 107.23s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 86/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 24,
+  "factuality": 20,
+  "depth": 22,
+  "citation": 20,
+  "total_score": 86,
+  "reason": "Cấu trúc báo cáo đầy đủ các phần cần thiết, HTML rõ ràng. Tính xác thực khá tốt dựa trên các nguồn tham khảo, nhưng thiếu trích dẫn trong văn bản. Phân tích có chiều sâu, chỉ ra khoảng trống thị trường và đề xuất cụ thể, nhưng một số đề xuất còn chung chung. Nguồn tham khảo đầy đủ URL nhưng không có inline citation."
+}

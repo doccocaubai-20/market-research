@@ -1,0 +1,81 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-12 | CẤU HÌNH: proposed ===
+Chủ đề: 'Phân tích thị trường căn hộ chung cư phân khúc bình dân tại Hà Nội'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại hệ thống chưa có dữ liệu tìm kiếm. Theo quy tắc, cần kích hoạt Search Agent để thu thập dữ liệu từ Internet trước khi thực hiện các bước phân tích tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Phân tích thị trường căn hộ chung cư phân khúc bình dân tại Hà Nội'
+Data: {
+  "original_topic": "Phân tích thị trường căn hộ chung cư phân khúc bình dân tại Hà Nội",
+  "search_queries": {
+    "overview": [
+      "thị trường căn hộ chung cư bình dân Hà Nội năm 2024",
+      "báo cáo thị trường bất động sản bình dân Hà Nội"
+    ],
+    "trend": [
+      "xu hướng căn hộ bình dân Hà Nội 2024",
+      "cơ hội đầu tư căn hộ bình dân Hà Nội"
+    ],
+    "competition": [
+      "chủ đầu tư căn hộ bình dân Hà Nội",
+      "thị phần căn hộ bình dân Hà Nội"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Phân tích thị trường căn hộ chung cư phân khúc bình dân tại Hà Nội'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Trong năm 2024, thị trường căn hộ chung cư bình dân (giá dưới 25-30 triệu đồng/m²) tại Hà Nội gần như đã \"tuyệt chủng\" hoàn toàn về nguồn cung mới. Cơn sốt giá bất động sản trong năm qua đã đẩy phân khúc được gọi là \"bình dân\" cũ tăng vọt lên vùng giá trung cấp, khiến cơ hội sở hữu nhà của người thu nhập thấp ngày càng xa vời.\n\nDưới đây là bức tranh chi tiết về thực trạng phân khúc này trong năm 2024:\n\n1. Nguồn cung mới biến mất khỏi thị trường\n\nTỷ trọng 0%: Theo dữ liệu từ Hội Môi giới Bất động sản Việt Nam (VARS), các dự án căn hộ thương mại mới có mức giá quanh mốc 25 triệu đồng/m² đã chính thức biến mất.\nHội Môi giới Bất động sản Việt Nam (VARS)\nThị phần áp đảo từ phân khúc cao hơn: Gần như toàn bộ nguồn cung mới trong năm 2024 (với tổng số hơn 25.000 - 30.000 căn mở bán) đều thuộc phâ...",
+  "trends": "Xu hướng căn hộ bình dân tại Hà Nội trong năm 2024 ghi nhận sự \"biến mất\" hoàn toàn của các dự án mới có giá dưới 30 triệu đồng/m², trong khi phân khú
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=done | Dữ liệu hợp lệ.
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại chúng ta đã có dữ liệu tìm kiếm, cần tiến hành phân tích xu hướng và đối thủ song song để đẩy nhanh tiến độ, đồng thời đảm bảo đủ dữ liệu cho bước tạo báo cáo sau này. Hành động CALL_ANALYZE_PARALLEL phù hợp vì Trend và Competitor đều chưa được phân tích.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "**1. Xu hướng tiêu dùng nổi bật**\n\n- **Nhóm khách hàng mục tiêu:** Người thu nhập trung bình thấp, người có nhu cầu ở thực. Họ chủ yếu là lao động, sinh viên, chuyên gia trẻ – không đủ sức mua căn hộ cao cấp.\n- **Nhu cầu chính:** Tìm căn hộ giá dưới 50 triệu đồng/m² (ưu tiên dưới 30-40 triệu), nhưng nguồn cung mới gần như không còn. Họ chuyển sang căn hộ cũ, tái định cư, nhà ở xã hội hoặc thuê.\n- **Hành vi thay đổi:** Từ mua sơ cấp → thứ cấp/vùng ven; từ mua → thuê; sẵn sàng “giữ tiền” chờ suất NOXH. Xu hướng dịch chuyển ra ngoại thành (Đông Anh, Gia Lâm, Hoài Đức) hoặc các tỉnh giáp ranh (Hưng Yên, Bắc Ninh).\n\n**2. Cơ hội chưa được khai thác**\n\n- **Phân khúc khách hàng bị bỏ ngỏ:** Nhóm có tài chính 2-3 tỷ đồng đang bị thiếu hụt nguồn cung phù hợp. Họ buộc phải tìm căn hộ cũ hoặc NOXH.\n- ..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# Báo cáo Cạnh tranh Thị trường Căn hộ Bình dân Hà Nội\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\n### Nhận định\nThị trường căn hộ bình dân (giá dưới 25–30 triệu VNĐ/m²) tại Hà Nội đang trong trạng thái **cực kỳ khốc liệt** về mặt tiếp cận nguồn cung sơ cấp, nhưng **ít cạnh tranh trực tiếp giữa các chủ đầu tư** do phân khúc này gần như biến mất. Cụ thể:\n- Thị phần nguồn cung mới của phân khúc bình dân hiện là **0%** – không còn dự án thương mại nào được mở bán ở mức giá này.\n- Cạnh tranh chủ yếu diễn ra ở các kênh **nhà ở xã hội (NƠXH)** và **thị trường thứ cấp** (căn hộ cũ, chuyển nhượng).\n- Sự dịch chuyển của người mua sang khu vực ngoại thành, dự án cũ hoặc NƠXH tạo ra áp lực tìm kiếm cao, nhưng các chủ đầu tư không phải cạnh tranh gay gắt bằng giá mà chủ yếu bằng thủ tục, tiến độ và uy tín...."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Hệ thống đã có đầy đủ dữ liệu tìm kiếm, xu hướng và đối thủ. Bước tiếp theo cần kích hoạt Report Agent để tổng hợp báo cáo chiến lược cuối cùng. Không cần lặp lại các hành động trước đó.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>Báo cáo Cố vấn Chiến lược: Thị trường Căn hộ Chung cư Phân khúc Bình dân tại Hà Nội</h1>\n\n<h2>1. TÓM TẮT THỰC THI (EXECUTIVE SUMMARY)</h2>\n<p>Thị trường căn hộ bình dân Hà Nội đang đối mặt với tình trạng “tuyệt chủng” nguồn cung mới, trong khi nhu cầu ở thực từ nhóm thu nhập trung bình thấp vẫn rất lớn. Cơ hội nổi bật nằm ở việc khai thác nhà ở xã hội (NƠXH) quy mô lớn, thị trường thứ cấp với căn hộ cắt lỗ, và mô hình cho thuê dài hạn. Tuy nhiên, rủi ro chí mạng đến từ giá căn hộ cũ leo thang vượt tầm với, chi phí sinh hoạt tăng, và tâm lý phòng thủ của người mua. Khuyến nghị hành động: ưu tiên tham gia NƠXH thông qua quỹ đất nhà nước, đầu tư cải tạo nhà cũ cho thuê, và chủ động săn các cơ hội cắt lỗ từ nhà đầu tư ngộp tài chính.</p>\n\n<h2>2. TỔNG QUAN THỊ TRƯỜNG & XU HƯỚNG TIÊU DÙNG</h...",
+  "sources_count": 54
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 91.41s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 95/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 25,
+  "depth": 25,
+  "citation": 20,
+  "total_score": 95,
+  "reason": "Cấu trúc báo cáo đầy đủ các phần chuẩn, rõ ràng, dễ đọc. Thông tin xác thực, dựa trên thực tế thị trường Hà Nội, không có dấu hiệu bịa đặt. Phân tích sâu sắc, logic, có đề xuất chiến lược cụ thể và chỉ ra khoảng trống thị trường. Danh sách trích dẫn có 10 nguồn URL, nhưng một số nguồn (Facebook, YouTube) có độ tin cậy thấp, và nhiều nguồn là bản dịch tự động."
+}

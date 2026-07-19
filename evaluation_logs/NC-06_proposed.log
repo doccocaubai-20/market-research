@@ -1,0 +1,85 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-06 | CẤU HÌNH: proposed ===
+Chủ đề: 'Tiềm năng phát triển của chuỗi cửa hàng bánh mì thanh long hữu cơ tại miền Tây'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại chưa có dữ liệu tìm kiếm nào, vì vậy cần kích hoạt Search Agent để thu thập thông tin từ internet về chủ đề nghiên cứu thị trường.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Tiềm năng phát triển của chuỗi cửa hàng bánh mì thanh long hữu cơ tại miền Tây'
+Data: {
+  "original_topic": "Tiềm năng phát triển của chuỗi cửa hàng bánh mì thanh long hữu cơ tại miền Tây",
+  "search_queries": {
+    "overview": [
+      "bánh mì thanh long hữu cơ tiềm năng phát triển",
+      "thị trường bánh mì thanh long miền Tây"
+    ],
+    "trend": [
+      "xu hướng tiêu dùng thực phẩm hữu cơ miền Tây 2025",
+      "cơ hội phát triển bánh mì thanh long"
+    ],
+    "competition": [
+      "chuỗi cửa hàng bánh mì nổi tiếng miền Tây",
+      "đối thủ cạnh tranh bánh mì thanh long hữu cơ"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Tiềm năng phát triển của chuỗi cửa hàng bánh mì thanh long hữu cơ tại miền Tây'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Bánh mì thanh long hữu cơ sở hữu tiềm năng phát triển rất lớn nhờ sự kết hợp giữa yếu tố đổi mới sáng tạo nông sản nội địa và xu hướng tiêu dùng xanh, bảo vệ sức khỏe toàn cầu. Từ nguồn gốc ban đầu là giải pháp giải cứu nông sản của ông Kao Siêu Lực, dòng bánh mì này đang tiến hóa thành một sản phẩm thực phẩm cao cấp có giá trị thương mại lớn.\n\nDưới đây là bảng đánh giá chi tiết về các khía cạnh tiềm năng phát triển:\n\nKhía cạnh\nLợi thế & Cơ hội phát triển\nThách thức cần giải quyết\nThị trường tiêu dùng\nĐánh trúng phân khúc sống xanh và ăn sạch (Clean Eating); thu hút nhóm khách hàng cao cấp sẵn sàng chi trả cao cho thực phẩm hữu cơ (organic).\nGiá thành nguyên liệu hữu cơ cao khiến giá bán bánh mì khó tiếp cận phân khúc đại trà.\nGiá trị cốt lõi\nHàm lượng dinh dưỡng vượt trội nhờ vitamin từ t...",
+  "trends": "Xu hướng tiêu dùng thực phẩm hữu cơ (organic) tại miền Tây (Đồng bằng sông Cửu Long) năm 2025 ghi nhận sự chuyển biến mạnh mẽ từ nhận thức sang hành động
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=done | Dữ liệu hợp lệ.
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công.
+----------------------------------------
+[ORCHESTRATOR] status=warning | Lỗi gọi LLM/Parse JSON (Lượt 1/3): DeepSeek returned empty content. Đang thử lại sau 2 giây...
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Trạng thái hiện tại: đã có dữ liệu tìm kiếm (Search Data = True), nhưng chưa có phân tích xu hướng và đối thủ. Theo quy tắc, tôi cần kích hoạt luồng phân tích song song để thu thập cả hai loại dữ liệu này. Hành động CALL_ANALYZE_PARALLEL là phù hợp.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "Dưới góc nhìn nhà đầu tư, phân tích dựa trên dữ liệu bài viết:\n\n### 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n- **Nhóm khách hàng mục tiêu chính**: Tầng lớp trung lưu tại các đô thị lớn miền Tây (Cần Thơ, Long Xuyên, Mỹ Tho) và người theo lối sống “ăn sạch – sống xanh”.\n- **Họ đang tìm kiếm**: Sản phẩm hữu cơ có nguồn gốc nội địa rõ ràng, chứng nhận đạt chuẩn (TCVN, USDA, EU), giàu dinh dưỡng, màu sắc tự nhiên, tiện lợi (như bánh mì cấp đông). Sẵn sàng chi trả cao hơn 15-30% cho sự an toàn.\n- **Hành vi thay đổi**: Chủ động kiểm tra nhãn mác (80%), ưu tiên nông sản ĐBSCL, chuyển từ niềm tin sang xác minh chứng nhận.\n\n### 2. CƠ HỘI CHƯA ĐƯỢC KHAI THÁC\n- **Phân khúc bị bỏ ngỏ**: Người tiêu dùng muốn “ăn sạch” nhưng chưa có điểm bán lẻ chuyên biệt cho bánh mì hữu cơ có câu chuyện nông sản Việt. Nhóm khách..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# BÁO CÁO CẠNH TRANH: THỊ TRƯỜNG BÁNH MÌ THANH LONG HỮU CƠ TẠI MIỀN TÂY\n\n---\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\n**Nhận định về mức độ cạnh tranh:** Thị trường đang ở mức độ **rất khốc liệt** với sự hiện diện của ba nhóm đối thủ chính: trực tiếp (bánh mì thanh long thông thường), gián tiếp (bánh mì sức khỏe & organic) và thay thế (thực phẩm chế biến từ thanh long). Đặc biệt, phân khúc bánh mì thanh long đã có thương hiệu tiên phong và nhiều nhà sản xuất theo mùa, trong khi nhóm khách hàng hữu cơ có xu hướng chuyển sang các loại bánh mì ăn kiêng khác. Ngoài ra, sự xuất hiện của mì ăn liền thanh long còn tạo áp lực thay thế về mặt tiện lợi và thời hạn bảo quản.\n\n**Top đối thủ/thương hiệu dẫn đầu** (dựa trên mức độ ảnh hưởng được đề cập trong dữ liệu):\n\n| Thứ hạng | Tên đối thủ | Nhóm cạnh..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Cả dữ liệu xu hướng và đối thủ đều đã có, cần kích hoạt Report Agent để tạo báo cáo chiến lược cuối cùng từ các dữ liệu đã thu thập và phân tích.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>Báo Cáo Cố Vấn Chiến Lược: Tiềm Năng Phát Triển Chuỗi Cửa Hàng Bánh Mì Thanh Long Hữu Cơ Tại Miền Tây</h1>\n\n<h2>1. TÓM TẮT THỰC THI</h2>\n<p>Thị trường bánh mì thanh long hữu cơ tại miền Tây đang đứng trước cơ hội chiếm lĩnh một phân khúc khách hàng trung lưu với nhu cầu \"ăn sạch – sống xanh\" ngày càng cao, sẵn sàng chi trả thêm 15-30% cho sản phẩm có chứng nhận và câu chuyện nông sản địa phương. Rủi ro chí mạng nhất đến từ áp lực cạnh tranh về giá từ các thương hiệu bánh mì thanh long thông thường (như ABC Bakery) và sự thay thế của các sản phẩm tiện lợi (mì thanh long). Khuyến nghị hành động khả thi nhất là tập trung xây dựng thương hiệu cao cấp dựa trên chứng nhận hữu cơ quốc tế, kết hợp công nghệ cấp đông để mở rộng kênh B2B và thời hạn sử dụng, đồng thời phát triển câu chuyện nông ...",
+  "sources_count": 23
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=warning | Lỗi gọi LLM/Parse JSON (Lượt 1/3): DeepSeek returned empty content. Đang thử lại sau 2 giây...
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 108.18s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 90/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 20,
+  "depth": 23,
+  "citation": 22,
+  "total_score": 90,
+  "reason": "Cấu trúc: báo cáo có đầy đủ các phần, HTML rõ ràng. Tính xác thực: thông tin về thị trường bánh mì thanh long hữu cơ là thực tế, không bịa đặt, nhưng các số liệu (15-30%, 80%) chưa có nguồn dẫn chứng nên trừ 5 điểm. Độ sâu: phân tích xu hướng, cạnh tranh, SWOT và đề xuất chiến lược chi tiết, logic, có giả định và lỗ hổng dữ liệu. Trích dẫn: có danh sách 10 nguồn URL thực tế, nhưng thiếu trích dẫn inline trong nội dung."
+}

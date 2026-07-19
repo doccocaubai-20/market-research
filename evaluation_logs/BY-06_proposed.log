@@ -1,0 +1,44 @@
+=== KHỞI CHẠY THỬ NGHIỆM: BY-06 | CẤU HÌNH: proposed ===
+Chủ đề: 'Chiến lược marketing 4P của sản phẩm smartphone màn hình gập chạy bằng xăng cơ học'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại chưa có dữ liệu tìm kiếm, cần thu thập thông tin từ Internet trước khi thực hiện các phân tích khác. Do đó, tôi sẽ kích hoạt Search Agent.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Chiến lược marketing 4P của sản phẩm smartphone màn hình gập chạy bằng xăng cơ học'
+Data: {
+  "original_topic": "Chiến lược marketing 4P của sản phẩm smartphone màn hình gập chạy bằng xăng cơ học",
+  "search_queries": {
+    "overview": [
+      "chiến lược marketing 4P smartphone màn hình gập chạy bằng xăng cơ học",
+      "marketing mix product price place promotion folding smartphone gasoline engine"
+    ],
+    "trend": [
+      "xu hướng smartphone màn hình gập 2025 nhiên liệu xăng",
+      "dự báo thị trường điện thoại di động động cơ xăng cơ học"
+    ],
+    "competition": [
+      "đối thủ cạnh tranh smartphone màn hình gập Samsung Huawei Motorola",
+      "công ty sản xuất điện thoại chạy xăng trên thế giới"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Chiến lược marketing 4P của sản phẩm smartphone màn hình gập chạy bằng xăng cơ học'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Chiến lược marketing 4P cho sản phẩm \"smartphone màn hình gập chạy bằng xăng cơ học\" cần tập trung định vị đây là một kiệt tác công nghệ xa xỉ mang tính cơ khí (Steampunk Luxury) dành cho giới siêu giàu và người đam mê sưu tầm, thay vì một thiết bị di động phổ thông.\n\nDưới đây là khung chiến lược 4P chi tiết cho ý tưởng sản phẩm độc đáo này:\n\n1. Product (Sản phẩm)\n\nSản phẩm phải là sự giao thoa hoàn hảo giữa công nghệ màn hình gập tương lai và nghệ thuật chế tác cơ khí đồng hồ Thụy Sĩ cổ điển.\n\nTính năng cốt lõi: Màn hình gập OLED linh hoạt kết hợp với hệ thống siêu vi cơ cơ học (micro-mechanics). Máy sử dụng một buồng đốt vi mô hoặc con quay cơ học chạy bằng cồn/xăng tinh luyện để lên dây cót và tích năng lượng, thay thế một phần hoặc toàn bộ pin Lithium truyền thống.\nThiết kế: Vỏ ngoài b...",
+  "trends": "Chào bạn, dường như bạn đang có một sự nhầm lẫn thú vị khi kết hợp hai khái niệm hoàn toàn không liên quan vào cùng một câu hỏi. Smartphone màn hình gập 
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=failed | INVALID
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 5.99s
+Trạng thái luồng chạy (Flow Status): INVALID
+Trạng thái kiểm duyệt (Validator Status): FAILED
+Điểm chất lượng (RQS): 0/100

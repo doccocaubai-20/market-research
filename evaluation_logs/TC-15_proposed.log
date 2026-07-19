@@ -1,0 +1,83 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-15 | CẤU HÌNH: proposed ===
+Chủ đề: 'Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME'
+
+[ORCHESTRATOR] status=warning | Lỗi gọi LLM/Parse JSON (Lượt 1/3): DeepSeek returned empty content. Đang thử lại sau 2 giây...
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại chưa có dữ liệu tìm kiếm (Search Data là False). Để bắt đầu quy trình nghiên cứu, trước tiên cần kích hoạt Search Agent để thu thập thông tin từ Internet.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME'
+Data: {
+  "original_topic": "Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME",
+  "search_queries": {
+    "overview": [
+      "SaaS ERP cho SME định nghĩa và lợi ích",
+      "Báo cáo thị trường phần mềm quản trị doanh nghiệp cho doanh nghiệp vừa và nhỏ"
+    ],
+    "trend": [
+      "Xu hướng SaaS ERP 2024 cho SME",
+      "Cơ hội và thách thức triển khai ERP Cloud cho doanh nghiệp nhỏ"
+    ],
+    "competition": [
+      "Top nhà cung cấp SaaS ERP cho SME",
+      "So sánh phần mềm ERP cho doanh nghiệp vừa và nhỏ"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "SaaS ERP cho SME là hệ thống hoạch định nguồn lực doanh nghiệp chạy trên nền tảng điện toán đám mây, được nhà cung cấp cho các doanh nghiệp vừa và nhỏ thuê dưới dạng dịch vụ trả phí định kỳ thay vì phải tự mua bản quyền và cài đặt trên máy chủ riêng. Giải pháp này giúp các doanh nghiệp quy mô nhỏ giải quyết bài toán quản trị tổng thể với chi phí tối ưu nhất.\n\nĐịnh nghĩa chi tiết\n\nMô hình này là sự kết hợp của ba khái niệm cốt lõi:\n\nERP (Hoạch định nguồn lực doanh nghiệp): Hệ thống tích hợp toàn bộ quy trình cốt lõi của doanh nghiệp (như tài chính, nhân sự, kho vận, bán hàng, sản xuất) vào một nền tảng dữ liệu duy nhất.\nSaaS (Phần mềm dưới dạng dịch vụ): Mô hình phân phối phần mềm qua Internet. Doanh nghiệp không sở hữu mã nguồn mà trả phí thuê theo tháng/năm. Nhà cung cấp chịu trách nhiệm ...",
+  "trends": "Xu hướng SaaS ERP 2024 dành cho các doanh nghiệp vừa và nhỏ (SME) tập trung mạnh mẽ vào tính linh hoạt, tối ưu chi phí và tích hợp trí tuệ nhân tạo (AI). Tro
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=done | Dữ liệu hợp lệ.
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã có, cần phân tích xu hướng và đối thủ cạnh tranh song song để tiến tới tạo báo cáo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "# PHÂN TÍCH THỊ TRƯỜNG SaaS ERP CHO SME TẠI VIỆT NAM\n## Góc nhìn nhà đầu tư\n\n---\n\n## 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n\n**Nhóm khách hàng mục tiêu chính:**\n- Doanh nghiệp vừa và nhỏ (SME) Việt Nam, quy mô <200 nhân sự\n- Ngành nghề: sản xuất, bán lẻ, thương mại, dịch vụ\n- Đặc điểm: hạn chế ngân sách đầu tư ban đầu, thiếu đội ngũ IT nội bộ\n\n**Họ đang tìm kiếm:**\n- **Chi phí thấp, linh hoạt:** Trả phí theo tháng/năm (SaaS), không đầu tư máy chủ\n- **Triển khai nhanh:** Có thể sử dụng ngay, không mất nhiều tháng cài đặt\n- **Tính năng AI tích hợp:** Dự báo dòng tiền, tự động hóa nhập liệu, trợ lý ảo\n- **Bản địa hóa:** Tự động cập nhật Luật Thuế, hóa đơn điện tử, chuẩn mực kế toán VAS\n- **Dễ sử dụng:** Mobile-first, giao diện đơn giản, không cần chuyên gia IT\n\n**Hành vi mua hàng thay đổi:**\n- Từ mua ..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# Báo cáo Cạnh tranh Thị trường SaaS ERP cho SME tại Việt Nam\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\n### Mức độ khốc liệt\nThị trường SaaS ERP cho doanh nghiệp vừa và nhỏ tại Việt Nam đang ở giai đoạn cạnh tranh **cao và phân hóa rõ rệt** giữa hai khối: giải pháp quốc tế (công nghệ mạnh, quy trình chuẩn toàn cầu) và giải pháp nội địa (tối ưu theo luật định Việt Nam, chi phí thấp). Các nhà cung cấp cạnh tranh gay gắt trên nhiều mặt trận: chi phí sở hữu, thời gian triển khai, độ linh hoạt tùy biến và khả năng đáp ứng pháp lý địa phương. Xu hướng Cloud ERP đang được SME ưu tiên để giảm đầu tư hạ tầng, tạo ra cuộc đua song song giữa các ông lớn toàn cầu và các kỳ lân nội địa.\n\n### Top 5 thương hiệu dẫn đầu\n\n| Thứ tự | Thương hiệu | Vị thế cạnh tranh chính |\n|--------|-------------|-------------..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm, phân tích xu hướng và đối thủ đều đã có, báo cáo chưa được tạo. Cần kích hoạt Report Agent để hợp nhất và tạo báo cáo cuối cùng.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>Báo cáo Cố vấn Chiến lược Thị trường SaaS ERP cho SME Việt Nam</h1>\n\n<h2>1. Tóm tắt Thực thi (Executive Summary)</h2>\n<p>Thị trường SaaS ERP cho SME Việt Nam đang bước vào giai đoạn bùng nổ với sự dịch chuyển mạnh mẽ từ mua đứt sang thuê bao và từ nguyên khối sang Composable ERP. Cơ hội lớn nhất nằm ở phân khúc SME siêu nhỏ (dưới 10 nhân sự) với nhu cầu giải pháp cực kỳ đơn giản, giá dưới 1 triệu đồng/tháng – một khoảng trống mà các đối thủ hiện tại chưa khai thác. Tuy nhiên, rủi ro chí mạng đến từ cạnh tranh khốc liệt với các ông lớn nội địa (MISA, Fast) và quốc tế (Odoo, Microsoft Dynamics), cùng áp lực cập nhật pháp lý liên tục. Khuyến nghị hành động: nhà đầu tư nên tập trung vào sản phẩm tối giản cho SME siêu nhỏ, tích hợp AI tự động hóa nhập liệu, bản địa hóa thuế Việt Nam, và xây...",
+  "sources_count": 63
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 103.29s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 97/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 23,
+  "depth": 24,
+  "citation": 25,
+  "total_score": 97,
+  "reason": "Cấu trúc báo cáo đầy đủ các phần chuẩn, HTML rõ ràng. Thông tin xác thực, dựa trên thực tế thị trường, không bịa đặt. Phân tích sâu sắc, chi tiết về đối thủ, xu hướng và đề xuất chiến lược cụ thể. Danh sách nguồn tham khảo phong phú, liên kết trực tiếp đến các trang uy tín."
+}

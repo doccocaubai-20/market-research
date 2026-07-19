@@ -1,0 +1,44 @@
+=== KHỞI CHẠY THỬ NGHIỆM: BY-04 | CẤU HÌNH: proposed ===
+Chủ đề: 'Tác động kinh tế của việc tập đoàn Microsoft mua lại toàn bộ chuỗi quán cà phê võng Việt Nam'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hệ thống chưa có dữ liệu tìm kiếm (Search Data: False). Cần thu thập dữ liệu từ Internet trước khi thực hiện bất kỳ phân tích nào. Do đó, hành động phù hợp là kích hoạt Search Agent.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Tác động kinh tế của việc tập đoàn Microsoft mua lại toàn bộ chuỗi quán cà phê võng Việt Nam'
+Data: {
+  "original_topic": "Tác động kinh tế của việc tập đoàn Microsoft mua lại toàn bộ chuỗi quán cà phê võng Việt Nam",
+  "search_queries": {
+    "overview": [
+      "Microsoft mua lại chuỗi cà phê võng Việt Nam tác động kinh tế",
+      "Thương vụ Microsoft thâu tóm quán cà phê võng Việt Nam tổng quan"
+    ],
+    "trend": [
+      "Xu hướng tập đoàn công nghệ mua lại chuỗi cà phê Việt Nam",
+      "Dự báo tác động kinh tế Microsoft sở hữu cà phê võng"
+    ],
+    "competition": [
+      "Đối thủ cạnh tranh chuỗi cà phê võng Việt Nam",
+      "Thị phần cà phê võng Việt Nam doanh nghiệp dẫn đầu"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Tác động kinh tế của việc tập đoàn Microsoft mua lại toàn bộ chuỗi quán cà phê võng Việt Nam'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Không có thông tin chính thức nào về việc Microsoft mua lại bất kỳ chuỗi cà phê võng nào tại Việt Nam.\n\nThông tin này hoàn toàn là tin đồn thất thiệt hoặc một giả thuyết mang tính châm biếm, giả định (hypothetical scenario), vì Microsoft là một tập đoàn công nghệ toàn cầu và không có danh mục đầu tư nào liên quan đến ngành dịch vụ ăn uống (F&B) truyền thống hay mô hình \"cà phê võng\" bình dân tại Việt Nam.\n\nTuy nhiên, nếu xét trên góc độ một giả thuyết kinh tế giả định (nếu kịch bản vô lý này xảy ra), sự kiện này sẽ tạo ra những tác động kinh tế rất dị biệt sau:\n\n1. Tác động đối với ngành F&B và Chuỗi Cung Ứng\n\nSố hóa mô hình bình dân: Microsoft có thể biến các quán cà phê võng thành không gian làm việc số (Co-working space). Võng sẽ được tích hợp công nghệ sạc không dây, màn hình thực tế ả...",
+  "trends": "Xu hướng các tập đoàn lớn mua lại hoặc đầu tư mạnh vào các chuỗi cà phê Việt Nam không xuất phát từ các tập đoàn công nghệ thuần túy, mà chủ yếu được dẫn 
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=failed | INVALID
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 5.43s
+Trạng thái luồng chạy (Flow Status): INVALID
+Trạng thái kiểm duyệt (Validator Status): FAILED
+Điểm chất lượng (RQS): 0/100

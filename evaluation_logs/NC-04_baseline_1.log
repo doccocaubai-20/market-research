@@ -1,0 +1,46 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-04 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công (Handmade Diorama) nội địa'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công (Handmade Diorama) nội địa'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chưa có thông tin gì về thị trường nội địa handmade diorama. Cần tìm kiếm tổng quan về thị trường, xu hướng và đối thủ cạnh tranh.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thị trường mô hình đồ chơi lắp ráp thủ công handmade diorama Việt Nam'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thị trường mô hình đồ chơi lắp ráp thủ công handmade diorama Việt Nam': cào được 55 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Đã có thông tin tổng quan về xu hướng và phân khúc. Cần tìm hiểu thêm về quy mô thị trường, doanh thu, đối thủ cạnh tranh chính và kênh phân phối cụ thể.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'doanh thu thị trường đồ chơi lắp ráp thủ công Việt Nam Robotime Rolife Thế Giới Tí Hon'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'doanh thu thị trường đồ chơi lắp ráp thủ công Việt Nam Robotime Rolife Thế Giới Tí Hon': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Thông tin hiện có khá tổng quan nhưng thiếu số liệu cụ thể và thông tin về đối thủ cạnh tranh. Cần tìm hiểu thêm về các doanh nghiệp, workshop, giá cả và kênh phân phối.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'kinh doanh mô hình diorama thủ công Việt Nam workshop'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'kinh doanh mô hình diorama thủ công Việt Nam workshop': cào được 81 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 4 - Tư duy: Sau 3 lượt tìm kiếm, tôi đã thu thập đầy đủ thông tin về tổng quan thị trường, xu hướng, phân khúc, đối thủ cạnh tranh, chủ đề sản phẩm, mô hình kinh doanh workshop. Còn thiếu số liệu doanh thu cụ thể nhưng đây là thị trường ngách chưa có công bố chính thức. Đã đạt giới hạn tìm kiếm 4 lượt với 3 lượt đã dùng, nên tôi quyết định tạo báo cáo.
+----------------------------------------
+[SINGLE] status=running | Quyết định dừng tìm kiếm và tiến hành tổng hợp báo cáo...
+----------------------------------------
+[SINGLE] status=running | Đang tổng hợp báo cáo kinh doanh cuối cùng...
+----------------------------------------
+[SINGLE] status=done | Đã hoàn thành báo cáo nghiên cứu thị trường.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 81.23s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 96/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 24,
+  "depth": 22,
+  "citation": 25,
+  "total_score": 96,
+  "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng. Thông tin dựa trên thực tế, có trích dẫn nguồn và thừa nhận hạn chế dữ liệu. Phân tích khá chi tiết và đề xuất chiến lược cụ thể. Danh sách nguồn đầy đủ và đáng tin cậy."
+}

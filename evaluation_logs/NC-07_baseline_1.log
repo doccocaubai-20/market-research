@@ -1,0 +1,46 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-07 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Phân tích nhu cầu sử dụng ứng dụng di động để đặt lịch chăm sóc thú cưng tại nhà'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Phân tích nhu cầu sử dụng ứng dụng di động để đặt lịch chăm sóc thú cưng tại nhà'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chưa có thông tin về chủ đề này, cần tìm kiếm tổng quan thị trường và xu hướng sử dụng ứng dụng đặt lịch chăm sóc thú cưng tại nhà.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'nhu cầu sử dụng ứng dụng di động đặt lịch chăm sóc thú cưng tại nhà xu hướng thị trường'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'nhu cầu sử dụng ứng dụng di động đặt lịch chăm sóc thú cưng tại nhà xu hướng thị trường': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Kết quả tìm kiếm đầu tiên không có thông tin, cần thử từ khóa khác để tìm dữ liệu về thị trường ứng dụng chăm sóc thú cưng.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'ứng dụng di động đặt lịch chăm sóc thú cưng tại nhà thị trường Việt Nam'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'ứng dụng di động đặt lịch chăm sóc thú cưng tại nhà thị trường Việt Nam': cào được 10 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Thông tin hiện có về các ứng dụng cụ thể nhưng chưa có dữ liệu về quy mô thị trường hay xu hướng người dùng, cần tìm kiếm thêm để báo cáo đầy đủ.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thị trường chăm sóc thú cưng tại nhà Việt Nam quy mô nhu cầu'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thị trường chăm sóc thú cưng tại nhà Việt Nam quy mô nhu cầu': cào được 44 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 4 - Tư duy: Đã có đủ thông tin về tổng quan thị trường, các ứng dụng cụ thể và quy mô nhu cầu. Có thể tạo báo cáo chi tiết 7 phần.
+----------------------------------------
+[SINGLE] status=running | Quyết định dừng tìm kiếm và tiến hành tổng hợp báo cáo...
+----------------------------------------
+[SINGLE] status=running | Đang tổng hợp báo cáo kinh doanh cuối cùng...
+----------------------------------------
+[SINGLE] status=done | Đã hoàn thành báo cáo nghiên cứu thị trường.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 64.79s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 87/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 22,
+  "depth": 20,
+  "citation": 20,
+  "total_score": 87,
+  "reason": "Cấu trúc đầy đủ các phần và định dạng rõ ràng. Thông tin dựa trên nguồn thực tế, nhưng hạn chế về kiểm chứng độc lập và một số con số chưa được xác thực. Phân tích khá sâu sắc, đề xuất chiến lược hợp lý. Trích dẫn nguồn có URLs nhưng số lượng hạn chế."
+}

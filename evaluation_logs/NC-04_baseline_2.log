@@ -1,0 +1,77 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-04 | CẤU HÌNH: baseline_2 ===
+Chủ đề: 'Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công (Handmade Diorama) nội địa'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hệ thống chưa có dữ liệu tìm kiếm, cần kích hoạt Search Agent để thu thập thông tin về thị trường đồ chơi lắp ráp thủ công nội địa. Đây là bước đầu tiên trong quy trình.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công (Handmade Diorama) nội địa'
+Data: {
+  "original_topic": "Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công (Handmade Diorama) nội địa",
+  "search_queries": {
+    "overview": [
+      "Thị trường mô hình diorama thủ công Việt Nam",
+      "Kinh doanh đồ chơi lắp ráp handmade tại Việt Nam"
+    ],
+    "trend": [
+      "Xu hướng mô hình diorama thủ công 2024",
+      "Cơ hội thị trường diorama handmade Việt Nam"
+    ],
+    "competition": [
+      "Đối thủ cạnh tranh mô hình diorama thủ công Việt Nam",
+      "Các doanh nghiệp sản xuất diorama handmade nội địa"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công (Handmade Diorama) nội địa'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công (Handmade Diorama / Mô hình gỗ DIY) tại Việt Nam đang trải qua giai đoạn chuyển mình mạnh mẽ từ một sở thích ngách (niche market) thành một ngành công nghiệp giải trí sáng tạo có quy mô. Sự bùng nổ của xu hướng \"healing\" (chữa lành) và nhu cầu cá nhân hóa không gian sống là bệ phóng lớn cho mô hình này.\n\nDưới đây là tổng quan chi tiết về thị trường nội địa hiện nay:\n\nQuy Mô Và Tiềm Năng Tăng Trưởng\n\nDoanh thu tăng trưởng tốt: Chỉ tính riêng phân khúc mô hình gỗ DIY trên các sàn thương mại điện tử (TMĐT), quy mô thị trường đã đạt hàng tỷ đồng mỗi quý với mức tăng trưởng trung bình trên 25%.\nTệp khách hàng mở rộng: Không còn giới hạn ở trẻ em, khách hàng mục tiêu hiện tại là Gen Z, dân văn phòng và người trưởng thành (20 - 35 tuổi) có th...",
+  "trends": "Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công (Handmade Diorama / DIY Box Theatre) tại Việt Nam năm 2026 đang chứng kiến sự bùng nổ mạnh mẽ. Sản p
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công (Không qua kiểm duyệt).
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã có, nhưng chưa có phân tích xu hướng và đối thủ. Cần kích hoạt phân tích song song để thu thập cả hai loại dữ liệu này.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "**Phân tích dưới góc nhìn nhà đầu tư (dựa trên dữ liệu bài viết):**\n\n---\n\n### 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n\n- **Nhóm khách hàng mục tiêu chính:** Gen Z & Alpha (15‑28 tuổi) – mua kit lắp ráp giá vừa phải để xả stress, làm quà tặng, quay TikTok; Dân văn phòng & Kidult (25‑40 tuổi) – chi tiền triệu cho mô hình hoàn thiện trang trí; Cộng đồng sưu tầm (Lego, Gundam…) – mua Diorama làm phông nền.\n- **Họ tìm kiếm:**\n  - Sản phẩm cá nhân hóa (custom theo ảnh thật, độc bản).\n  - Tích hợp công nghệ (LED cảm ứng âm thanh, chuyển động cơ học, Bluetooth).\n  - Yếu tố văn hóa Việt Nam (phố cổ, tiệm tạp hóa, nhà ba gian…).\n  - Vật liệu thân thiện môi trường (gỗ tái chế, màu hữu cơ).\n- **Hành vi mua thay đổi:** Ưa chuộng kênh TikTok Shop/Shopee qua livestream; thích xem video time‑lapse; tham gia worksho..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# Báo cáo Cạnh tranh Thị trường Mô hình Đồ chơi Lắp ráp Thủ công (Diorama) Nội địa 2026\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\nThị trường đang ở giai đoạn tăng trưởng bùng nổ (25%/quý) nhưng **mức độ cạnh tranh đã rất khốc liệt**. Sự phân hóa rõ rệt thành 3 nhóm thương hiệu cho thấy cuộc đua đang diễn ra trên nhiều mặt trận: từ cuộc chiến giá rẻ từ hàng Trung Quốc, đến cuộc đua bản sắc văn hóa nội địa, và phân khúc cao cấp dịch vụ trải nghiệm. Rào cản gia nhập thấp (dễ copy mẫu mã, dễ nhập hàng giá rẻ) nhưng rào cản để tồn tại lâu dài rất cao (đòi hỏi bản quyền, chất lượng thiết kế khớp nối, chiến lược kênh rõ ràng).\n\n**Top 5 thương hiệu/dẫn đầu thị trường** (theo nhóm được phân tích):\n\n| Nhóm | Thương hiệu | Đặc điểm nhận dạng |\n|------|-------------|-------------------|\n| Quốc tế nhập kh..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại hệ thống đã có đầy đủ dữ liệu tìm kiếm, phân tích xu hướng và phân tích đối thủ. Bước tiếp theo cần tạo báo cáo chiến lược cuối cùng bằng cách gọi CALL_REPORT.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>BÁO CÁO CỐ VẤN CHIẾN LƯỢC: THỊ TRƯỜNG KINH DOANH MÔ HÌNH ĐỒ CHƠI LẮP RÁP THỦ CÔNG (HANDMADE DIORAMA) NỘI ĐỊA</h1>\n\n<h2>1. TÓM TẮT THỰC THI (EXECUTIVE SUMMARY)</h2>\n\n<p>Thị trường Diorama nội địa đang tăng trưởng bùng nổ (25%/quý) nhưng đối mặt với cạnh tranh khốc liệt từ hàng giá rẻ Trung Quốc và cuộc đua bản sắc văn hóa. Cơ hội lớn nhất nằm ở phân khúc khách hàng doanh nghiệp (quà tặng cao cấp 1-5 triệu đồng) và dịch vụ B2B phôi sỉ cho workshop, nơi các đối thủ chưa khai thác mạnh. Rủi ro chí mạng là sự thắt chặt chi tiêu của người tiêu dùng và thiếu hụt nhân lực thủ công lành nghề. Khuyến nghị hành động: (1) Ngay lập tức phát triển dòng sản phẩm giá rẻ dẫn dụ (100-200k) kết hợp bộ sưu tập văn hóa Việt độc quyền; (2) Xây dựng chuỗi workshop định kỳ tại quán cà phê; (3) Cung cấp cung c...",
+  "sources_count": 21
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 108.21s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 90/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 22,
+  "depth": 23,
+  "citation": 20,
+  "total_score": 90,
+  "reason": "Báo cáo có cấu trúc đầy đủ các phần chính, sử dụng HTML rõ ràng, dễ đọc. Thông tin không bịa đặt, phù hợp với thị trường thực tế, nhưng thiếu dẫn chứng cụ thể cho số liệu tăng trưởng (25%/quý) và một số nhận định. Phân tích xu hướng, đối thủ và đề xuất chiến lược có chiều sâu, logic, cụ thể. Danh sách tham khảo gồm 10 URL, nhưng có trùng lặp (Metric eReport xuất hiện nhiều lần) và không phải tất cả đều đáng tin cậy cao; thiếu trích dẫn trực tiếp trong nội dung."
+}

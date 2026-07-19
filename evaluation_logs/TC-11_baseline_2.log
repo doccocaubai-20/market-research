@@ -1,0 +1,77 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-11 | CẤU HÌNH: baseline_2 ===
+Chủ đề: 'Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay tự túc'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm chưa có, cần kích hoạt Search Agent để thu thập thông tin từ Internet trước khi thực hiện các phân tích tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay tự túc'
+Data: {
+  "original_topic": "Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay tự túc",
+  "search_queries": {
+    "overview": [
+      "động lực tăng trưởng ngành du lịch nghỉ dưỡng và homestay tự túc",
+      "báo cáo tổng quan du lịch nghỉ dưỡng homestay tự túc"
+    ],
+    "trend": [
+      "xu hướng mới du lịch nghỉ dưỡng homestay tự túc 2024",
+      "cơ hội và rủi ro homestay tự túc du lịch nghỉ dưỡng"
+    ],
+    "competition": [
+      "đối thủ cạnh tranh homestay tự túc",
+      "doanh nghiệp dẫn đầu du lịch nghỉ dưỡng homestay"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay tự túc'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Sự bùng nổ của xu hướng du lịch tự túc (FIT – Free Independent Traveler) và mô hình kinh doanh homestay tự vận hành đang trở thành động lực tăng trưởng cốt lõi mới cho ngành du lịch nghỉ dưỡng toàn cầu và Việt Nam.\n\nSự thay đổi này được thúc đẩy mạnh mẽ bởi 4 nhóm động lực chính sau đây:\n\n1. Sự dịch chuyển trong hành vi và thị hiếu của du khách\n\nƯu tiên tính cá nhân hóa: Người trẻ (thế hệ Gen Z và Millennials) có xu hướng từ chối các tour gò bó. Họ muốn tự lên lịch trình, tự chọn phòng nghỉ để tối ưu hóa trải nghiệm cá nhân.\nNhu cầu du lịch trải nghiệm lên ngôi: Làn sóng dịch chuyển từ du lịch tiêu dùng thuần túy sang du lịch trải nghiệm bản địa ngày càng rõ rệt. Du khách thích ở các homestay, farmstay vùng ngoại ô hoặc vùng cao để hòa mình vào thiên nhiên và văn hóa địa phương.\nĐề cao sự ...",
+  "trends": "Du lịch nghỉ dưỡng homestay tự túc năm 2024 dịch chuyển mạnh mẽ sang xu hướng cá nhân hóa, chữa lành và đề cao tính trải nghiệm thực tế. Thay vì chỉ tìm kiế
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công (Không qua kiểm duyệt).
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Hệ thống đã có dữ liệu tìm kiếm, nhưng chưa có phân tích xu hướng và đối thủ cạnh tranh. Do đó, cần kích hoạt luồng phân tích song song để tiến hành cả hai luồng phân tích cùng lúc.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "## PHÂN TÍCH GÓC NHÌN NHÀ ĐẦU TƯ\n\n### 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n\n- **Nhóm khách mục tiêu chính**: Người trẻ và gia đình tự lái xe (road trip <200km), người độc thân (solo travel tăng cao), khách workation dài ngày, khách quốc tế qua OTA.\n- **Họ tìm kiếm**: Cá nhân hóa, chữa lành (thiền, yoga, ngắt kết nối số), trải nghiệm thực tế (tự nấu ăn, đi chợ bản địa), không gian riêng tư, kiến trúc bản địa, bền vững.\n- **Hành vi thay đổi**: Tự lên lịch trình, dùng AI tối ưu chi phí & lộ trình, đặt phòng trực tuyến qua app (không qua đại lý), ưu tiên chi mạnh cho hoạt động trải nghiệm hơn là lưu trú.\n\n### 2. CƠ HỘI CHƯA ĐƯỢC KHAI THÁC\n\n- **Phân khúc bỏ ngỏ**:  \n  - Khách workation kết hợp nghỉ dưỡng (cần bàn làm việc, internet ổn định, không gian yên tĩnh).  \n  - Solo travel nữ an toàn (cần thiết..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "Chào bạn, với tư cách là Chuyên gia Phân tích Cạnh tranh, tôi xin gửi đến bạn báo cáo chiến lược súc tích dựa trên tập dữ liệu thô bạn cung cấp.\n\n---\n\n### **BÁO CÁO CẠNH TRANH: THỊ TRƯỜNG HOMESTAY TỰ TÚC & NGHỈ DƯỠNG**\n\n**1. Bức tranh Cạnh tranh Tổng quan**\n\n- **Nhận định về mức độ khốc liệt:** Thị trường \"Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay tự túc\" có tính cạnh tranh **rất cao và phân mảnh**. Sự đa dạng của các đối thủ trực tiếp (homestay có chủ, căn hộ dịch vụ trên OTA) và gián tiếp (khách sạn boutique, glamping) cho thấy một cuộc chiến giành thị phần khốc liệt. Trong khi phần lớn thị trường vận hành manh mún bởi cá nhân/hộ gia đình, đã xuất hiện những doanh nghiệp tiên phong chuyên nghiệp hóa mô hình, tạo ra các chuỗi và thương hiệu mạnh.\n\n- **Top 3 Thương hiệu..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã được thu thập, phân tích xu hướng và đối thủ đã hoàn tất. Bước tiếp theo là tạo báo cáo chiến lược cuối cùng bằng cách kích hoạt Report Agent.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>BÁO CÁO CỐ VẤN CHIẾN LƯỢC</h1>\n<h2>Thị trường: Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay tự túc</h2>\n\n<h2>1. TÓM TẮT THỰC THI</h2>\n<p>Thị trường homestay tự túc và nghỉ dưỡng đang bùng nổ nhờ xu hướng du lịch cá nhân hóa, chữa lành và tự túc. Cơ hội lớn nhất nằm ở hai phân khúc bỏ ngỏ: <strong>workation kết hợp chữa lành</strong> và <strong>solo travel an toàn</strong>, nơi đối thủ chưa đáp ứng tốt nhu cầu về không gian làm việc riêng, trải nghiệm thực tế và an ninh. Rủi ro chí mạng là thiếu đầu tư vào <strong>công nghệ quản lý từ xa</strong> và <strong>kiểm soát chất lượng khách</strong>, dẫn đến sự cố kỹ thuật, chi phí bảo trì ẩn và đánh giá tiêu cực. Khuyến nghị hành động: tập trung vào hai phân khúc trên, xây dựng hệ thống vận hành tự động (smart lock, check-in ...",
+  "sources_count": 25
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 93.19s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 94/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 24,
+  "factuality": 23,
+  "depth": 22,
+  "citation": 25,
+  "total_score": 94,
+  "reason": "Cấu trúc đầy đủ, rõ ràng; thông tin thực tế, không bịa đặt; phân tích sâu sắc, có tính thuyết phục; trích dẫn nguồn đầy đủ và đáng tin cậy."
+}

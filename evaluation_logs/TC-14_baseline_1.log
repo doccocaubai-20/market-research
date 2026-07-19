@@ -1,0 +1,48 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-14 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Thị trường thiết bị gia dụng thông minh (Smart Home) nội địa'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Thị trường thiết bị gia dụng thông minh (Smart Home) nội địa'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chưa có bất kỳ thông tin nào về thị trường thiết bị gia dụng thông minh nội địa. Cần tìm kiếm tổng quan về quy mô, xu hướng và các đối thủ chính để có cơ sở đánh giá.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'Thị trường thiết bị gia dụng thông minh nội địa Việt Nam 2024'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'Thị trường thiết bị gia dụng thông minh nội địa Việt Nam 2024': cào được 61 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Đã có thông tin tổng quan về quy mô và xu hướng nhưng cần chi tiết về các đối thủ cạnh tranh chính (như Xiaomi, Samsung, LG, các công ty nội địa) và các kênh phân phối.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'Các thương hiệu thiết bị gia dụng thông minh phổ biến tại Việt Nam 2024'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'Các thương hiệu thiết bị gia dụng thông minh phổ biến tại Việt Nam 2024': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Thông tin về các thương hiệu cụ thể chưa có, cần tìm kiếm thêm về các hãng chính và thị phần.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thị phần thiết bị nhà thông minh Việt Nam 2024'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thị phần thiết bị nhà thông minh Việt Nam 2024': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 4 - Tư duy: Đã có dữ liệu tổng quan và xu hướng, nhưng thiếu thông tin về thương hiệu và thị phần. Cần tìm kiếm thêm một lần cuối để có thông tin chi tiết về các đối thủ cạnh tranh.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'các hãng thiết bị thông minh nhà ở Việt Nam 2024'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'các hãng thiết bị thông minh nhà ở Việt Nam 2024': cào được 94 nguồn.
+----------------------------------------
+[SINGLE] status=running | Đang tổng hợp báo cáo kinh doanh cuối cùng...
+----------------------------------------
+[SINGLE] status=done | Đã hoàn thành báo cáo nghiên cứu thị trường.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 149.25s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 91/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 23,
+  "factuality": 24,
+  "depth": 20,
+  "citation": 24,
+  "total_score": 91,
+  "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, có đủ các phần cần thiết. Tính xác thực cao, số liệu có nguồn tham khảo thực tế. Phân tích khá sâu sắc nhưng đề xuất còn chung chung, thiếu tính cụ thể. Trích dẫn nguồn tốt, nhiều URL đáng tin cậy."
+}

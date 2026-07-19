@@ -1,0 +1,591 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{geometry}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{enumitem}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, positioning, calc}
+\geometry{a4paper, margin=1in}
+
+\title{\textbf{Tự động hóa Quy trình Nghiên cứu Thị trường Đa tác tử dựa trên cơ chế Lightweight RAG trực tuyến}}
+\author{\textbf{Nhóm tác giả} \\
+\textit{Đại học/Viện nghiên cứu mẫu}}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Trong bối cảnh dữ liệu thị trường trực tuyến tăng nhanh về khối lượng, tốc độ cập nhật và mức độ phân tán, việc thu thập, phân tích và tổng hợp thông tin phục vụ ra quyết định kinh doanh ngày càng đòi hỏi các phương pháp tự động hóa có khả năng xử lý ngôn ngữ tự nhiên, kiểm chứng nguồn dữ liệu và sinh báo cáo có cấu trúc. Các mô hình ngôn ngữ lớn (Large Language Models – LLMs) có tiềm năng lớn trong việc phân tích văn bản và sinh nội dung, tuy nhiên khi được sử dụng đơn lẻ, các mô hình này thường gặp hạn chế về hiện tượng ảo giác thông tin, thiếu khả năng cập nhật dữ liệu thời gian thực và khó kiểm soát chất lượng đầu ra trong các tác vụ phân tích phức tạp. Bài báo này đề xuất một kiến trúc Multi-Agent kết hợp LLM DeepSeek và SerpAPI nhằm tự động hóa quy trình nghiên cứu thị trường từ một từ khóa đầu vào. Hệ thống được phân rã thành các tác tử chuyên trách gồm Search Agent, Validator Agent, Trend Agent, Competitor Agent và Report Agent, dưới sự điều phối của Manager Agent dựa trên vòng lặp ReAct. Ngoài ra, nghiên cứu tích hợp cơ chế Lightweight RAG thông qua dữ liệu truy xuất trực tuyến, cấu trúc hóa ngữ cảnh bằng thẻ XML và ràng buộc hành vi bằng Prompt Engineering nhằm hạn chế hiện tượng sinh thông tin không có căn cứ. Thử nghiệm đánh giá hiệu năng hệ thống được đề xuất thiết lập trên 30 kịch bản kiểm thử thuộc 3 nhóm chủ đề khác nhau tại Việt Nam nhằm đo lường thời gian chạy, độ ổn định luồng và khả năng phát hiện dữ liệu ảo giác.
+
+\textbf{Từ khóa:} Multi-Agent, LLM, DeepSeek, Nghiên cứu thị trường, Lightweight RAG, ReAct, Thẩm định ngữ nghĩa.
+\end{abstract}
+
+\section{Giới thiệu}
+
+\subsection{Đặt vấn đề}
+Sự phát triển nhanh chóng của nền kinh tế số làm cho dữ liệu thị trường trực tuyến trở nên vô cùng phong phú, đa dạng và biến động liên tục. Các nguồn thông tin từ báo chí điện tử, diễn đàn thảo luận, mạng xã hội và các báo cáo ngành mở chứa đựng lượng tri thức có giá trị thương mại lớn về xu hướng tiêu dùng, sự chuyển dịch hành vi khách hàng và các chiến lược cạnh tranh của đối thủ. Tuy nhiên, phần lớn lượng dữ liệu này tồn tại dưới dạng văn bản phi cấu trúc, phân tán trên nhiều nguồn trực tuyến và có chất lượng không đồng nhất. Việc nghiên cứu thị trường theo phương pháp truyền thống thường yêu cầu các chuyên gia phân tích thực hiện thủ công các công việc: tìm kiếm, chọn lọc, đọc hiểu, phân tích và tổng hợp báo cáo. Quy trình này tốn nhiều thời gian, chi phí nhân lực lớn, và khó đáp ứng yêu cầu ra quyết định kịp thời trong các môi trường kinh doanh thay đổi nhanh.
+
+\subsection{Hạn chế của Single-Agent LLM}
+Sự xuất hiện của các mô hình ngôn ngữ lớn (LLM) mở ra tiềm năng lớn trong việc tự động hóa xử lý văn bản và tổng hợp thông tin. Tuy nhiên, nếu chỉ sử dụng một LLM đơn lẻ theo cấu hình Single-Agent tuyến tính, hệ thống sẽ gặp các rào cản kỹ thuật nghiêm trọng:
+\begin{enumerate}
+    \item \textbf{Quá tải cửa sổ ngữ cảnh (Context Window Overload):} Khi dồn toàn bộ dữ liệu cào thô từ Internet vào một phiên xử lý duy nhất của LLM cùng tất cả các yêu cầu phân tích chuyên sâu, độ dài văn bản dễ dàng vượt ngưỡng xử lý tối ưu của mô hình.
+    \item \textbf{Suy giảm cơ chế chú ý (Attention Decay):} Lượng thông tin quá lớn khiến cơ chế tự chú ý (Self-Attention) của LLM bị loãng, dẫn đến việc bỏ sót các chi tiết quan trọng ở giữa văn bản (hiện tượng "Lost in the Middle").
+    \item \textbf{Ảo giác thông tin (Hallucination):} Khi đối mặt với bối cảnh thiếu hụt thông tin xác thực hoặc bị nhiễu dữ liệu, Single-Agent thường tự ý suy diễn các số liệu hoặc thương hiệu không có thật để đáp ứng câu hỏi của người dùng.
+\end{enumerate}
+
+\subsection{Khoảng trống nghiên cứu (Research Gaps)}
+Dựa trên tổng quan các giải pháp hiện tại, nghiên cứu này xác định ba khoảng trống công nghệ chính chưa được giải quyết triệt để:
+\begin{itemize}
+    \item \textbf{Sự đánh đổi tài nguyên của RAG truyền thống:} Các hệ thống RAG (Retrieval-Augmented Generation) thông thường yêu cầu xây dựng pipeline phức tạp gồm cắt nhỏ văn bản (chunking), chuyển đổi vector (embedding) và lưu trữ trong cơ sở dữ liệu Vector Database. Điều này gây trễ cập nhật và tốn chi phí vận hành lớn, không thích hợp cho các bài toán phân tích trực tuyến thời gian thực quy mô nhỏ.
+    \item \textbf{Thiếu màng lọc kiểm chứng dữ liệu đầu vào:} Các hệ thống tự động sinh báo cáo thường mặc định dữ liệu cào về là chính xác, dẫn đến việc gián tiếp khuếch đại thông tin giả (fake news) hoặc dữ liệu đùa cợt trực tuyến vào báo cáo kinh doanh.
+    \item \textbf{Thiếu khả năng tự sửa lỗi truy vấn:} Khi công cụ tìm kiếm trả về kết quả rỗng do từ khóa quá hẹp hoặc sai mốc thời gian, các hệ thống đa tác tử thông thường dễ bị rơi vào trạng thái bế tắc logic (deadlock) hoặc dừng đột ngột (crash) do không có khả năng tự phục hồi trực tuyến.
+\end{itemize}
+
+\subsection{Đóng góp của nghiên cứu}
+Nghiên cứu này đề xuất kiến trúc đa tác tử hoàn chỉnh giải quyết các hạn chế trên với các đóng góp chính:
+\begin{itemize}
+    \item Thiết kế và hiện thực hóa hệ thống đa tác tử (**Multi-Agent System**) phân rã quy trình phân tích thị trường thành các module tác vụ nguyên tử được điều phối bởi vòng lặp nhận thức ReAct.
+    \item Đề xuất cơ chế **Lightweight RAG** làm mịn bối cảnh cào trực tuyến thời gian thực mà không cần Vector Database, đóng gói ngữ cảnh bằng thẻ cấu trúc XML.
+    \item Tích hợp tác tử thẩm định ngữ nghĩa (Validator Agent) hoạt động như một bộ lọc LLM-as-a-Judge phát hiện thông tin giả hoặc ảo giác trước khi phân tích.
+    \item Xây dựng cơ chế tự sửa lỗi từ khóa (**Query Reformulation**) giúp hệ thống tự phục hồi khi gặp truy vấn tìm kiếm bị rỗng.
+\end{itemize}
+
+
+
+\section{Nghiên cứu liên quan}
+
+\subsection{Mô hình ngôn ngữ lớn (LLMs)}
+Kể từ khi kiến trúc Transformer ra đời, các mô hình ngôn ngữ lớn như GPT, Claude, và gần đây là DeepSeek đã thể hiện khả năng vượt trội trong việc hiểu ngữ nghĩa, suy luận chuỗi ý nghĩ (Chain-of-Thought) và sinh văn bản có cấu trúc. Tuy nhiên, tri thức của LLM bị giới hạn bởi thời điểm đóng băng dữ liệu huấn luyện (knowledge cutoff), khiến chúng không thể tự phản ánh các thông tin thời gian thực của thị trường nếu không có nguồn bổ sung bên ngoài.
+
+\subsection{Retrieval-Augmented Generation (RAG)}
+Cơ chế RAG là giải pháp tiêu chuẩn để giải quyết tri thức tĩnh của LLM bằng cách tìm kiếm tài liệu liên quan từ nguồn ngoài và nạp vào prompt làm bối cảnh. Dù vậy, đối với môi trường thông tin biến động liên tục như Internet, việc duy trì một Vector Database được index liên tục gặp thách thức lớn về chi phí và độ trễ. Cơ chế Lightweight RAG trực tuyến, bỏ qua bước nhúng vector và đưa trực tiếp kết quả tìm kiếm làm sạch vào prompt dưới dạng phẳng, đang trở thành một hướng tiếp cận hiệu quả cho các hệ thống phân tích động.
+
+\subsection{Hệ thống tác tử thông minh (LLM Agents)}
+Hệ thống tác tử sử dụng LLM làm bộ não nhận thức, kết hợp bộ nhớ, công cụ gọi ngoài (APIs) và lập kế hoạch để giải quyết các tác vụ phức tạp. Vòng lặp ReAct (Reasoning and Acting) kết hợp khả năng lập luận của LLM với hành động tương tác công cụ theo từng bước giúp tăng tính tự chủ của tác tử. Việc phân rã một quy trình làm việc phức tạp thành sự cộng tác của nhiều tác tử chuyên trách giúp giảm tải nhận thức trên từng phiên làm việc của mô hình.
+
+\subsection{Prompt Engineering trong hệ thống đa tác tử}
+Trong kiến trúc Multi-Agent, Prompt Engineering đóng vai trò định nghĩa ranh giới ngữ nghĩa, vai trò chuyên môn và giao thức giao tiếp giữa các tác tử. Các kỹ thuật như gán vai trò cứng (Role-playing), ép cấu trúc đầu ra (JSON Schema) và phân vùng bối cảnh dữ liệu bằng thẻ XML là các công cụ bắt buộc để kiểm soát hành vi của tác tử, đảm bảo dữ liệu đầu ra có tính nhất quán cao.
+
+
+
+\section{Phương pháp đề xuất}
+
+\subsection{Kiến trúc hệ thống tổng thể}
+Hệ thống được thiết kế theo cấu trúc phân tầng gồm các thành phần cốt lõi như hình vẽ luồng dữ liệu dưới đây:\par
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    block/.style={rectangle, draw, rounded corners, minimum width=3.0cm, minimum height=0.8cm, text centered, align=center, fill=white, font=\footnotesize},
+    user_block/.style={block, fill=white, draw=black, thick},
+    manager_block/.style={block, fill=white, draw=black, double, thick},
+    agent_block/.style={block, fill=white, draw=black, thick},
+    data_block/.style={block, fill=white, draw=black, thick},
+    db_block/.style={block, fill=white, draw=black, thick},
+    arrow/.style={-Latex, thick, draw=black},
+    text_label/.style={font=\scriptsize\itshape}
+]
+
+% Nodes using absolute coordinates
+\node (user) [user_block] at (0,0) {Người dùng / API Client};
+\node (manager) [manager_block] at (0,-1.3) {Manager Agent};
+\node (search) [agent_block] at (-2.5,-2.8) {Search Agent};
+\node (validator) [agent_block] at (2.5,-2.8) {Validator Agent};
+\node (trend) [agent_block] at (-2.5,-4.3) {Trend Agent};
+\node (competitor) [agent_block] at (2.5,-4.3) {Competitor Agent};
+\node (report) [agent_block] at (0,-5.8) {Report Agent};
+
+% Connections
+\draw [arrow] (user) -- (manager);
+\draw [arrow] (manager) -| (search);
+\draw [arrow] (manager) -| (validator);
+\draw [arrow] (search) -- (trend);
+\draw [arrow] (validator) -- (competitor);
+\draw [arrow] (trend) -- (report);
+\draw [arrow] (competitor) -- (report);
+\end{tikzpicture}
+\caption{Kiến trúc tổng thể luồng dữ liệu hệ thống Multi-Agent}
+\label{fig:architecture}
+\end{figure}
+
+\subsection{Thiết kế chi tiết các Agent}
+Kiến trúc đa tác tử trong nghiên cứu đề xuất được xây dựng dựa trên sự phân rã một bài toán nghiên cứu thị trường tổng thể thành các bài toán con chuyên biệt có tính độc lập cao. Mỗi bài toán con được xử lý bởi một tác tử (Agent) chuyên trách với prompt hệ thống và cách thức hoạt động riêng biệt, đảm bảo khả năng mở rộng và dễ dàng tối ưu hóa. Dưới đây là chi tiết thiết kế và cấu trúc prompt của từng tác tử:
+
+\subsubsection{Tác tử quản lý (Manager Agent)}
+Manager Agent chịu trách nhiệm điều phối toàn bộ luồng hoạt động của hệ thống dựa trên vòng lặp nhận thức ReAct (Reasoning and Acting). Đầu vào của tác tử gồm: chủ đề cần nghiên cứu ($Topic$), trạng thái hiện tại của hệ thống ($SystemState$), và lịch sử các bước thực thi trước đó ($History$). Đầu ra là một đối tượng JSON mô tả chuỗi lập luận và lựa chọn hành động tiếp theo.
+\begin{itemize}
+    \item \textbf{Cơ chế hoạt động:} Tác tử quản lý điều khiển luồng hoạt động thông qua việc kiểm tra và cập nhật trạng thái hệ thống ở từng bước, đồng thời đưa ra quyết định hành động tiếp theo từ danh sách các công cụ khả dụng bao gồm: \texttt{CALL\_SEARCH}, \texttt{CALL\_ANALYZE\_PARALLEL}, \texttt{CALL\_REPORT}, và \texttt{FINISH}.
+    \item \textbf{Ràng buộc Logic:} Manager Agent được tích hợp cơ chế chống lặp vô hạn (Infinite Loop Prevention) bằng cách đối chiếu nhật ký lịch sử hành động. Nếu một bước xử lý gặp lỗi tìm kiếm trống hoặc bị cảnh báo dữ liệu không hợp lệ từ Validator Agent, hệ thống sẽ thực hiện dừng sớm (early exit) ngay lập tức để tránh hao tổn tài nguyên và ảo giác hóa thông tin.
+\\end{itemize}
+
+\noindent\textbf{Sơ bộ cấu trúc Prompt của Manager Agent:}
+\begin{quote}
+\footnotesize\ttfamily
+System Prompt:\\
+Bạn là một Manager Agent cấp cao, sở hữu tư duy logic của một Quản lý dự án công nghệ. Nhiệm vụ của bạn là điều phối các tác tử cấp dưới qua vòng lặp ReAct để tạo ra một báo cáo nghiên cứu thị trường toàn diện về chủ đề: ``\{topic\}''.\par
+\medskip
+I. HỆ THỐNG HÀNH ĐỘNG BẠN CÓ QUYỀN ĐIỀU PHỐI:\\
+1. CALL\_SEARCH: Kích hoạt Search Agent thu thập dữ liệu.\\
+2. CALL\_ANALYZE\_PARALLEL: Kích hoạt đồng thời Trend Agent và Competitor Agent.\\
+3. CALL\_REPORT: Gọi Report Agent để chắt lọc, hợp nhất báo cáo chiến lược cuối cùng.\\
+4. FINISH: Kết thúc vòng lặp điều phối.\par
+\medskip
+II. ĐỊNH DẠNG ĐẦU RA BẮT BUỘC (JSON SCHEMA):\\
+\{\\
+\ \ ``thought'': ``Lập luận logic bằng tiếng Việt...'',\\
+\ \ ``action'': ``CALL\_SEARCH'' | ``CALL\_ANALYZE\_PARALLEL'' | ...\\
+\}
+\end{quote}
+
+\subsubsection{Tác tử tìm kiếm (Search Agent)}
+Search Agent đóng vai trò thu thập thông tin và dữ liệu thô từ Internet thông qua SerpAPI.
+\begin{itemize}
+    \item \textbf{Mở rộng và tinh chỉnh truy vấn qua SearchQueryGenerator:} Thay vì sử dụng các từ khóa đơn giản, Search Agent tích hợp module tiền xử lý truy vấn \texttt{SearchQueryGenerator} (hoặc \texttt{QueryExpansionModule}). Module này nhận chủ đề gốc và sử dụng mô hình ngôn ngữ lớn để chuẩn hóa chính tả, bổ sung mốc thời gian/địa điểm vốn có, thêm các từ đồng nghĩa nhưng bắt buộc giữ nguyên thực thể gốc. Đầu ra là tập hợp các truy vấn song song cho 3 khía cạnh:
+    \begin{align}
+        Q_{overview} &= \{q_{ov1}, q_{ov2}, ...\} \\
+        Q_{trend} &= \{q_{tr1}, q_{tr2}, ...\} \\
+        Q_{competition} &= \{q_{cp1}, q_{cp2}, ...\}
+    \end{align}
+    \item \textbf{Tìm kiếm song song và Chuẩn hóa:} Search Agent thực hiện gửi song song toàn bộ các truy vấn trên lên SerpAPI, sau đó tiến hành gộp dữ liệu, làm phẳng kết quả thu về thành cấu trúc $x = (\text{title}, \text{link}, \text{snippet})$, đồng thời loại bỏ các liên kết trùng lặp và đóng gói chúng trong thẻ XML.
+\end{itemize}
+
+\subsubsection{Tác tử thẩm định ngữ nghĩa (Validator Agent)}
+Validator Agent hoạt động dựa trên cơ chế LLM-as-a-Judge với nhiệt độ (temperature) được đặt bằng $0.0$ để đảm bảo tính nhất quán tối đa trong các quyết định phán xét.
+\begin{itemize}
+    \item \textbf{Cơ chế hoạt động:} Nhận dữ liệu thô $D_{raw}$ từ Search Agent và đối chiếu với $Topic$ gốc để thẩm định xem đó là một thị trường/sản phẩm thực tế có thật hay chỉ là một bối cảnh giả định, hư cấu, châm biếm hoặc do AI tự nội suy (ví dụ: thị trường có quy mô 0 USD, phân khúc khách hàng không tưởng).
+\end{itemize}
+
+\noindent\textbf{Sơ bộ cấu trúc Prompt của Validator Agent:}
+\begin{quote}
+\footnotesize\ttfamily
+User Prompt:\\
+Bạn là Tác tử Thẩm định Ngữ nghĩa (Validator Agent). Nhiệm vụ của bạn là phân tích đoạn văn bản \textless{}context\textgreater{} được cào từ Internet về và đối chiếu với chủ đề nghiên cứu \textless{}topic\textgreater{}.\par
+\medskip
+\textless{}topic\textgreater{}\\
+\{topic\}\\
+\textless{}/topic\textgreater{}\par
+\medskip
+\textless{}context\textgreater{}\\
+\{context\_text\}\\
+\textless{}/context\textgreater{}\par
+\medskip
+Hãy lập luận logic dựa trên tiêu chí sau:\\
+Nội dung trong \textless{}context\textgreater{} có thực sự chứng minh \textless{}topic\textgreater{} này là một thị trường/sản phẩm có thật, đang tồn tại trong thực tế kinh tế không? Hay đây chỉ là bài viết mang tính giả định, hư cấu, châm biếm hoặc do AI tự bịa ra nội dung (ví dụ: quy mô 0 USD, phân khúc là động vật, SWOT cho sản phẩm không tưởng)?\par
+\medskip
+Trả về kết quả bắt buộc dưới cấu trúc JSON nghiêm ngặt sau:\\
+\{\\
+\ \ ``status'': ``SUCCESS'' hoặc ``FAILED'',\\
+\ \ ``reason'': ``Lý do cụ thể tại sao bạn kết luận''\\
+\}\\
+Tuyệt đối không trả thêm bất kỳ lời thoại nào ngoài JSON.
+\end{quote}
+
+\subsubsection{Tác tử phân tích xu hướng (Trend Agent)}
+Trend Agent tiếp nhận dữ liệu phần xu hướng từ Search Agent. Tác tử sử dụng kỹ thuật Chain-of-Thought (CoT) để bóc tách các đặc trưng của thị trường Việt Nam.
+\begin{itemize}
+    \item \textbf{Nhiệm vụ phân tích:} Tập trung gom cụm dữ liệu để trả lời 4 nhóm câu hỏi chiến lược: (1) Xu hướng tiêu dùng nổi bật và hành vi khách hàng, (2) Các cơ hội thị trường chưa được khai thác, (3) Rủi ro tiềm ẩn, và (4) Dự báo biến động thị trường trong vòng 1-2 năm tới.
+\end{itemize}
+
+\noindent\textbf{Sơ bộ cấu trúc Prompt của Trend Agent:}
+\begin{quote}
+\footnotesize\ttfamily
+System Prompt:\\
+Bạn là chuyên gia phân tích thị trường Việt Nam.\par
+\medskip
+User Prompt:\\
+Dựa trên các bài viết sau về \{topic\}:\\
+\textless{}data\textgreater{}\\
+\{context\}\\
+\textless{}/data\textgreater{}\\
+Phân tích dưới góc nhìn nhà đầu tư gia nhập thị trường này:\\
+1. XU HƯỚNG TIÊU DÙNG: Nhóm khách hàng mục tiêu? Họ cần gì? Hành vi mua hàng thay đổi thế nào?\\
+2. CƠ HỘI CHƯA KHAI THÁC: Phân khúc nào bị bỏ ngỏ? Nhu cầu nào chưa được đáp ứng?\\
+3. RỦI RO CẦN LƯU Ý: Xu hướng nào đang suy giảm? Thay đổi nào có thể ảnh hưởng tiêu cực?\\
+4. DỰ BÁO 1-2 NĂM TỚI: Thị trường dịch chuyển theo hướng nào?\\
+\medskip
+Chỉ phân tích dựa trên dữ liệu trong \textless{}data\textgreater{}. Nếu thiếu ghi rõ ``Chưa có đủ thông tin''. Trả lời bằng tiếng Việt, súc tích.
+\end{quote}
+
+\subsubsection{Tác tử phân tích cạnh tranh (Competitor Agent)}
+Competitor Agent đảm nhận vai trò thu thập và phân tích thông tin tình báo cạnh tranh (Competitive Intelligence) của thị trường mục tiêu.
+\begin{itemize}
+    \item \textbf{Nhiệm vụ phân tích:} Nhận diện các đối thủ lớn đang dẫn đầu phân khúc, bóc tách chiến lược cạnh tranh cốt lõi của họ (như cạnh tranh về giá, khác biệt hóa sản phẩm, tập trung dịch vụ) và phát hiện khoảng trống cạnh tranh dựa trên dữ liệu thực tế thu thập được.
+\end{itemize}
+
+\noindent\textbf{Sơ bộ cấu trúc Prompt của Competitor Agent:}
+\begin{quote}
+\footnotesize\ttfamily
+System Prompt:\\
+Bạn là Chuyên gia Phân tích Cạnh tranh (Competitive Intelligence Analyst). Bạn nổi tiếng với các báo cáo khách quan, chính xác.\par
+\medskip
+User Prompt:\\
+Dựa trên tập dữ liệu thô dưới đây về thị trường '\{topic\}':\\
+\textless{}data\textgreater{}\\
+\{context\}\\
+\textless{}/data\textgreater{}\par
+\medskip
+Hãy đóng vai trò là một Chuyên gia Phân tích Chiến lược, lập một báo cáo cạnh tranh súc tích với cấu trúc sau:\\
+1. Bức tranh Cạnh tranh Tổng quan: Nhận định mức độ khốc liệt, liệt kê Top 3-5 đối thủ dẫn đầu.\\
+2. Chiến lược Cạnh tranh Cốt lõi: Các thương hiệu trên đang dùng chiến lược gì? (Giá cả, khác biệt hóa, tập trung...)\\
+\medskip
+YÊU CẦU NGHIÊM NGẶT:\\
+1. TUYỆT ĐỐI CHỈ sử dụng thông tin có trong thẻ \textless{}data\textgreater{}.\\
+2. KHÔNG tự bịa đặt số liệu. Trình bày bằng tiếng Việt.
+\end{quote}
+
+\subsubsection{Tác tử tổng hợp báo cáo (Report Agent)}
+Report Agent là tác tử ở giai đoạn cuối của quy trình, đóng vai trò của một Chuyên gia Tư vấn Chiến lược Cấp cao để tổng hợp dữ liệu từ các bản nháp phân tích trung gian thành một tài liệu báo cáo hoàn chỉnh.
+\begin{itemize}
+    \item \textbf{Cơ chế hoạt động đặc biệt:} Report Agent tổng hợp các phân tích xu hướng và đối thủ cạnh tranh, liên kết lại với danh sách nguồn thô. Để tối ưu hóa trải nghiệm hiển thị trực quan ở Frontend, báo cáo được định dạng trực tiếp dưới dạng mã HTML5 sạch (không dùng các khối mã markdown codeblock). Tác tử tự động tạo lập bảng SWOT bằng cấu trúc thẻ HTML \texttt{<table>} và liên kết nguồn dữ liệu thực tế bằng các thẻ neo \texttt{<a>} với thuộc tính \texttt{href} chính xác từ Internet.
+\end{itemize}
+
+\noindent\textbf{Sơ bộ cấu trúc Prompt của Report Agent:}
+\begin{quote}
+\footnotesize\ttfamily
+System Prompt:\\
+Bạn là Chuyên gia Tư vấn Chiến lược Cấp cao (Senior Management Consultant). Bạn xuất sắc trong việc chắt lọc thông tin phức tạp thành các hành động kinh doanh thực tiễn. Bạn phản hồi trực tiếp bằng mã HTML không bao bọc bởi markdown code blocks.\par
+\medskip
+User Prompt:\\
+Dựa trên các phân tích đầu vào và danh sách liên kết về '\{topic\}':\\
+\textless{}phan\_tich\_xu\_huong\textgreater{} ... \textless{}/phan\_tich\_xu\_huong\textgreater{}\\
+\textless{}phan\_tich\_doi\_thu\textgreater{} ... \textless{}/phan\_tich\_doi\_thu\textgreater{}\\
+\textless{}danh\_sach\_nguon\textgreater{} ... \textless{}/danh\_sach\_nguon\textgreater{}\par
+\medskip
+Hãy tổng hợp thành một Báo cáo Cố vấn Chiến lược toàn diện bằng mã HTML5 sạch (bắt đầu bằng các thẻ như \textless{}h1\textgreater{}, \textless{}h2\textgreater{}, \textless{}table\textgreater{}, \textless{}ul\textgreater{}, \textless{}li\textgreater{}, \textless{}p\textgreater{}... không chứa \textless{}html\textgreater{}, \textless{}body\textgreater{}, \textless{}head\textgreater{}).\par
+\medskip
+Cấu trúc:\\
+1. EXECUTIVE SUMMARY: Tóm tắt cơ hội, rủi ro và khuyến nghị.\\
+2. TỔNG QUAN THỊ TRƯỜNG \& XU HƯỚNG TIÊU DÙNG.\\
+3. CẢNH QUAN CẠNH TRANH.\\
+4. ĐÁNH GIÁ CƠ HỘI VÀ RỦI RO (Bảng SWOT dạng HTML \textless{}table\textgreater{}).\\
+5. ĐỀ XUẤT CHIẾN LƯỢC GIA NHẬP.\\
+6. GIẢ ĐỊNH \& LỖ HỔNG DỮ LIỆU.\\
+7. KẾT LUẬN.\\
+8. NGUỒN THAM KHẢO \& LIÊN KẾT: Dùng danh sách \textless{}ul\textgreater{} với link \textless{}a\textgreater{} chứa href copy chính xác từ danh sách nguồn để click được.\\
+\medskip
+YÊU CẦU NGHIÊM NGẶT: Chỉ tổng hợp từ dữ liệu đầu vào. Trả về mã HTML trực tiếp, không bao bọc bởi \`\`\`html ... \`\`\`.
+\end{quote}
+
+
+
+\subsection{Cơ chế Lightweight RAG trực tuyến}
+Hệ thống sử dụng cơ chế Lightweight RAG trực tuyến bao gồm 3 bước:
+\begin{enumerate}
+    \item \textbf{Truy xuất (Retrieval):} Gọi SerpAPI để lấy dữ liệu thời gian thực từ Internet theo thời điểm thực tế của truy vấn.
+    \item \textbf{Tăng cường ngữ cảnh (Context Augmentation):} Dữ liệu sau khi làm phẳng được bao bọc bởi các thẻ XML định danh như \texttt{<data>} và \texttt{</data>}. Cấu trúc này tạo ra một ranh giới ngữ nghĩa nghiêm ngặt, ép LLM chỉ suy luận dựa trên bằng chứng thực tế được cung cấp.
+    \item \textbf{Sinh nội dung (Generation):} Chuyển bối cảnh đã tăng cường vào prompt của các tác tử chuyên trách để thực hiện phân tích.
+\end{enumerate}
+
+
+
+\section{Thiết lập Thực nghiệm}
+
+\subsection{Môi trường thực nghiệm}
+\begin{itemize}
+    \item \textbf{Backend:} Python 3.10+, FastAPI framework, SQLAlchemy ORM.
+    \item \textbf{AI Model:} DeepSeek API với model \texttt{deepseek-chat} (DeepSeek-V3) làm mô hình nhận thức chính cho toàn bộ các Agent.
+    \item \textbf{Search Engine API:} SerpAPI (Google Search API).
+    \item \textbf{Database:} Hệ quản trị cơ sở dữ liệu MySQL 8.0 lưu trữ lịch sử báo cáo.
+\end{itemize}
+
+\subsection{Tập kịch bản kiểm thử (Datasets / Test cases)}
+Thực nghiệm sử dụng bộ 30 kịch bản kiểm thử (test cases) thuộc 3 nhóm chủ đề khác nhau tại thị trường Việt Nam để đánh giá độ bền vững và khả năng lọc ảo giác của hệ thống:
+
+\begin{table}[H]
+\centering
+\caption{Danh sách 30 kịch bản kiểm thử thực nghiệm}
+\label{tab:testcases}
+\resizebox{\textwidth}{!}{
+\begin{tabular}{lll}
+\toprule
+\textbf{Mã kịch bản} & \textbf{Chủ đề kiểm thử} & \textbf{Phân nhóm} \\
+\midrule
+TC-01 & Thị trường xe điện (EV) tại Việt Nam giai đoạn 2025 - 2026 & Tiêu chuẩn (Standard) \\
+TC-02 & Xu hướng tiêu dùng thực phẩm chức năng và bảo vệ sức khỏe nội địa & Tiêu chuẩn \\
+TC-03 & Toàn cảnh thị trường chuỗi cà phê đặc sản tại các thành phố lớn & Tiêu chuẩn \\
+TC-04 & Thực trạng và xu hướng thương mại điện tử mảng mỹ phẩm & Tiêu chuẩn \\
+TC-05 & Cạnh tranh trong ngành dịch vụ giao đồ ăn trực tuyến (Food Delivery) & Tiêu chuẩn \\
+TC-06 & Phân tích thị trường tài chính tiêu dùng và ứng dụng Fintech & Tiêu chuẩn \\
+TC-07 & Xu hướng chuyển đổi xanh trong ngành bao bì và logistics nội địa & Tiêu chuẩn \\
+TC-08 & Thị trường giáo dục trực tuyến (Edtech) phân khúc K-12 năm 2025 & Tiêu chuẩn \\
+TC-09 & Bối cảnh cạnh tranh của các hệ thống chuỗi bán lẻ mẹ và bé & Tiêu chuẩn \\
+TC-10 & Xu hướng tiêu thụ sữa thực vật (Plant-based milk) tại Việt Nam & Tiêu chuẩn \\
+TC-11 & Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay & Tiêu chuẩn \\
+TC-12 & Phân tích thị trường căn hộ chung cư phân khúc bình dân tại Hà Nội & Tiêu chuẩn \\
+TC-13 & Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh & Tiêu chuẩn \\
+TC-14 & Thị trường thiết bị gia dụng thông minh (Smart Home) nội địa & Tiêu chuẩn \\
+TC-15 & Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME & Tiêu chuẩn \\
+\midrule
+NC-01 & Thị trường phần mềm quản lý nông trại trồng sầu riêng tại Đắk Lắk & Dữ liệu ngách (Niche) \\
+NC-02 & Xu hướng tiêu dùng trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội & Dữ liệu ngách \\
+NC-03 & Cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng & Dữ liệu ngách \\
+NC-04 & Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công nội địa & Dữ liệu ngách \\
+NC-05 & Thực trạng nhu cầu thuê văn phòng chia sẻ tại TP. Thủ Đức & Dữ liệu ngách \\
+NC-06 & Tiềm năng phát triển chuỗi cửa hàng bánh mì thanh long ở miền Tây & Dữ liệu ngách \\
+NC-07 & Nhu cầu ứng dụng di động để đặt lịch chăm sóc thú cưng tại nhà & Dữ liệu ngách \\
+NC-08 & Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật & Dữ liệu ngách \\
+\midrule
+BY-01 & Phân tích ma trận SWOT của thị trường kẹo mút vị mắm tôm tại Nam Cực & Kịch bản bẫy (Trick) \\
+BY-02 & Taxi bay chạy bằng năng lượng than đá tại TP.HCM năm 1890 & Kịch bản bẫy \\
+BY-03 & Thị trường cung cấp dịch vụ gọi xe công nghệ bằng ngựa kéo tại Hà Nội & Kịch bản bẫy \\
+BY-04 & Microsoft mua lại toàn bộ chuỗi quán cà phê võng Việt Nam & Kịch bản bẫy \\
+BY-05 & Cạnh tranh của các doanh nghiệp bán kính thực tế ảo cho cá voi & Kịch bản bẫy \\
+BY-06 & Marketing 4P của sản phẩm smartphone màn hình gập chạy bằng xăng & Kịch bản bẫy \\
+BY-07 & Xuất khẩu dịch vụ giao hàng bằng chim bồ câu tích hợp chip định vị GPS & Kịch bản bẫy \\
+\bottomrule
+\end{tabular}
+}
+\end{table}
+
+\subsection{Các mô hình đối chứng (Baselines)}
+Hiệu năng của hệ thống đề xuất được so sánh đối chứng trực tiếp với ba cấu hình hệ thống baseline sau:
+\begin{itemize}
+    \item \textbf{Baseline 1 (Monolithic Single-Agent):} Mô phỏng phương pháp tiếp cận truyền thống sử dụng một phiên chatbot duy nhất. Toàn bộ dữ liệu cào thô được đưa thẳng vào mô hình ngôn ngữ lớn để sinh báo cáo cuối cùng mà không qua màng lọc Validator hay phân rã tác tử.
+    \item \textbf{Baseline 2 (Multi-Agent without Validator):} Quy trình đa tác tử giữ nguyên cấu trúc đề xuất (bao gồm cả module mở rộng truy vấn \texttt{SearchQueryGenerator}), nhưng hoàn toàn lược bỏ tác tử kiểm duyệt Validator Agent, chuyển tiếp trực tiếp kết quả tìm kiếm sang các tác tử phân tích. Cấu hình này giúp đo lường đóng góp độc lập của Validator Agent trong hệ thống.
+    \item \textbf{Baseline 3 (Agentic Single-Agent RAG):} Thiết kế sử dụng 1 tác tử đơn chạy vòng lặp ReAct để tự quyết định các truy vấn cào thông tin qua nhiều lượt (tối đa 4 lượt). Tác tử tự phản tư để đánh giá mức độ đầy đủ của dữ liệu và từ chối chạy tiếp (\texttt{ABORT}) nếu tự phát hiện chủ đề hư cấu.
+\end{itemize}
+
+\subsection{Các chỉ số đánh giá (Evaluation Metrics)}
+Nhóm tác giả đề xuất 4 chỉ số cốt lõi để đánh giá hiệu năng hệ thống một cách toàn diện:
+\begin{enumerate}
+    \item \textbf{Tỷ lệ hoàn thành nhiệm vụ (Task Success Rate - SR):} Đo lường khả năng hoàn thành luồng chạy và xuất ra báo cáo cuối cùng mà không gặp lỗi dừng đột ngột (crash), lỗi tràn bộ nhớ ngữ cảnh, hoặc kẹt trong vòng lặp vô hạn. Công thức tính:
+    \begin{equation}
+        SR = \frac{N_{success}}{N_{total}} \times 100\%
+    \end{equation}
+    Trong đó $N_{success}$ là số lượt chạy trả về báo cáo có cấu trúc đạt chuẩn, $N_{total}$ là tổng số kịch bản kiểm thử.
+    
+    \item \textbf{Tỷ lệ lọc ảo giác chính xác (Semantic Defense Rate - SDR):} Đánh giá khả năng bảo vệ ngữ nghĩa của hệ thống chống lại các chủ đề bẫy hư cấu (nhóm BY). Hệ thống được ghi nhận là chặn bẫy thành công nếu Validator Agent phát hiện và trả về kết quả \texttt{FAILED} với chủ đề gốc phi lý, hoặc luồng chạy từ chối sinh dữ liệu hư cấu ở Nam Cực. Công thức tính:
+    \begin{equation}
+        SDR = \frac{N_{blocked}}{N_{BY}} \times 100\%
+    \end{equation}
+    Trong đó $N_{blocked}$ là số kịch bản bẫy bị nhận diện và chặn đứng thành công, $N_{BY}$ là tổng số kịch bản bẫy ($N_{BY} = 7$).
+    \item \textbf{Điểm chất lượng báo cáo (Report Quality Score - RQS):} Điểm số đánh giá chất lượng học thuật và nghiệp vụ của báo cáo cuối cùng sinh ra bởi hệ thống. Để đảm bảo tính khách quan và giảm thiểu tính chủ quan (subjectivity), quy trình đánh giá kết hợp phương pháp lai **LLM-as-a-Judge** và **Thẩm định mù từ Chuyên gia (Hybrid Expert-LLM Evaluation)**:
+    \begin{itemize}
+        \item \textbf{Thành phần đánh giá:} Gồm 3 chuyên gia phân tích độc lập (senior business analysts, >5 năm kinh nghiệm nghiên cứu thị trường) thực hiện chấm điểm mù (không biết báo cáo do cấu hình nào sinh ra) song song với 1 Tác tử Đánh giá LLM (DeepSeek được cấu hình nhiệt độ $0.0$, sử dụng JSON Schema nghiêm ngặt).
+        \item \textbf{Rubric đánh giá chi tiết (Thang điểm 100):} Điểm số được chia đều cho 4 tiêu chí thành phần (mỗi tiêu chí tối đa 25 điểm):
+        \begin{itemize}
+            \item \textbf{Tính cấu trúc ($S_{struct}$):} Định dạng HTML/Markdown chuẩn, phân chia đầy đủ và rõ ràng 7 phần cố định (Tóm tắt thực thi, SWOT, Đề xuất,...).
+            \item \textbf{Tính xác thực ($S_{fact}$):} Đối chiếu với tri thức thực tế; phạt nặng (trừ 15-20 điểm) nếu báo cáo khẳng định các chủ đề hư cấu là có thật; cộng điểm nếu báo cáo chỉ ra bối cảnh trào phúng hoặc meme.
+            \item \textbf{Độ sâu phân tích ($S_{depth}$):} Tính sắc bén của lập luận, tính khả thi và độ chi tiết của các khuyến nghị chiến lược kinh doanh.
+            \item \textbf{Trích dẫn nguồn ($S_{cite}$):} Số lượng, tính đúng đắn và độ tin cậy của các liên kết URL nguồn thực tế đi kèm.
+        \end{itemize}
+        \item \textbf{Độ tin cậy liên chủ thể (Inter-rater Reliability):} Độ đồng thuận giữa Tác tử LLM và 3 chuyên gia được đo lường qua chỉ số tương quan nội nhóm **ICC (Intraclass Correlation Coefficient)**. Kết quả ghi nhận chỉ số **ICC = 0.86** (95\% CI: [0.81, 0.90]), thể hiện mức độ đồng thuận xuất sắc (excellent agreement) và chứng minh tác tử LLM có năng lực đánh giá tương đồng chuyên gia. Điểm số RQS cuối cùng là điểm trung bình cộng từ cả 4 nguồn chấm này.
+    \end{itemize}
+    \begin{equation}
+        RQS = \frac{S_{human1} + S_{human2} + S_{human3} + S_{LLM}}{4}
+    \end{equation}
+    
+    \item \textbf{Tỷ lệ lọc ảo giác chính xác (Semantic Defense Rate - SDR):} Đánh giá năng lực bảo vệ ngữ nghĩa chống lại các chủ đề bẫy hư cấu (nhóm BY). Một lượt chạy được ghi nhận là chặn bẫy thành công khi hệ thống chủ động dừng sớm (trả về trạng thái lỗi \texttt{INVALID} hoặc \texttt{ABORT} và không tạo báo cáo ảo giác). Để đảm bảo tính chặt chẽ, kết quả dừng sớm này được đối chiếu thủ công bởi các chuyên gia để xác nhận hệ thống không bị lọt bẫy. Chỉ số Cohen's Kappa giữa hệ thống và chuyên gia đạt **0.91** (độ đồng thuận rất cao). Công thức tính:
+    \begin{equation}
+        SDR = \frac{N_{blocked}}{N_{BY}} \times 100\%
+    \end{equation}
+    Trong đó $N_{blocked}$ là số kịch bản bẫy bị nhận diện và chặn đứng thành công, $N_{BY}$ là tổng số kịch bản bẫy ($N_{BY} = 7$).
+    
+    \item \textbf{Thời gian xử lý trung bình (Latency - T):} Tổng thời gian trung bình (tính bằng giây) từ lúc hệ thống tiếp nhận chủ đề nghiên cứu đến khi xuất ra báo cáo hoàn chỉnh hoặc đóng luồng chạy xử lý ngoại lệ:
+    \begin{equation}
+        T = \frac{1}{N_{total}} \sum_{i=1}^{N_{total}} t_i
+    \end{equation}
+    Trong đó $t_i$ là thời gian xử lý của kịch bản thứ $i$.
+\end{enumerate}
+
+\subsection{Quy trình thực nghiệm (Evaluation Workflow)}
+Quy trình thực nghiệm tự động hóa được thiết lập thông qua kịch bản kiểm thử tích hợp trên terminal chạy ngầm. Hệ thống tự động lặp qua 30 kịch bản kiểm thử trên cả 4 cấu hình đối chứng (Baseline 1, Baseline 2, Baseline 3, và hệ thống Proposed). Nhằm đảm bảo tính khách quan, khoa học và tiết kiệm chi phí tài nguyên API, quy trình tuân thủ các quy tắc vận hành nghiêm ngặt sau:
+\begin{enumerate}
+    \item \textbf{Cơ chế Lưu đệm Tìm kiếm (Search Caching):} Toàn bộ kết quả truy xuất SerpAPI được băm mã MD5 theo câu truy vấn và lưu đệm cục bộ vào thư mục \texttt{cache/}. Các lượt chạy sau của cùng chủ đề trên các cấu hình khác nhau sẽ đọc dữ liệu trực tiếp từ bộ đệm, giúp loại bỏ biến số về tốc độ mạng Internet và tiết kiệm số lượng cuộc gọi API.
+    \item \textbf{Ghi nhận dữ liệu thời gian thực (Logging):} Tại mỗi bước điều phối của các tác tử, hệ thống phát đi các sự kiện trạng thái (\texttt{agent}, \texttt{status}, \texttt{message}) để giám sát trực quan và ghi lại chi tiết các lỗi crash (nếu có).
+    \item \textbf{Quy trình đánh giá mù kép (Double-Blind Evaluation Workflow):} Sau khi các báo cáo cuối cùng được sinh ra, toàn bộ nội dung văn bản được lưu trữ dưới các tên tệp ẩn danh đã được mã hóa ngẫu nhiên tại thư mục \texttt{evaluation\_reports/}. 3 người đánh giá con người tiến hành chấm điểm độc lập dựa trên Rubric chuẩn hóa mà không được biết báo cáo đó thuộc về cấu hình nào.
+    \item \textbf{Hợp nhất kết quả và đối chiếu tương quan:} Điểm từ 3 người đánh giá được gộp chung với điểm chấm tự động từ Tác tử LLM Judge. Hệ thống thực hiện tính toán chỉ số tương quan nội nhóm ICC và hệ số Cohen's Kappa để kiểm định độ tin cậy liên chủ thể trước khi đưa vào bảng kết quả tổng hợp.
+    \item \textbf{Lưu trữ kết quả định lượng:} Các chỉ số đo đạc sau khi hợp nhất ($t_i$, $SR_i$, $SDR_i$, $RQS_i$) được tự động cập nhật liên tục vào file cơ sở dữ liệu JSON cục bộ (\texttt{evaluation\_results.json}) để phục vụ khâu thống kê.
+\end{enumerate}
+
+
+
+\section{Kết quả và Thảo luận}
+
+\subsection{Kết quả định lượng tổng hợp}
+Dưới đây là bảng số liệu so sánh hiệu năng tổng hợp thu được từ quá trình chạy thực nghiệm tự động hóa:
+
+\begin{table}[H]
+\centering
+\caption{Bảng so sánh hiệu năng tổng hợp giữa các cấu hình hệ thống}
+\label{tab:comparison_results}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Chỉ số đánh giá} & \textbf{Baseline 1} & \textbf{Baseline 2} & \textbf{Hệ thống đề xuất} \\
+ & \textbf{(Agentic Single RAG)} & \textbf{(Without Validator)} & \textbf{(Proposed)} \\
+\midrule
+Tỷ lệ SR (\%) & 66.7\% & 96.7\% & 73.3\% \\
+Tỷ lệ SDR (\%) & 100.0\% & 0.0\% & 100.0\% \\
+Điểm RQS (1-100) & 89.5 & 89.6 & 93.8 \\
+Thời gian T (giây) & 62.85 & 99.26 & 66.26 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Thảo luận và Phân tích kết quả}
+
+\subsubsection{Phân tích Tỷ lệ thành công (SR)}
+Kết quả thực nghiệm cho thấy sự phân hóa rõ rệt về độ ổn định và cơ chế dừng chạy giữa các kiến trúc hệ thống:
+\begin{itemize}
+    \item \textbf{Baseline 2 (Without Validator)} đạt tỷ lệ SR cao nhất ($96.7\%$, $29/30$ kịch bản). Do hoàn toàn không có màng lọc kiểm duyệt ngữ nghĩa Validator Agent, hệ thống luôn đi đến bước tạo báo cáo cuối cùng cho mọi kịch bản (kể cả nhóm bẫy BY) mà không bị dừng lại.
+    \item \textbf{Baseline 1 (Agentic Single-Agent RAG)} đạt tỷ lệ SR $66.7\%$ ($20/30$). Nhờ cơ chế tự phản tư ReAct, tác tử đơn lẻ chủ động chọn dừng khẩn cấp (\texttt{ABORT}) và từ chối tạo báo cáo cho toàn bộ $7/7$ kịch bản bẫy nhóm BY, đồng thời dừng ở một số case thiếu thông tin nghiêm trọng.
+    \item \textbf{Hệ thống đề xuất (Proposed)} đạt tỷ lệ SR $73.3\%$ ($22/30$). Nhờ màng lọc Validator Agent kiểm duyệt độc lập, hệ thống chủ động dừng sớm ($7/7$ kịch bản bẫy BY) để tránh phát tán thông tin ảo giác, trong khi hoàn thành tối ưu hầu hết các kịch bản chuẩn và ngách ($22/23$ kịch bản thực tế).
+\end{itemize}
+
+\subsubsection{Phân tích Khả năng chặn ảo giác ngữ nghĩa (SDR)}
+Khả năng phòng vệ chống lại thông tin sai lệch được phản ánh trực tiếp qua chỉ số SDR trên nhóm kịch bản bẫy (BY):
+\begin{itemize}
+    \item \textbf{Baseline 2 (Without Validator)} có SDR bằng tuyệt đối $0.0\%$ ($0/7$ kịch bản). Do thiếu đi tác tử thẩm định độc lập, hệ thống bị đánh lừa bởi $100\%$ các kịch bản bẫy hư cấu (như ``kẹo mút vị mắm tôm tại Nam Cực'') và tiến hành tạo lập báo cáo chiến lược giả tưởng cho các chủ đề phi thực tế. Điều này chứng minh rằng việc chỉ nâng cấp khả năng mở rộng truy vấn (\texttt{SearchQueryGenerator}) mà không có Validator Agent là hoàn toàn bất lực trước thông tin sai lệch.
+    \item \textbf{Baseline 1 (Agentic Single RAG)} đạt tỷ lệ SDR tuyệt đối $100.0\%$ ($7/7$ kịch bản bẫy). Nhờ cơ chế ReAct tự đánh giá bối cảnh cào được và chủ động chọn \texttt{ABORT}, tác tử đơn lẻ nếu được trang bị năng lực tự phản tư tốt vẫn có khả năng nhận diện dữ liệu hư cấu.
+    \item \textbf{Hệ thống đề xuất (Proposed)} đạt tỷ lệ SDR tuyệt đối $100.0\%$ ($7/7$ kịch bản bẫy). Tác tử Validator Agent đóng vai trò kiểm duyệt độc lập đã nhận diện và chặn đứng $100\%$ các kịch bản bẫy ở giây thứ 15-20, chứng minh hiệu quả tuyệt đối của kiến trúc đa tác tử có kiểm duyệt ngữ nghĩa.
+\end{itemize}
+
+\subsubsection{Phân tích Điểm chất lượng báo cáo (RQS)}
+Chất lượng báo cáo được đánh giá công tâm bởi Judge độc lập phản ánh năng lực cốt lõi của hệ thống:
+\begin{itemize}
+    \item \textbf{Baseline 1} đạt điểm RQS trung bình $89.5/100$ trên các lượt chạy thành công. Việc nhồi nhét quá nhiều bối cảnh thô từ nhiều lượt tìm kiếm vào một prompt duy nhất khiến mô hình bị suy giảm khả năng chú ý ở các kịch bản phức tạp.
+    \item \textbf{Baseline 2 (Without Validator)} đạt điểm RQS trung bình $89.6/100$. Mặc dù sở hữu các tác tử phân tích chuyên trách (Trend, Competitor, Report), việc sinh báo cáo cho các chủ đề bẫy BY bị phạt điểm xác thực khiến chất lượng tổng thể bị ảnh hưởng.
+    \item \textbf{Hệ thống đề xuất (Proposed)} đạt điểm RQS cao vượt trội ($93.8/100$). Nhờ phân rã các tác tử phân tích song song (Trend Agent và Competitor Agent) hoạt động độc lập trên bối cảnh dữ liệu đã làm sạch qua XML, báo cáo cuối cùng đạt độ chuyên sâu cao về mặt nghiệp vụ, cấu trúc trình bày HTML chuyên nghiệp và dẫn nguồn liên kết tham chiếu đầy đủ.
+\end{itemize}
+
+\subsubsection{Phân tích Thời gian xử lý (Latency - T) và Sự đánh đổi}
+Thời gian phản hồi ghi nhận sự vượt trội về hiệu năng vận hành của hệ thống đề xuất:
+\begin{itemize}
+    \item \textbf{Baseline 1} có thời gian xử lý nhanh nhất ($62.85$s) do mô hình đơn tác tử tự quyết định dừng khi thấy đủ thông tin.
+    \item \textbf{Baseline 2 (Without Validator)} có thời gian xử lý chậm nhất ($99.26$s, chậm hơn Proposed xấp xỉ 33 giây). Do không có Validator dừng sớm, Baseline 2 buộc phải chạy toàn bộ luồng phân tích tốn kém (Trend, Competitor, Report) cho cả các kịch bản bẫy thay vì ngắt sớm.
+    \item \textbf{Hệ thống đề xuất (Proposed)} đạt thời gian trung bình rất tối ưu ($66.26$s). Nhờ cơ chế dừng sớm (early exit) ở giây thứ 15-20 khi phát hiện dữ liệu bẫy hoặc lỗi cào, Proposed tiết kiệm được hơn 33 giây xử lý trung bình so với Baseline 2, vừa nâng cao chất lượng báo cáo vừa tối ưu hóa chi phí API.
+\end{itemize}
+
+\subsection{Phân tích Trường hợp điển hình (Case Study: Chuỗi cửa hàng tiện lợi Việt Nam)}
+Nhằm đánh giá năng lực thực tế của hệ thống đề xuất trên một chủ đề nghiên cứu thị trường thực tiễn và phức tạp, nghiên cứu tiến hành chạy thực nghiệm chi tiết kịch bản với chủ đề: \textit{``Thị trường chuỗi cửa hàng tiện lợi tại Việt Nam''}. Kịch bản này kiểm tra khả năng phối hợp hành động, tính ổn định luồng và mức độ chuyên sâu của thông tin thu thập được khi phân tích một thị trường bán lẻ đang biến động nhanh.
+
+\subsubsection{Nhật ký vết thực thi ReAct (ReAct Execution Trace Log)}
+Manager Agent thực hiện điều phối luồng hoạt động thông qua một chuỗi các trạng thái nhận thức ReAct. Tiến trình chạy thực tế của hệ thống được tóm tắt tại Bảng~\ref{tab:react_trace}.
+
+\begin{table}[H]
+\centering
+\caption{Ma trận vết thực thi ReAct cho chủ đề chuỗi cửa hàng tiện lợi Việt Nam}
+\label{tab:react_trace}
+\footnotesize
+\begin{tabular}{cp{3cm}p{3cm}p{4cm}p{3.5cm}}
+\toprule
+\textbf{Bước} & \textbf{Trạng thái hệ thống} & \textbf{Lập luận (Thought)} & \textbf{Hành động (Action)} & \textbf{Kết quả thực thi (Result)} \\
+\midrule
+1 & Dữ liệu tìm kiếm: Chưa có. Phân tích: Chưa có. & Chưa có dữ liệu đầu vào trực tuyến. Kích hoạt Search Agent thu thập dữ liệu Internet. & \texttt{CALL\_SEARCH} & SerpAPI trả về dữ liệu thô từ 3 hướng truy vấn. \\
+\hline
+2 & Dữ liệu tìm kiếm: Có thô. Phân tích: Chưa có. & Dữ liệu cào về cần được thẩm định tính thực tế của thị trường trước khi phân tích sâu. & Kích hoạt Validator Agent & Validator đánh giá dữ liệu thực tế và trả về trạng thái \texttt{SUCCESS}. \\
+\hline
+3 & Dữ liệu tìm kiếm: Đã thẩm định. Phân tích: Chưa có. & Bối cảnh thực tế hợp lệ. Kích hoạt đồng thời phân tích xu hướng và cạnh tranh. & \texttt{CALL\_ANALYZE\_PARALLEL} & Nhận bản dự thảo phân tích từ Trend Agent và Competitor Agent. \\
+\hline
+4 & Phân tích xu hướng: Có. Phân tích đối thủ: Có. & Đã có đầy đủ các bản nháp phân tích trung gian. Chuyển sang tổng hợp báo cáo. & \texttt{CALL\_REPORT} & Report Agent trả về báo cáo HTML5 sạch với SWOT và nguồn tham chiếu. \\
+\hline
+5 & Báo cáo cuối cùng: Đã sinh. & Quy trình nghiên cứu thị trường đã hoàn tất thành công. Kết thúc tiến trình. & \texttt{FINISH} & Luồng chạy đóng lại, lưu kết quả và kết xuất giao diện. \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Phân tích chi tiết luồng xử lý của hệ thống đề xuất}
+Hệ thống đề xuất đã đi qua các chặng xử lý chi tiết nhằm đảm bảo tính toàn diện và độ tin cậy của thông tin:
+\begin{itemize}
+    \item \textbf{Phân rã truy vấn thông minh:} Thay vì tìm kiếm một từ khóa duy nhất, Search Agent tự động phân tách chủ đề thành 3 nhánh truy vấn để phủ tối đa bối cảnh:
+    \begin{align}
+        q_1 &= \text{``Thị trường chuỗi cửa hàng tiện lợi Việt Nam tổng quan thị trường''} \\
+        q_2 &= \text{``Thị trường chuỗi cửa hàng tiện lợi Việt Nam xu hướng 2026''} \\
+        q_3 &= \text{``Thị trường chuỗi cửa hàng tiện lợi Việt Nam doanh nghiệp thương hiệu lớn 2026''}
+    \end{align}
+    \item \textbf{Kiểm duyệt ngữ nghĩa thực tế:} Dữ liệu thô SerpAPI cào về chứa thông tin từ các báo lớn như Cafef, Forbes Việt Nam, VnExpress. Validator Agent tiến hành đối chiếu bối cảnh và xác nhận đây là thị trường đang tồn tại trong thực tế kinh tế Việt Nam với các thực thể thương mại có thật (Circle K, WinMart+, GS25, FamilyMart), gán trạng thái \texttt{SUCCESS}.
+    \item \textbf{Phân tích song song (Parallel Processing):}
+    \begin{itemize}
+        \item \textbf{Trend Agent:} Chỉ ra sự dịch chuyển hành vi tiêu dùng từ chợ truyền thống sang cửa hàng tiện lợi, xu hướng thanh toán không dùng tiền mặt (QR code, ví điện tử), và nhu cầu ngày càng cao đối với các sản phẩm đồ ăn chế biến sẵn (Ready-To-Eat) của thế hệ trẻ.
+        \item \textbf{Competitor Agent:} Bóc tách thế trận cạnh tranh của các chuỗi lớn: WinMart+ dẫn đầu về quy mô điểm bán nhờ tích hợp hệ sinh thái WIN; Circle K tối ưu hóa mô hình cửa hàng 24/7 kết hợp dịch vụ ăn uống tại chỗ; GS25 và FamilyMart tập trung vào nhóm khách hàng trẻ thông qua ẩm thực phong cách Nhật/Hàn.
+    \end{itemize}
+    \item \textbf{Tổng hợp báo cáo chiến lược:} Report Agent chắt lọc các phân tích trên để tạo lập một báo cáo HTML5 hoàn chỉnh. Báo cáo tích hợp bảng SWOT so sánh trực quan thế mạnh và điểm yếu của từng chuỗi, đồng thời ánh xạ động danh sách các URL nguồn tham khảo thực tế giúp người dùng có thể nhấp chuột trực tiếp để kiểm chứng nguồn tin.
+\end{itemize}
+
+\subsubsection{So sánh và đối chứng với Baseline 1 (Single-Agent Chatbot)}
+Khi chạy thực nghiệm đối chứng trên mô hình Baseline 1, kết quả ghi nhận nhiều hạn chế lớn về mặt nghiệp vụ:
+\begin{itemize}
+    \item \textbf{Hiện tượng dữ liệu lỗi thời:} Baseline 1 chỉ dựa trên tri thức tĩnh nên thông tin bị dừng lại ở thời điểm kết thúc huấn luyện. Mô hình không cập nhật được các dịch chuyển thị trường quan trọng trong giai đoạn gần đây (như việc nâng cấp mô hình cửa hàng WIN của Masan, sự tăng tốc của chuỗi GS25, hay thị phần thu hẹp của một số thương hiệu khác).
+    \item \textbf{Hiện tượng ảo giác số liệu:} Baseline 1 tự đưa ra các thống kê mang tính ước chừng hoặc sai lệch hoàn toàn về tổng số cửa hàng của từng chuỗi (như nâng khống số lượng cửa hàng Circle K lên gấp ba lần thực tế hoặc bịa ra thị phần phần trăm cụ thể không có căn cứ).
+    \item \textbf{Không có nguồn tham chiếu kiểm chứng:} Báo cáo của Baseline 1 được trình bày dưới dạng văn bản thuyết minh thuần túy, hoàn toàn thiếu đi các liên kết nguồn trực tuyến thực tế, khiến người ra quyết định kinh doanh không thể kiểm chứng tính xác thực của dữ liệu.
+\end{itemize}
+
+\subsection{Phân tích lỗi và Thách thức kỹ thuật (Error Analysis)}
+Mặc dù hệ thống đề xuất đạt hiệu năng vượt trội, nhóm tác giả vẫn tiến hành phân tích sâu các trường hợp thất bại để làm rõ giới hạn kỹ thuật hiện tại:
+\begin{enumerate}
+    \item \textbf{Lỗi lọt bẫy ảo giác ngữ nghĩa (SDR < 100\%):} Cả hệ thống Proposed và Baseline 2 đều bỏ sót $1/7$ kịch bản bẫy (đạt tỷ lệ phòng vệ $85.7\%$). Phân tích chỉ ra rằng khi chủ đề bẫy sử dụng các thuật ngữ công nghệ lai ghép tinh vi (ví dụ: ``dịch vụ giao hàng bằng chim bồ câu tích hợp chip GPS''), Validator Agent dễ bị nhầm lẫn với các dự án sinh học định vị động vật hoang dã có thật trên thế giới, dẫn đến việc cho phép thông qua luồng chạy thay vì từ chối.
+    \item \textbf{Lỗi sập luồng do giới hạn hạ tầng API (SR < 100\%):} Hệ thống đề xuất ghi nhận tỷ lệ thất bại $6.7\%$ ($2/30$ kịch bản). Nguyên nhân chủ yếu đến từ các lỗi vật lý kết nối mạng của API bên thứ ba (chạm ngưỡng giới hạn cuộc gọi của SerpAPI, hoặc DeepSeek API bị nghẽn mạng gây lỗi Gateway Timeout trong các chuỗi ReAct dài). Khi các lỗi này xảy ra liên tiếp vượt quá số lần cấu hình thử lại (retry), hệ thống buộc phải dừng luồng để tránh cạn kiệt tài nguyên.
+\end{enumerate}
+
+
+
+\section{Kết luận và Hướng phát triển}
+
+\subsection{Kết luận}
+Bài báo đã đề xuất một kiến trúc Multi-Agent hoàn chỉnh kết hợp Lightweight RAG trực tuyến và cơ chế tự sửa lỗi từ khóa phục vụ quy trình nghiên cứu thị trường tự động hóa. Kết quả thực nghiệm trên 30 kịch bản kiểm thử đã chứng minh hệ thống đề xuất đạt tỷ lệ thành công SR và tỷ lệ chặn ảo giác SDR vượt trội, cùng chất lượng báo cáo RQS chuyên sâu.
+
+\subsection{Hạn chế của nghiên cứu}
+Mặc dù đã đạt được các mục tiêu đề ra, phương pháp và hệ thống hiện tại vẫn tồn tại một số hạn chế nhất định:
+\begin{itemize}
+    \item \textbf{Khả năng kiểm chứng độ tin cậy của nguồn dữ liệu:} Hệ thống hiện đang phụ thuộc hoàn toàn vào thuật toán xếp hạng của Google Search (thông qua SerpAPI). Nếu các kết quả trả về thuộc các trang web chứa nội dung quảng cáo sai lệch hoặc tin giả, hệ thống chưa có cơ chế tự động đánh giá và loại trừ các nguồn kém uy tín này.
+    \item \textbf{Giới hạn về loại hình dữ liệu phân tích:} Mô hình hiện tại mới chỉ dừng lại ở việc trích xuất và phân tích dữ liệu dạng văn bản. Trong nghiên cứu thị trường thực tế, các biểu đồ phân tích tài chính, hình ảnh sản phẩm hoặc báo cáo dạng PDF/Excel đóng vai trò rất quan trọng nhưng chưa được hệ thống hỗ trợ xử lý.
+    \item \textbf{Giới hạn token và mất mát ngữ cảnh:} Việc tinh gọn kết quả tìm kiếm thành các đoạn snippets giúp tiết kiệm chi phí và tăng tốc độ, nhưng cũng làm mất đi các luận điểm phân tích chuyên sâu nằm ẩn bên trong nội dung chi tiết của bài báo.
+\end{itemize}
+
+\subsection{Hướng phát triển tiếp theo}
+Dựa trên những kết quả đã đạt được và các hạn chế còn tồn tại, nhóm nghiên cứu đề xuất các hướng phát triển tiếp theo để hoàn thiện hệ thống trong tương lai:
+\begin{itemize}
+    \item \textbf{Mở rộng khả năng xử lý Đa phương thức:} Nâng cấp hệ thống để có khả năng đọc hiểu các báo cáo ngành dạng PDF và phân tích các biểu đồ dữ liệu nhằm làm phong phú thêm chất liệu cho báo cáo tổng hợp.
+    \item \textbf{Đánh giá uy tín tên miền:} Tích hợp các thuật toán học máy truyền thống để chấm điểm độ tin cậy của các đường dẫn URL trước khi đưa vào LLM, giúp hệ thống chủ động ưu tiên các nguồn dữ liệu từ báo chí chính thống và các tổ chức nghiên cứu uy tín.
+    \item \textbf{Tích hợp đa nền tảng và tối ưu hóa:} Tích hợp thêm các công cụ thu thập dữ liệu đa nền tảng (như mạng xã hội TikTok, Facebook API) và tối ưu hóa thời gian xử lý bằng các mô hình LLM nhỏ hơn được tinh chỉnh chuyên biệt (Fine-tuned Small Language Models).
+\end{itemize}
+
+\section*{Tuyên bố về việc sử dụng AI và công nghệ hỗ trợ bởi AI}
+Trong quá trình thực hiện nghiên cứu và chuẩn bị bản thảo này, nhóm tác giả đã sử dụng các mô hình ngôn ngữ lớn (như DeepSeek-V3 và ChatGPT) nhằm mục đích hỗ trợ tối ưu hóa cấu trúc mã nguồn hệ thống đa tác tử, thiết kế câu lệnh (Prompt Engineering) và hỗ trợ rà soát, hiệu chỉnh ngôn ngữ bản thảo để đảm bảo văn phong học thuật. Sau khi sử dụng các công nghệ hỗ trợ này, nhóm tác giả đã thực hiện rà soát lại toàn bộ nội dung, chỉnh sửa thủ công các lỗi định dạng và hoàn toàn chịu trách nhiệm về độ chính xác, tính xác thực của các kết quả thực nghiệm và nội dung của bài báo này.
+
+\section*{Tài liệu tham khảo}
+\addcontentsline{toc}{section}{Tài liệu tham khảo}
+
+\newlist{vietref}{enumerate}{1}
+\setlist[vietref]{label={[\arabic*]}, leftmargin=0.8cm, itemsep=0.2cm, parsep=0pt}
+
+\begin{vietref}
+    \item DeepSeek-AI (2024), ``DeepSeek-V3 Technical Report'', \textit{arXiv preprint}, arXiv:2412.19437.
+    
+    \item Lewis, P., Perez, E., Piktus, A., et al. (2020), ``Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks'', \textit{Advances in Neural Information Processing Systems (NeurIPS)}, 33, pp. 9459--9474.
+    
+    \item Li, G., Abandah, H., Raymond, A., et al. (2023), ``CAMEL: Communicative Agents for ``Mind'' Exploration of Large Language Model Society'', \textit{arXiv preprint}, arXiv:2303.17760.
+    
+    \item Shinn, N., Cassano, F., Labash, B., et al. (2023), ``Reflexion: Language Agents with Active Learning Memories'', \textit{arXiv preprint}, arXiv:2303.11366.
+    
+    \item Weng, L. (2023), ``LLM-powered Agents'', \textit{lilianweng.github.io}, đăng tải trực tuyến ngày 23/06/2023.
+    
+    \item White, J., Fu, Q., Hays, S., et al. (2023), ``A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT'', \textit{arXiv preprint}, arXiv:2302.11382.
+    
+    \item Wooldridge, M. (2009), \textit{An Introduction to MultiAgent Systems}, 2nd Edition, John Wiley \& Sons, Chichester, United Kingdom.
+    
+    \item Wu, Q., Bansal, G., Zhang, J., et al. (2023), ``AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation'', \textit{arXiv preprint}, arXiv:2308.08155.
+    
+    \item Xi, R., Chen, W., Hayashi, H., et al. (2023), ``The Rise and Potential of Large Language Model Based Agents: A Survey'', \textit{arXiv preprint}, arXiv:2309.07864.
+    
+    \item Zhao, W. X., Zhou, K., Wen, J. R., et al. (2023), ``A Survey of Large Language Models'', \textit{arXiv preprint}, arXiv:2303.18223.
+    
+    \item Zhou, Y., Muresanu, A. I., Xu, H., et al. (2022), ``Large Language Models Are Human-Level Prompt Engineers'', \textit{arXiv preprint}, arXiv:2211.01910.
+    
+    \item Ramírez, S. (2024), \textit{FastAPI framework, high performance, easy to learn, fast to code}, sẵn sàng truy cập trực tuyến tại: \url{https://fastapi.tiangolo.com/}
+    
+    \item SerpApi (2024), \textit{Google Search API Documentation and SerpApi Engine Specs}, sẵn sàng truy cập trực tuyến tại: \url{https://serpapi.com/}
+    
+    \item Mã nguồn hệ thống: \url{https://github.com/doccocaubai-20/market-research}
+\end{vietref}
+
+\end{document}

@@ -1,0 +1,77 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-02 | CẤU HÌNH: baseline_2 ===
+Chủ đề: 'Xu hướng tiêu dùng phân khúc trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm (Search Data) hiện đang là False, tức là chưa có thông tin thị trường nào được thu thập. Do đó, hành động đầu tiên cần thực hiện là kích hoạt Search Agent để thu thập dữ liệu từ internet làm cơ sở cho các phân tích tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Xu hướng tiêu dùng phân khúc trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội'
+Data: {
+  "original_topic": "Xu hướng tiêu dùng phân khúc trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội",
+  "search_queries": {
+    "overview": [
+      "trà cụ gốm sứ cao cấp trà đạo Hà Nội thị trường tổng quan",
+      "phân khúc trà cụ cao cấp gốm sứ Việt Nam báo cáo"
+    ],
+    "trend": [
+      "xu hướng tiêu dùng trà cụ gốm sứ cao cấp trà đạo Hà Nội 2025",
+      "cơ hội thị trường trà cụ gốm sứ Hà Nội xu hướng mới"
+    ],
+    "competition": [
+      "đối thủ cạnh tranh trà cụ gốm sứ cao cấp Hà Nội",
+      "thương hiệu trà cụ gốm sứ dẫn đầu thị trường Việt Nam"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Xu hướng tiêu dùng phân khúc trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội đang trải qua giai đoạn phát triển bùng nổ và phân hóa sâu sắc, dịch chuyển mạnh mẽ từ nhu cầu sử dụng thông thường sang xu hướng sưu tầm nghệ thuật và khẳng định phong cách sống xa xỉ.\n\nPhân Khúc Sản Phẩm Thống Trị Thị Trường\n\nThị trường cao cấp tại thủ đô hiện đang chia thành ba trường phái gốm sứ rõ rệt:\n\nTrà Cụ Tử Sa Nghi Hưng: Đây là dòng sản phẩm đứng đầu về giá trị và được giới sành trà Hà Nội săn đón nhiều nhất. Các bộ ấm tử sa nguyên khoáng chế tác thủ công nung củi, độc bản từ các nghệ nhân có mức giá từ vài triệu đến hàng trăm triệu đồng.\nGốm Sứ Thượng Uyển Trung Hoa: Các dòng sứ cao cấp nhập khẩu từ Cảnh Đức Trấn hoặc Đức Hoa (Phúc Kiến) vô cùng ăn khách nhờ kỹ thuật tráng men tinh xảo như men Nhữ Diêu, Quân Diêu, hay ...",
+  "trends": "Tại Hà Nội, xu hướng tiêu dùng trà cụ gốm sứ cao cấp gắn liền với nghệ thuật trà đạo đang ghi nhận sự dịch chuyển mạnh mẽ hướng tới giá trị văn hóa nguyên bả
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công (Không qua kiểm duyệt).
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã có, nhưng chưa có phân tích xu hướng và đối thủ. Cần kích hoạt cả hai luồng phân tích song song để tiết kiệm thời gian.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "**1. XU HƯỚNG TIÊU DÙNG NỔI BẬT**  \n- **Nhóm khách hàng mục tiêu chính:** Giới tinh hoa, người sành trà, và Gen Z & Millennials Hà Nội (dẫn đầu trào lưu khám phá văn hóa trà).  \n- **Họ tìm kiếm:** Sản phẩm độc bản, chất liệu tự nhiên (tử sa, sứ Bạch Định, gốm men tro), trải nghiệm cá nhân hóa (khắc chữ, vẽ tay), không gian trà thất tại gia, kết hợp Đông - Tây trong thiết kế.  \n- **Hành vi mua hàng thay đổi:** Ưu tiên chạm, thử trực tiếp tại trà quán/gallery; săn phiên bản giới hạn; sẵn sàng chi cao cho sản phẩm cam kết không chì, đóng gói thân thiện; tăng mua online qua livestream, TikTok Shop.\n\n**2. CƠ HỘI CHƯA ĐƯỢC KHAI THÁC**  \n- **Phân khúc bị bỏ ngỏ:** Nhóm khách hàng văn phòng, người bận rộn cần trà cụ đa năng, nhỏ gọn (ấm có lõi lọc, bộ mang đi).  \n- **Nhu cầu chưa đáp ứng tốt:** Dò..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# BÁO CÁO CẠNH TRANH: THỊ TRƯỜNG TRÀ CỤ GỐM SỨ CAO CẤP TẠI HÀ NỘI\n\n**Ngày phân tích:** Dựa trên dữ liệu thị trường hiện tại  \n**Phạm vi:** Phân khúc trà cụ gốm sứ cao cấp phục vụ trà đạo\n\n---\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\n### Mức độ khốc liệt của thị trường\n\nThị trường trà cụ gốm sứ cao cấp tại Hà Nội đang chứng kiến sự **cạnh tranh gay gắt** từ bốn nhóm đối thủ lớn với thế mạnh riêng biệt về chất liệu, nguồn gốc và phân khúc khách hàng. Cuộc cạnh tranh diễn ra trên nhiều mặt trận: giữa sản phẩm nội địa và nhập khẩu, giữa gốm truyền thống và chất liệu khác (thủy tinh, bạc), cũng như giữa thương hiệu gia dụng lớn và các nhãn hiệu trà cụ chuyên biệt.\n\n### Top 4 Thương hiệu dẫn đầu thị trường\n\nDựa trên danh tiếng, thị phần và sức ảnh hưởng được ghi nhận, các thương hiệu sau dẫn đầu t..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Hệ thống đã có đầy đủ dữ liệu tìm kiếm, phân tích xu hướng và phân tích đối thủ cạnh tranh. Bước tiếp theo là kích hoạt Report Agent để tổng hợp và tạo báo cáo chiến lược cuối cùng.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>BÁO CÁO CỐ VẤN CHIẾN LƯỢC: THỊ TRƯỜNG TRÀ CỤ GỐM SỨ CAO CẤP TẠI HÀ NỘI</h1>\n\n<h2>1. TÓM TẮT THỰC THI</h2>\n<p>Thị trường trà cụ gốm sứ cao cấp tại Hà Nội đang đứng trước cơ hội tăng trưởng kép nhờ làn sóng Gen Z khám phá văn hóa trà và xu hướng cá nhân hóa mạnh mẽ. Tuy nhiên, mức độ cạnh tranh hiện hữu rất khốc liệt từ các thương hiệu nội địa vững mạnh như Minh Long, Bát Tràng và sự xâm nhập của hàng nhập khẩu tinh xảo. Cơ hội lớn nhất nằm ở các mảng thị trường bị bỏ ngỏ: sản phẩm đa năng cho nhóm văn phòng, dòng trung cấp cá nhân hóa và quà tặng doanh nghiệp gắn câu chuyện văn hóa. Rủi ro chí mạng là sự thiếu hụt dữ liệu về sức chịu đựng của nhóm khách hàng cao cấp trước các biến động kinh tế. Khuyến nghị hàng đầu là tập trung phát triển dòng sản phẩm trung cấp cá nhân hóa kết hợp mô h...",
+  "sources_count": 67
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 131.30s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 92/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 22,
+  "depth": 22,
+  "citation": 23,
+  "total_score": 92,
+  "reason": "Cấu trúc đầy đủ, rõ ràng, đúng chuẩn báo cáo chiến lược. Thông tin dựa trên thực tế thị trường, không bịa đặt, nhưng thiếu số liệu định lượng. Phân tích xu hướng và đối thủ khá sâu sắc, đề xuất chiến lược cụ thể. Danh sách nguồn tham khảo phong phú, tuy nhiên một số link có thể không còn hoạt động."
+}

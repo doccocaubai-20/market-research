@@ -1,0 +1,83 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-14 | CẤU HÌNH: proposed ===
+Chủ đề: 'Thị trường thiết bị gia dụng thông minh (Smart Home) nội địa'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại chưa có dữ liệu tìm kiếm nào, cần kích hoạt Search Agent để thu thập thông tin thị trường từ Internet.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Thị trường thiết bị gia dụng thông minh (Smart Home) nội địa'
+Data: {
+  "original_topic": "Thị trường thiết bị gia dụng thông minh (Smart Home) nội địa",
+  "search_queries": {
+    "overview": [
+      "Tổng quan thị trường thiết bị gia dụng thông minh (Smart Home) tại Việt Nam",
+      "Báo cáo quy mô thị trường Smart Home nội địa"
+    ],
+    "trend": [
+      "Xu hướng phát triển thiết bị thông minh trong gia đình Việt Nam",
+      "Dự báo thị trường Smart Home nội địa 2024"
+    ],
+    "competition": [
+      "Các doanh nghiệp dẫn đầu thị trường Smart Home Việt Nam",
+      "Đối thủ cạnh tranh trong ngành thiết bị gia dụng thông minh nội địa"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Thị trường thiết bị gia dụng thông minh (Smart Home) nội địa'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường thiết bị gia dụng thông minh (Smart Home) tại Việt Nam đang trải qua giai đoạn bùng nổ mạnh mẽ, chuyển dịch từ một nhóm sản phẩm xa xỉ thành xu hướng tiêu dùng phổ thông nhờ tầng lớp trung lưu tăng nhanh và hạ tầng Internet cải thiện. Doanh thu toàn thị trường ước tính đạt khoảng 378 - 450 triệu USD với tỷ lệ thâm nhập hộ gia đình đạt gần 15%.\n\nPhân tích quy mô và tốc độ tăng trưởng\n\nTốc độ tăng trưởng vượt trội: Việt Nam hiện là một trong những quốc gia có tốc độ đón nhận thiết bị gia dụng thông minh nhanh nhất Đông Nam Á.\nDoanh thu phân khúc lớn: Nhóm điện tử gia dụng và thiết bị thông minh liên tục lập đỉnh. Riêng trong nửa đầu năm, lượng tiêu thụ của các dòng máy hút bụi lau nhà thông minh cao cấp đã tăng gấp đôi, bằng doanh số của cả năm trước đó.\nĐộng lực thúc đẩy: Sự hội ...",
+  "trends": "Xu hướng phát triển thiết bị thông minh tại Việt Nam đang chuyển dịch mạnh mẽ từ việc sử dụng các sản phẩm đơn lẻ sang xây dựng hệ sinh thái đồng bộ, tích hợp
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=done | Dữ liệu hợp lệ.
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Search data đã có, cần kích hoạt phân tích song song xu hướng và đối thủ để tiến tới bước tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "Dưới đây là phân tích dành cho nhà đầu tư dựa trên dữ liệu bài viết:\n\n### 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n- **Nhóm khách hàng mục tiêu chính**: Gia đình hiện đại, sống đa thế hệ (có cả người già và trẻ), thu nhập trung bình khá trở lên, tập trung ở đô thị.\n- **Họ tìm kiếm**: Hệ sinh thái đồng bộ (từ thiết bị rời → trọn gói), tích hợp AI tự động hóa theo thói quen, an ninh sinh trắc học (FaceID, camera AI), giải pháp tiết kiệm năng lượng, giao diện tiếng Việt + máy chủ nội địa để đảm bảo tốc độ và bảo mật.\n- **Hành vi mua thay đổi**: Chuyển từ mua lẻ sang lắp đặt trọn gói; ưu tiên thương hiệu Việt (Lumi, Hunonic, Vconnex, BKAV) vì chi phí hợp lý và phù hợp văn hóa; sẵn sàng đầu tư lớn hơn cho an ninh và quản lý năng lượng.\n\n### 2. CƠ HỘI CHƯA ĐƯỢC KHAI THÁC\n- **Phân khúc khách hàng bị bỏ ngỏ*..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# Báo Cáo Cạnh Tranh Thị Trường Thiết Bị Gia Dụng Thông Minh Nội Địa\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\n### Nhận định chung\nThị trường thiết bị gia dụng thông minh nội địa Việt Nam đang ở giai đoạn cạnh tranh khốc liệt với sự tham gia của ba nhóm chính: thương hiệu thuần Việt, thương hiệu liên doanh/OEM và làn sóng thương hiệu công nghệ quốc tế (Trung Quốc, Hàn Quốc, Nhật Bản). Quy mô thị trường Smart Home ước đạt khoảng nửa tỷ USD, trong khi toàn ngành thiết bị gia dụng thông minh đạt khoảng 12–13 tỷ USD với tốc độ tăng trưởng kép (CAGR) 3–6%/năm. Người dùng ngày càng ưu tiên các hệ sinh thái toàn diện, bản địa hóa cao, dễ sử dụng và dịch vụ hậu mãi tốt.\n\n### Top 5 đối thủ/thương hiệu dẫn đầu\n\n| Thứ hạng | Thương hiệu | Căn cứ dẫn đầu (theo dữ liệu) |\n|----------|-------------|-------..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Đã có đầy đủ dữ liệu tìm kiếm, phân tích xu hướng và đối thủ. Cần kích hoạt bước tạo báo cáo chiến lược cuối cùng.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>Báo Cáo Cố Vấn Chiến Lược: Thị Trường Thiết Bị Gia Dụng Thông Minh Nội Địa</h1>\n\n<h2>1. TÓM TẮT THỰC THI (EXECUTIVE SUMMARY)</h2>\n<p>Thị trường Smart Home nội địa đang tăng trưởng kép ~13%/năm (dự kiến đạt 506,4 triệu USD vào 2028), với cơ hội lớn nhất nằm ở phân khúc <strong>gia đình đa thế hệ</strong> chưa được phục vụ tốt, đặc biệt là nhóm người cao tuổi cần giao diện đơn giản, giọng nói tiếng Việt. Rủi ro chí mạng đến từ cạnh tranh khốc liệt với các thương hiệu nội địa mạnh (Lumi, BKAV) và quốc tế giá rẻ (Xiaomi), cùng rào cản tâm lý người già và chi phí đầu tư ban đầu. <strong>Khuyến nghị hành động:</strong> Tập trung phát triển giải pháp trọn gói cho gia đình nhiều thế hệ với chi phí tầm trung, tích hợp an ninh AI và giao diện đa phương thức (giọng nói + nút bấm vật lý), đồng thờ...",
+  "sources_count": 54
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=warning | Lỗi gọi LLM/Parse JSON (Lượt 1/3): DeepSeek returned empty content. Đang thử lại sau 2 giây...
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 97.36s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 91/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 24,
+  "factuality": 22,
+  "depth": 23,
+  "citation": 22,
+  "total_score": 91,
+  "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng; thông tin dựa trên thực tế thị trường, không có dấu hiệu ảo giác; phân tích sâu về cạnh tranh và khoảng trống thị trường, đề xuất chiến lược cụ thể; danh sách nguồn tham khảo phong phú và đáng tin cậy."
+}

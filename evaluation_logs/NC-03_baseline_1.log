@@ -1,0 +1,46 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-03 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Cần tìm kiếm tổng quan về thị trường dịch vụ giặt giày thể thao chuyên dụng, các công ty nổi bật, quy mô thị trường và xu hướng để có cơ sở cho nghiên cứu cạnh tranh.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thị trường dịch vụ giặt giày thể thao chuyên dụng sneaker care xu hướng cạnh tranh'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thị trường dịch vụ giặt giày thể thao chuyên dụng sneaker care xu hướng cạnh tranh': cào được 49 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Thông tin hiện có đã cung cấp tổng quan về thị trường, nhưng cần thêm dữ liệu về các đối thủ cụ thể (công ty, thương hiệu) và dịch vụ giá cả để phân tích cạnh tranh chi tiết.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'dịch vụ giặt giày thể thao uy tín tại Việt Nam giá cả đối thủ cạnh tranh'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'dịch vụ giặt giày thể thao uy tín tại Việt Nam giá cả đối thủ cạnh tranh': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Kết quả tìm kiếm thứ hai bị trống, chưa có thông tin về các đối thủ cụ thể và giá cả. Cần tìm kiếm thêm để có danh sách các thương hiệu dịch vụ giặt giày thể thao nổi bật tại Việt Nam.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'các thương hiệu dịch vụ giặt giày thể thao tại Việt Nam sneaker spa'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'các thương hiệu dịch vụ giặt giày thể thao tại Việt Nam sneaker spa': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 4 - Tư duy: Đã hết số lượt tìm kiếm tối đa (4 lượt). Dù thông tin về đối thủ cụ thể và giá cả chưa đầy đủ, nhưng dữ liệu tổng quan từ kết quả đầu tiên đủ để xây dựng báo cáo nghiên cứu thị trường với các phần: tổng quan, động lực, xu hướng, và phân tích cạnh tranh dựa trên thông tin hiện có.
+----------------------------------------
+[SINGLE] status=running | Quyết định dừng tìm kiếm và tiến hành tổng hợp báo cáo...
+----------------------------------------
+[SINGLE] status=running | Đang tổng hợp báo cáo kinh doanh cuối cùng...
+----------------------------------------
+[SINGLE] status=done | Đã hoàn thành báo cáo nghiên cứu thị trường.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 369.95s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 81/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 24,
+  "factuality": 22,
+  "depth": 20,
+  "citation": 15,
+  "total_score": 81,
+  "reason": "Cấu trúc báo cáo đầy đủ các phần theo yêu cầu, trình bày rõ ràng. Thông tin dựa trên thực tế, không bịa đặt, nhưng thiếu số liệu định lượng. Phân tích khá sâu sắc với bảng phân khúc và SWOT, nhưng còn chung chung. Trích dẫn nguồn có nhiều URL nhưng không đầy đủ, thiếu độ tin cậy."
+}

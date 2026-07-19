@@ -1,0 +1,46 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-12 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Phân tích thị trường căn hộ chung cư phân khúc bình dân tại Hà Nội'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Phân tích thị trường căn hộ chung cư phân khúc bình dân tại Hà Nội'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chưa có thông tin nào về thị trường căn hộ chung cư bình dân tại Hà Nội. Cần tìm kiếm tổng quan về thị trường này.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thị trường căn hộ chung cư bình dân Hà Nội tổng quan 2024 2025'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thị trường căn hộ chung cư bình dân Hà Nội tổng quan 2024 2025': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Kết quả tìm kiếm trống, cần thử với từ khóa chi tiết hơn về giá và nguồn cung.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'giá căn hộ bình dân Hà Nội 2024 nguồn cung'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'giá căn hộ bình dân Hà Nội 2024 nguồn cung': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Hai lượt tìm kiếm đều không có kết quả, nhưng vẫn còn 1 lượt. Cần thử với từ khóa khác để kiểm tra xem có thông tin nào không.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'căn hộ chung cư giá rẻ Hà Nội 2024 thị trường'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'căn hộ chung cư giá rẻ Hà Nội 2024 thị trường': cào được 35 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 4 - Tư duy: Đã có thông tin chi tiết về thay đổi mặt bằng giá, thực trạng nguồn cung - cầu, và các khu vực dự án. Đủ để viết báo cáo 7 phần.
+----------------------------------------
+[SINGLE] status=running | Quyết định dừng tìm kiếm và tiến hành tổng hợp báo cáo...
+----------------------------------------
+[SINGLE] status=running | Đang tổng hợp báo cáo kinh doanh cuối cùng...
+----------------------------------------
+[SINGLE] status=done | Đã hoàn thành báo cáo nghiên cứu thị trường.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 53.48s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 95/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 23,
+  "depth": 22,
+  "citation": 25,
+  "total_score": 95,
+  "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng. Thông tin dựa trên các nguồn báo chí uy tín, có hạn chế dữ liệu hợp lý. Phân tích khá sâu sắc nhưng có thể chi tiết hơn. Trích dẫn nguồn đầy đủ, cụ thể."
+}

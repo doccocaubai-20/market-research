@@ -1,0 +1,81 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-01 | CẤU HÌNH: proposed ===
+Chủ đề: 'Thị trường giải pháp phần mềm quản lý các nông trại trồng sầu riêng tại Đắk Lắk'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm chưa có, cần kích hoạt Search Agent để thu thập thông tin từ internet trước khi thực hiện các bước phân tích tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Thị trường giải pháp phần mềm quản lý các nông trại trồng sầu riêng tại Đắk Lắk'
+Data: {
+  "original_topic": "Thị trường giải pháp phần mềm quản lý các nông trại trồng sầu riêng tại Đắk Lắk",
+  "search_queries": {
+    "overview": [
+      "Thị trường phần mềm quản lý nông trại sầu riêng tại Đắk Lắk",
+      "Giải pháp số hóa quản lý vườn sầu riêng Đắk Lắk"
+    ],
+    "trend": [
+      "Xu hướng ứng dụng công nghệ trong trồng sầu riêng tại Đắk Lắk",
+      "Cơ hội và thách thức phần mềm quản lý nông trại sầu riêng Tây Nguyên"
+    ],
+    "competition": [
+      "Các công ty cung cấp phần mềm quản lý nông trại sầu riêng tại Việt Nam",
+      "Đối thủ cạnh tranh giải pháp quản lý vườn sầu riêng Đắk Lắk"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Thị trường giải pháp phần mềm quản lý các nông trại trồng sầu riêng tại Đắk Lắk'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường phần mềm quản lý nông trại sầu riêng tại Đắk Lắk đang phát triển mạnh mẽ và trở thành xu hướng tất yếu do diện tích vùng trồng tăng cao (hơn 32.000 ha) và yêu cầu khắt khe về mã số vùng trồng từ các thị trường xuất khẩu chính ngạch như Trung Quốc. Các giải pháp số hóa hiện nay không chỉ giúp tối ưu chi phí canh tác mà còn giải quyết bài toán cốt lõi là truy xuất nguồn gốc nông sản.\n\nCác phân khúc phần mềm phổ biến tại Đắk Lắk\n\nThị trường đang được định hình bởi ba nhóm giải pháp công nghệ chính:\n\nPhần mềm quản lý canh tác và IoT: Tích hợp trực tiếp với các cảm biến tại vườn để đo độ ẩm đất, nhiệt độ và tự động hóa hệ thống tưới tiêu, bón phân. Tiêu biểu có NextFarm hoặc giải pháp SmartFarm giúp nông dân giám sát từ xa qua điện thoại thông minh.\nNextFarm\nHệ thống số hóa và nhật k...",
+  "trends": "Xu hướng ứng dụng công nghệ trong trồng sầu riêng tại Đắk Lắk tập trung mạnh mẽ vào nông nghiệp thông minh (IoT), số hóa chuỗi cung ứng và canh tác bền vững
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=done | Dữ liệu hợp lệ.
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã có, cần tiến hành phân tích xu hướng và đối thủ cạnh tranh đồng thời để tiết kiệm thời gian. Hành động CALL_ANALYZE_PARALLEL sẽ kích hoạt cả hai luồng phân tích song song.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "**Phân tích thị trường giải pháp phần mềm quản lý nông trại sầu riêng tại Đắk Lắk (Góc nhìn nhà đầu tư)**\n\n---\n\n### 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n\n- **Nhóm khách hàng mục tiêu chính:**\n  - Các hợp tác xã và doanh nghiệp xuất khẩu sầu riêng (ưu tiên chuẩn VietGAP/GlobalGAP).\n  - Nhà vườn lớn (>10 ha) có nhu cầu quản lý từ xa, tối ưu chi phí.\n  - Một phần hộ nông dân nhỏ lẻ đang chuyển đổi số (nhưng còn rào cản về chi phí và thói quen).\n\n- **Họ tìm kiếm gì?**\n  - **Số hóa quy trình** (nhật ký canh tác, truy xuất nguồn gốc) để đáp ứng tiêu chuẩn xuất khẩu sang Trung Quốc, Mỹ, EU.\n  - **Giám sát từ xa** qua IoT (cảm biến độ ẩm, tưới tự động) và camera.\n  - **Dự báo dịch bệnh** (xì mủ, thối rễ) dựa trên dữ liệu thời tiết đặc thù Tây Nguyên.\n  - Công cụ **tối ưu chi phí** vật tư, phân bón.\n\n- **..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# BÁO CÁO CẠNH TRANH THỊ TRƯỜNG GIẢI PHÁP PHẦN MỀM QUẢN LÝ NÔNG TRẠI SẦU RIÊNG TẠI ĐẮK LẮK\n\n---\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\n### Mức độ khốc liệt của thị trường\nThị trường đang ở giai đoạn **cạnh tranh đa chiều, mức độ trung bình đến cao** với sự tham gia của nhiều nhóm đối thủ khác nhau:\n- **Đối thủ gián tiếp lớn nhất** là phương pháp quản lý truyền thống (ghi sổ tay, quản lý thủ công) – chiếm tỷ lệ áp đảo trong tập quán nông dân.\n- **Đối thủ cạnh tranh trực tiếp** bao gồm các doanh nghiệp AgTech thương mại, phần mềm chính thống từ cơ quan Nhà nước, và giải pháp nội bộ từ các doanh nghiệp bao tiêu/xuất khẩu lớn.\n- Thị trường chưa bão hòa, nhưng áp lực cạnh tranh gia tăng khi yêu cầu về truy xuất nguồn gốc xuất khẩu và số hóa quy trình canh tác trở nên bắt buộc.\n\n### Top 5 Đối th..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dựa trên trạng thái hệ thống, tôi đã thu thập và phân tích đầy đủ dữ liệu tìm kiếm, xu hướng và đối thủ cạnh tranh. Bước tiếp theo để hoàn thành báo cáo chiến lược là kích hoạt Report Agent để hợp nhất các kết quả và tạo báo cáo cuối cùng.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>Báo cáo Cố vấn Chiến lược: Thị trường Giải pháp Phần mềm Quản lý Nông trại Sầu riêng tại Đắk Lắk</h1>\n\n<h2>1. Tóm tắt Thực thi (Executive Summary)</h2>\n<p>Thị trường giải pháp phần mềm quản lý nông trại sầu riêng tại Đắk Lắk đang ở giai đoạn chuyển đổi mạnh mẽ, được thúc đẩy bởi áp lực tuân thủ tiêu chuẩn xuất khẩu và nhu cầu số hóa quy trình canh tác. Cơ hội lớn nhất nằm ở việc phát triển các giải pháp <strong>chi phí thấp, hỗ trợ offline và linh hoạt cho đa cây trồng</strong>, nhắm đến phân khúc hộ nông dân nhỏ và vùng sâu vùng xa – nơi chưa được đối thủ hiện tại phục vụ tốt. Rủi ro chí mạng là <strong>tâm lý ngại thay đổi</strong> của nông dân và <strong>hạ tầng kết nối yếu</strong>, có thể làm giảm tỷ lệ áp dụng và gây gián đoạn trải nghiệm. Khuyến nghị hành động: Nhà đầu tư nên tậ...",
+  "sources_count": 36
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 85.78s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 95/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 23,
+  "depth": 22,
+  "citation": 25,
+  "total_score": 95,
+  "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, đúng chuẩn. Thông tin xác thực, dựa trên thực tế thị trường và có trích dẫn nguồn uy tín, không bịa đặt. Phân tích sâu sắc, chi tiết về nhu cầu, đối thủ và đề xuất chiến lược cụ thể, nhưng thiếu một số dữ liệu định lượng. Trích dẫn nguồn đầy đủ với 10 URL đáng tin cậy."
+}

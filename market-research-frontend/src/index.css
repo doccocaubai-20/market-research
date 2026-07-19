@@ -425,6 +425,93 @@ input {
   color: var(--ink);
 }
 
+/* Kiểu định dạng cho báo cáo kết xuất HTML */
+.report-content h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 24px;
+  color: var(--accent-strong);
+  border-bottom: 2px solid rgba(169, 107, 91, 0.4);
+  padding-bottom: 8px;
+  margin-top: 28px;
+  margin-bottom: 16px;
+}
+
+.report-content h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  color: var(--accent-strong);
+  margin-top: 24px;
+  margin-bottom: 12px;
+}
+
+.report-content h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 17px;
+  color: var(--accent-strong);
+  margin-top: 20px;
+  margin-bottom: 8px;
+}
+
+.report-content p {
+  margin: 10px 0 16px;
+}
+
+.report-content ul,
+.report-content ol {
+  margin: 12px 0 16px 20px;
+  padding: 0;
+}
+
+.report-content li {
+  margin: 6px 0;
+}
+
+.report-content strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.report-content blockquote {
+  border-left: 4px solid var(--accent);
+  background: rgba(47, 93, 98, 0.05);
+  padding: 14px 18px;
+  margin: 20px 0;
+  border-radius: 0 12px 12px 0;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.report-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  background: var(--surface);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.report-content th,
+.report-content td {
+  padding: 12px 16px;
+  border: 1px solid var(--line);
+  text-align: left;
+  font-size: 14px;
+}
+
+.report-content th {
+  background-color: var(--accent-soft);
+  color: var(--accent-strong);
+  font-weight: 600;
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+.report-content tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Hỗ trợ ngược cho cấu trúc cũ */
 .report-h1 {
   font-size: 22px;
   border-bottom: 2px solid rgba(169, 107, 91, 0.4);

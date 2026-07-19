@@ -1,0 +1,506 @@
+{
+  "text": "Tại Việt Nam, các công ty cung cấp phần mềm quản lý nông trại (trong đó có phân hệ chuyên sâu hoặc khả năng tùy biến cao cho cây sầu riêng) tập trung vào việc quản lý nhật ký canh tác, tự động hóa tưới tiêu, theo dõi sâu bệnh và tích hợp truy xuất nguồn gốc để phục vụ xuất khẩu.\n\nDưới đây là các đơn vị tiêu biểu cung cấp giải pháp này:\n\n1. Các nhà cung cấp phần mềm và giải pháp nông nghiệp thông minh\n\nNextX NextFarm: Đây là một trong những đơn vị đi đầu về nông nghiệp thông minh tại Việt Nam. Hệ thống NextFarm cho phép chủ vườn sầu riêng số hóa toàn bộ quy trình từ bón phân, phun thuốc, quản lý sâu bệnh, đến tích hợp hệ thống châm phân dinh dưỡng tự động và tưới phun chính xác dựa trên dữ liệu cảm biến đất và thời tiết.\nNextX NextFarm\nVIIS (Vietnamese IoT Solutions): Đơn vị phát triển phần mềm VIIS SmartFarm chuyên sâu cho việc quản lý canh tác sầu riêng. Phần mềm hỗ trợ nông dân ghi chép nhật ký số, theo dõi lịch trình chăm sóc khắt khe của sầu riêng qua từng giai đoạn (làm bông, nuôi trái, xả nhụy) và quản lý chi phí vật tư đầu vào.\nTraceVerified: Nổi tiếng với giải pháp TraceFarm. Đối với các trang trại sầu riêng định hướng xuất khẩu sang Trung Quốc hoặc các thị trường khó tính, TraceFarm giúp chuẩn hóa dữ liệu vùng trồng, quản lý mã số vùng trồng và kết xuất dữ liệu truy xuất nguồn gốc bằng mã QR một cách minh bạch.\nTraceVerified\nAutoAgri: Nền tảng quản lý chuỗi nông nghiệp thông minh giúp chủ vườn số hóa quy trình chăm sóc. Hệ thống của AutoAgri có khả năng tích hợp camera và công nghệ Time-lapse để giám sát quá trình lớn lên của trái sầu riêng từ xa, giúp đối tác thu mua dễ dàng thẩm định chất lượng.\nAutoAgri\nGlobal CyberSoft (Hitachi Consulting) & QTSC: Phát triển hệ thống Smart Agri. Đây là giải pháp phân tích chất lượng, lập kế hoạch canh tác và tính toán chi phí doanh thu theo mùa vụ dựa trên các chỉ số môi trường (độ ẩm, pH đất), rất phù hợp cho các mô hình đại điền hoặc hợp tác xã sầu riêng quy mô lớn.\n\n2. Bảng so sánh các tính năng cốt lõi\n\nTên phần mềm\nQuản lý nhật ký & Lịch vụ mùa\nTự động hóa IoT (Tưới/Châm phân)\nTruy xuất nguồn gốc (QR Code)\nPhù hợp cho\nNextFarm\nKhá mạnh, tùy biến theo giai đoạn sầu riêng\nCó kết nối phần cứng chuyên sâu\nCó tích hợp\nTrang trại vừa đến lớn, cần tự động hóa cao\nVIIS SmartFarm\nChuyên sâu cho quy trình sầu riêng\nTích hợp theo yêu cầu\nCó tích hợp\nNhà vườn, HTX tập trung vào kỹ thuật cây\nTraceFarm\nChuẩn hóa theo tiêu chuẩn VietGAP/GlobalGAP\nCơ bản\nRất mạnh, chuẩn xuất khẩu\nHợp tác xã, DN xuất khẩu chính ngạch\nAutoAgri\nQuản lý tiến độ trực quan bằng hình ảnh\nCơ bản\nRất mạnh, minh bạch chuỗi\nDN làm thương hiệu, chuỗi liên kết tiêu thụ\n\n3. Lợi ích khi ứng dụng phần mềm vào vườn sầu riêng\n\nKiểm soát chặt chẽ quy trình làm bông/trái: Sầu riêng là loại cây cực kỳ \"nhạy cảm\" với thời tiết và phân bón. Phần mềm giúp thiết lập cảnh báo và nhắc nhở phun thuốc, bón phân đúng ngày đúng lượng.\nBảo vệ mã số vùng trồng: Hỗ trợ lưu trữ hồ sơ canh tác số - điều kiện bắt buộc để các cơ quan chức năng (như Tổng cục Hải quan Trung Quốc) kiểm tra và cấp phép xuất khẩu chính ngạch.\nTối ưu chi phí nhân công: Các giải pháp kết hợp IoT cho phép vận hành hệ thống tưới nước, xịt thuốc tự động chỉ qua một nút bấm trên điện thoại, giảm đáng kể chi phí nhân công trực vườn.\n\nNếu bạn đang tìm kiếm giải pháp cho vườn sầu riêng của mình, hãy cho tôi biết thêm về quy mô diện tích vườn của bạn, bạn đã có hệ thống tưới tự động chưa, hay mục tiêu của bạn có phải là xuất khẩu chính ngạch không để tôi tư vấn giải pháp phù hợp nhất!",
+  "sources": [
+    {
+      "position": 1,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Tại Việt Nam, các công ty cung cấp phần mềm quản lý nông trại (trong đó có phân hệ chuyên sâu hoặc khả năng tùy biến cao cho cây sầu riêng) tập trung vào việc quản lý nhật ký canh tác, tự động hóa tưới tiêu, theo dõi sâu bệnh và tích hợp truy xuất nguồn gốc để phục vụ xuất khẩu."
+    },
+    {
+      "position": 2,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Dưới đây là các đơn vị tiêu biểu cung cấp giải pháp này:"
+    },
+    {
+      "position": 3,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "1. Các nhà cung cấp phần mềm và giải pháp nông nghiệp thông minh"
+    },
+    {
+      "position": 4,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "NextX NextFarm: Đây là một trong những đơn vị đi đầu về nông nghiệp thông minh tại Việt Nam. Hệ thống NextFarm cho phép chủ vườn sầu riêng số hóa toàn bộ quy trình từ bón phân, phun thuốc, quản lý sâu bệnh, đến tích hợp hệ thống châm phân dinh dưỡng tự động và tưới phun chính xác dựa trên dữ liệu cảm biến đất và thời tiết.\nNextX NextFarm\nVIIS (Vietnamese IoT Solutions): Đơn vị phát triển phần mềm VIIS SmartFarm chuyên sâu cho việc quản lý canh tác sầu riêng. Phần mềm hỗ trợ nông dân ghi chép nhật ký số, theo dõi lịch trình chăm sóc khắt khe của sầu riêng qua từng giai đoạn (làm bông, nuôi trái, xả nhụy) và quản lý chi phí vật tư đầu vào.\nTraceVerified: Nổi tiếng với giải pháp TraceFarm. Đối với các trang trại sầu riêng định hướng xuất khẩu sang Trung Quốc hoặc các thị trường khó tính, TraceFarm giúp chuẩn hóa dữ liệu vùng trồng, quản lý mã số vùng trồng và kết xuất dữ liệu truy xuất nguồn gốc bằng mã QR một cách minh bạch.\nTraceVerified\nAutoAgri: Nền tảng quản lý chuỗi nông nghiệp thông minh giúp chủ vườn số hóa quy trình chăm sóc. Hệ thống của AutoAgri có khả năng tích hợp camera và công nghệ Time-lapse để giám sát quá trình lớn lên của trái sầu riêng từ xa, giúp đối tác thu mua dễ dàng thẩm định chất lượng.\nAutoAgri\nGlobal CyberSoft (Hitachi Consulting) & QTSC: Phát triển hệ thống Smart Agri. Đây là giải pháp phân tích chất lượng, lập kế hoạch canh tác và tính toán chi phí doanh thu theo mùa vụ dựa trên các chỉ số môi trường (độ ẩm, pH đất), rất phù hợp cho các mô hình đại điền hoặc hợp tác xã sầu riêng quy mô lớn."
+    },
+    {
+      "position": 5,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "2. Bảng so sánh các tính năng cốt lõi"
+    },
+    {
+      "position": 6,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Tên phần mềm\nQuản lý nhật ký & Lịch vụ mùa\nTự động hóa IoT (Tưới/Châm phân)\nTruy xuất nguồn gốc (QR Code)\nPhù hợp cho\nNextFarm\nKhá mạnh, tùy biến theo giai đoạn sầu riêng\nCó kết nối phần cứng chuyên sâu\nCó tích hợp\nTrang trại vừa đến lớn, cần tự động hóa cao\nVIIS SmartFarm\nChuyên sâu cho quy trình sầu riêng\nTích hợp theo yêu cầu\nCó tích hợp\nNhà vườn, HTX tập trung vào kỹ thuật cây\nTraceFarm\nChuẩn hóa theo tiêu chuẩn VietGAP/GlobalGAP\nCơ bản\nRất mạnh, chuẩn xuất khẩu\nHợp tác xã, DN xuất khẩu chính ngạch\nAutoAgri\nQuản lý tiến độ trực quan bằng hình ảnh\nCơ bản\nRất mạnh, minh bạch chuỗi\nDN làm thương hiệu, chuỗi liên kết tiêu thụ"
+    },
+    {
+      "position": 7,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "3. Lợi ích khi ứng dụng phần mềm vào vườn sầu riêng"
+    },
+    {
+      "position": 8,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Kiểm soát chặt chẽ quy trình làm bông/trái: Sầu riêng là loại cây cực kỳ \"nhạy cảm\" với thời tiết và phân bón. Phần mềm giúp thiết lập cảnh báo và nhắc nhở phun thuốc, bón phân đúng ngày đúng lượng.\nBảo vệ mã số vùng trồng: Hỗ trợ lưu trữ hồ sơ canh tác số - điều kiện bắt buộc để các cơ quan chức năng (như Tổng cục Hải quan Trung Quốc) kiểm tra và cấp phép xuất khẩu chính ngạch.\nTối ưu chi phí nhân công: Các giải pháp kết hợp IoT cho phép vận hành hệ thống tưới nước, xịt thuốc tự động chỉ qua một nút bấm trên điện thoại, giảm đáng kể chi phí nhân công trực vườn."
+    },
+    {
+      "position": 9,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Nếu bạn đang tìm kiếm giải pháp cho vườn sầu riêng của mình, hãy cho tôi biết thêm về quy mô diện tích vườn của bạn, bạn đã có hệ thống tưới tự động chưa, hay mục tiêu của bạn có phải là xuất khẩu chính ngạch không để tôi tư vấn giải pháp phù hợp nhất!"
+    },
+    {
+      "position": 1,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 2,
+      "title": "",
+      "link": "https://nextcrm.vn/phan-mem-quan-ly-trang-trai-va-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 3,
+      "title": "",
+      "link": "https://fat.uet.vnu.edu.vn/5-phan-mem-ho-tro-noi-bat-danh-cho-nong-nghiep",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 4,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 5,
+      "title": "",
+      "link": "https://traceverified.com/service/tracevalue-phan-mem-quan-ly-chuoi-gia-tri-nong-san/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 6,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 7,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 8,
+      "title": "",
+      "link": "https://traceverified.com/service/tracevalue-phan-mem-quan-ly-chuoi-gia-tri-nong-san/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 9,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 10,
+      "title": "",
+      "link": "https://nextcrm.vn/phan-mem-quan-ly-trang-trai-va-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 11,
+      "title": "",
+      "link": "https://fat.uet.vnu.edu.vn/5-phan-mem-ho-tro-noi-bat-danh-cho-nong-nghiep",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 12,
+      "title": "",
+      "link": "https://vnexpress.net/5-phan-mem-ho-tro-noi-bat-danh-cho-nong-nghiep-3750454.html",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 13,
+      "title": "",
+      "link": "https://www.facebook.com/VietnameseIoTSolutions/posts/viis-smartfarm-ph%E1%BA%A7n-m%E1%BB%81m-qu%E1%BA%A3n-l%C3%BD-canh-t%C3%A1c-s%E1%BA%A7u-ri%C3%AAng-ng%C3%A0nh-s%E1%BA%A3n-xu%E1%BA%A5t-s%E1%BA%A7u-ri%C3%AAng-%C4%91ang/527291640166100/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 14,
+      "title": "",
+      "link": "https://vnexpress.net/5-phan-mem-ho-tro-noi-bat-danh-cho-nong-nghiep-3750454.html",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 15,
+      "title": "",
+      "link": "https://autoagri.vn/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 16,
+      "title": "",
+      "link": "https://fat.uet.vnu.edu.vn/5-phan-mem-ho-tro-noi-bat-danh-cho-nong-nghiep",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 17,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 18,
+      "title": "",
+      "link": "https://www.facebook.com/VietnameseIoTSolutions/posts/viis-smartfarm-ph%E1%BA%A7n-m%E1%BB%81m-qu%E1%BA%A3n-l%C3%BD-canh-t%C3%A1c-s%E1%BA%A7u-ri%C3%AAng-ng%C3%A0nh-s%E1%BA%A3n-xu%E1%BA%A5t-s%E1%BA%A7u-ri%C3%AAng-%C4%91ang/527291640166100/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 19,
+      "title": "",
+      "link": "https://traceverified.com/service/tracevalue-phan-mem-quan-ly-chuoi-gia-tri-nong-san/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 20,
+      "title": "",
+      "link": "https://traceverified.com/service/tracevalue-phan-mem-quan-ly-chuoi-gia-tri-nong-san/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 21,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 22,
+      "title": "",
+      "link": "https://traceverified.com/service/tracevalue-phan-mem-quan-ly-chuoi-gia-tri-nong-san/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 23,
+      "title": "",
+      "link": "https://autoagri.vn/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 24,
+      "title": "",
+      "link": "https://autoagri.vn/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 25,
+      "title": "",
+      "link": "https://autoagri.vn/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 26,
+      "title": "",
+      "link": "https://autoagri.vn/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 27,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 28,
+      "title": "",
+      "link": "https://traceverified.com/service/tracevalue-phan-mem-quan-ly-chuoi-gia-tri-nong-san/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 29,
+      "title": "",
+      "link": "https://vnexpress.net/5-phan-mem-ho-tro-noi-bat-danh-cho-nong-nghiep-3750454.html",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 30,
+      "title": "",
+      "link": "https://fat.uet.vnu.edu.vn/5-phan-mem-ho-tro-noi-bat-danh-cho-nong-nghiep",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 31,
+      "title": "",
+      "link": "https://vnexpress.net/5-phan-mem-ho-tro-noi-bat-danh-cho-nong-nghiep-3750454.html",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 32,
+      "title": "",
+      "link": "https://autoagri.vn/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 33,
+      "title": "",
+      "link": "https://traceverified.com/service/tracevalue-phan-mem-quan-ly-chuoi-gia-tri-nong-san/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 34,
+      "title": "",
+      "link": "https://vnexpress.net/5-phan-mem-ho-tro-noi-bat-danh-cho-nong-nghiep-3750454.html",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 35,
+      "title": "",
+      "link": "https://nextcrm.vn/phan-mem-quan-ly-trang-trai-va-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 36,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 37,
+      "title": "",
+      "link": "https://autoagri.vn/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 38,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 39,
+      "title": "",
+      "link": "https://traceverified.com/service/tracevalue-phan-mem-quan-ly-chuoi-gia-tri-nong-san/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 40,
+      "title": "",
+      "link": "https://nextfarm.vn/phan-mem-quan-ly-trang-trai-nong-trai",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 41,
+      "title": "",
+      "link": "https://farmgo.vn/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    }
+  ],
+  "html_url": "https://serpapi.com/searches/6a5ba5bc80f30efcae81d0a3.html"
+}

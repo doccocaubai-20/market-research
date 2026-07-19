@@ -1,0 +1,33 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-11 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay tự túc'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay tự túc'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chưa có thông tin nào về chủ đề, cần tìm kiếm tổng quan thị trường du lịch nghỉ dưỡng và homestay tự túc để có cơ sở dữ liệu ban đầu.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'động lực tăng trưởng ngành du lịch nghỉ dưỡng homestay tự túc'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'động lực tăng trưởng ngành du lịch nghỉ dưỡng homestay tự túc': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Kết quả tìm kiếm đầu tiên không trả về thông tin, cần mở rộng tìm kiếm với từ khóa cụ thể hơn về thị trường homestay và du lịch tự túc tại Việt Nam.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thị trường homestay Việt Nam 2024 tăng trưởng'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thị trường homestay Việt Nam 2024 tăng trưởng': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Các truy vấn trước không trả về kết quả, có thể do từ khóa quá cụ thể. Cần thử tìm kiếm với từ khóa rộng hơn về xu hướng du lịch homestay và tự túc tại Việt Nam.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'xu hướng du lịch homestay tự túc Việt Nam 2024'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'xu hướng du lịch homestay tự túc Việt Nam 2024': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 4 - Tư duy: Sau 3 lượt tìm kiếm không có kết quả, nhiều khả năng chủ đề này không được ghi nhận trong các nguồn dữ liệu thực tế hoặc là một chủ đề hư cấu. Do đó, tôi quyết định hủy bỏ nghiên cứu.
+----------------------------------------
+[SINGLE] status=failed | Tác tử tự đánh giá phát hiện chủ đề hư cấu: Sau 3 lượt tìm kiếm không có kết quả, nhiều khả năng chủ đề này không được ghi nhận trong các nguồn dữ liệu thực tế hoặc là một chủ đề hư cấu. Do đó, tôi quyết định hủy bỏ nghiên cứu.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 30.43s
+Trạng thái luồng chạy (Flow Status): FAILED
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 0/100

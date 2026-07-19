@@ -1,0 +1,44 @@
+=== KHỞI CHẠY THỬ NGHIỆM: BY-01 | CẤU HÌNH: proposed ===
+Chủ đề: 'Phân tích ma trận SWOT của thị trường kẹo mút vị mắm tôm tại Nam Cực'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hệ thống chưa có dữ liệu tìm kiếm. Cần kích hoạt Search Agent để thu thập thông tin về thị trường kẹo mút vị mắm tôm tại Nam Cực, làm nền tảng cho các phân tích tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Phân tích ma trận SWOT của thị trường kẹo mút vị mắm tôm tại Nam Cực'
+Data: {
+  "original_topic": "Phân tích ma trận SWOT của thị trường kẹo mút vị mắm tôm tại Nam Cực",
+  "search_queries": {
+    "overview": [
+      "kẹo mút vị mắm tôm thị trường tổng quan",
+      "kẹo que mắm tôm Nam Cực quy mô báo cáo"
+    ],
+    "trend": [
+      "xu hướng kẹo mút vị mắm tôm Nam Cực cơ hội rủi ro",
+      "dự báo thị trường kẹo vị lạ Nam Cực"
+    ],
+    "competition": [
+      "nhà sản xuất kẹo mút mắm tôm Nam Cực",
+      "doanh nghiệp dẫn đầu kẹo mút vị mắm tôm"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Phân tích ma trận SWOT của thị trường kẹo mút vị mắm tôm tại Nam Cực'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Kẹo mút vị mắm tôm không phải là một sản phẩm thương mại chính thức được sản xuất hàng loạt trên thị trường bánh kẹo. Sản phẩm này thực chất là một nội dung sáng tạo thử thách (challenge), mang tính chất giật gân (clickbait) trên các nền tảng mạng xã hội như TikTok và YouTube nhằm thu hút lượt xem.\nTikTok\nYouTube\n\nDưới đây là bức tranh tổng quan thực tế về hiện tượng này và thị trường liên quan.\n\n1. Bản chất của \"Kẹo mút vị mắm tôm\"\n\nTrào lưu mạng xã hội: Các nhà sáng tạo nội dung thường tự làm thủ công bằng cách trộn mắm tôm vào đường đun chảy, hoặc đơn giản là chấm kẹo mút vị trái cây truyền thống vào chén mắm tôm để thực hiện các video thử thách ăn uống (mukbang).\nMục đích truyền thông: Sản phẩm đánh vào sự tò mò và phản ứng trái ngược giữa vị ngọt lịm của kẹo và vị mặn nồng, đặc trưng ...",
+  "trends": "Ý tưởng về \"kẹo mút vị mắm tôm Nam Cực\" thực chất là một nội dung mang tính giải trí, giật gân (rage-baiting) hoặc một thử thách thử nghiệm món ăn kỳ q
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=failed | INVALID
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 5.70s
+Trạng thái luồng chạy (Flow Status): INVALID
+Trạng thái kiểm duyệt (Validator Status): FAILED
+Điểm chất lượng (RQS): 0/100

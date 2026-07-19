@@ -1,0 +1,58 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-13 | CẤU HÌNH: proposed ===
+Chủ đề: 'Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hệ thống chưa có dữ liệu tìm kiếm nào. Cần kích hoạt Search Agent để thu thập thông tin thị trường về tự động hóa trong quản lý kho vận thông minh, làm cơ sở cho các phân tích sau.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh'
+Data: {
+  "original_topic": "Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh",
+  "search_queries": {
+    "overview": [
+      "Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh",
+      "Báo cáo tự động hóa kho vận thông minh"
+    ],
+    "trend": [
+      "Xu hướng tự động hóa kho vận thông minh",
+      "Cơ hội ứng dụng tự động hóa quản lý kho"
+    ],
+    "competition": [
+      "Doanh nghiệp tự động hóa kho vận thông minh",
+      "Các giải pháp tự động hóa kho vận hàng đầu"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "",
+  "trends": "",
+  "competitors": "",
+  "sources_count": 0,
+  "html_pages": [
+    {
+      "label": "Overview",
+      "url": "https://serpapi.com/searches/6a5ba2d72f5ea0c8be4a2df1.html"
+    },
+    {
+      "label": "Trends",
+      "url": "https://serpapi.com/searches/6a5ba2d7fbbebb745dfa8b8d.html"
+    },
+    {
+      "label": "Competitors",
+      "url": "https://serpapi.com/searches/6a5ba2d76adf271eaa851a82.html"
+    }
+  ]
+}
+----------------------------------------
+[ORCHESTRATOR] status=failed | INSUFFICIENT_EVIDENCE
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 2.07s
+Trạng thái luồng chạy (Flow Status): INSUFFICIENT_EVIDENCE
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 0/100

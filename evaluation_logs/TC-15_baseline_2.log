@@ -1,0 +1,77 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-15 | CẤU HÌNH: baseline_2 ===
+Chủ đề: 'Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại chưa có dữ liệu tìm kiếm. Cần kích hoạt Search Agent để thu thập thông tin từ SerpAPI về chủ đề 'Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME'.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME'
+Data: {
+  "original_topic": "Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME",
+  "search_queries": {
+    "overview": [
+      "SaaS ERP cho SME định nghĩa và lợi ích",
+      "Báo cáo thị trường phần mềm quản trị doanh nghiệp cho doanh nghiệp vừa và nhỏ"
+    ],
+    "trend": [
+      "Xu hướng SaaS ERP 2024 cho SME",
+      "Cơ hội và thách thức triển khai ERP Cloud cho doanh nghiệp nhỏ"
+    ],
+    "competition": [
+      "Top nhà cung cấp SaaS ERP cho SME",
+      "So sánh phần mềm ERP cho doanh nghiệp vừa và nhỏ"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "SaaS ERP cho SME là hệ thống hoạch định nguồn lực doanh nghiệp chạy trên nền tảng điện toán đám mây, được nhà cung cấp cho các doanh nghiệp vừa và nhỏ thuê dưới dạng dịch vụ trả phí định kỳ thay vì phải tự mua bản quyền và cài đặt trên máy chủ riêng. Giải pháp này giúp các doanh nghiệp quy mô nhỏ giải quyết bài toán quản trị tổng thể với chi phí tối ưu nhất.\n\nĐịnh nghĩa chi tiết\n\nMô hình này là sự kết hợp của ba khái niệm cốt lõi:\n\nERP (Hoạch định nguồn lực doanh nghiệp): Hệ thống tích hợp toàn bộ quy trình cốt lõi của doanh nghiệp (như tài chính, nhân sự, kho vận, bán hàng, sản xuất) vào một nền tảng dữ liệu duy nhất.\nSaaS (Phần mềm dưới dạng dịch vụ): Mô hình phân phối phần mềm qua Internet. Doanh nghiệp không sở hữu mã nguồn mà trả phí thuê theo tháng/năm. Nhà cung cấp chịu trách nhiệm ...",
+  "trends": "Xu hướng SaaS ERP 2024 dành cho các doanh nghiệp vừa và nhỏ (SME) tập trung mạnh mẽ vào tính linh hoạt, tối ưu chi phí và tích hợp trí tuệ nhân tạo (AI). Tro
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công (Không qua kiểm duyệt).
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã có, cần tiến hành phân tích song song xu hướng và đối thủ cạnh tranh. Hành động lịch sử chỉ có CALL_SEARCH, chưa có phân tích nên CALL_ANALYZE_PARALLEL là hợp lệ và cần thiết.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "Dưới góc nhìn nhà đầu tư, đây là phân tích chiến lược dựa trên dữ liệu bài viết:\n\n---\n\n### 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n\n**Nhóm khách hàng mục tiêu chính:**\n- Doanh nghiệp vừa và nhỏ (SME) tại Việt Nam, đặc biệt trong các ngành: **sản xuất, bán lẻ, dịch vụ**.\n- Quy mô nhân sự từ vài chục đến vài trăm người, có nhu cầu chuyển đổi số nhưng hạn chế về ngân sách và nhân lực IT.\n\n**Họ tìm kiếm ở sản phẩm/dịch vụ:**\n- **Linh hoạt & tối ưu chi phí:** Ưu tiên mô hình thuê bao (SaaS) thay vì đầu tư máy chủ; chỉ mua phân hệ cần thiết (Composable ERP).\n- **Tích hợp AI & tự động hóa:** Dự báo dòng tiền, tồn kho; trợ lý ảo nhập liệu, phê duyệt tự động.\n- **Khả năng di động:** Làm việc từ xa, duyệt báo cáo/phê duyệt trên điện thoại.\n- **Bản địa hóa:** Tự động cập nhật Luật Thuế, hóa đơn điện tử, chuẩn ..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "## 1. Bức tranh Cạnh tranh Tổng quan\n\n- **Mức độ khốc liệt:** Thị trường SaaS ERP cho SME tại Việt Nam đang ở giai đoạn cạnh tranh gay gắt, được phân hóa rõ rệt giữa hai khối: giải pháp quốc tế (công nghệ mạnh, chuẩn hóa toàn cầu) và giải pháp nội địa (tối ưu pháp lý, chi phí thấp). Sự đa dạng về lựa chọn khiến các nhà cung cấp phải cạnh tranh quyết liệt để giành thị phần thông qua các lợi thế riêng biệt.\n\n- **Top 5 thương hiệu dẫn đầu** (dựa trên danh sách nhà cung cấp hàng đầu trong thẻ <data>):\n  1. **Oracle NetSuite** – Giải pháp đám mây toàn diện, mạnh về tài chính đa quốc gia.\n  2. **Microsoft Dynamics 365 Business Central** – Tích hợp sâu hệ sinh thái Microsoft.\n  3. **SAP Business One (Cloud Edition)** – Quy trình chuẩn hóa quốc tế, tập trung chuỗi cung ứng.\n  4. **Odoo** – Mã nguồ..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Cả dữ liệu xu hướng và đối thủ cạnh tranh đã sẵn sàng, đồng thời báo cáo cuối cùng chưa được tạo. Vì vậy, cần kích hoạt Report Agent để tổng hợp và render báo cáo chiến lược.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>BÁO CÁO CỐ VẤN CHIẾN LƯỢC: THỊ TRƯỜNG SAAS ERP CHO SME VIỆT NAM</h1>\n\n<h2>1. TÓM TẮT THỰC THI</h2>\n<p>Thị trường SaaS ERP cho SME Việt Nam đang bước vào giai đoạn tăng tốc với cơ hội lớn nhất nằm ở phân khúc doanh nghiệp siêu nhỏ (dưới 10 nhân sự) và các ngách sản xuất nhỏ lẻ – nơi chưa có giải pháp nào thực sự tối ưu. Rủi ro chí mạng là sự cạnh tranh gay gắt từ các đối thủ đã định vị vững chắc như MISA (bản địa hóa), Odoo (chi phí thấp) và Oracle NetSuite (mở rộng quốc tế), cùng với nguy cơ khách hàng kháng cự thay đổi dẫn đến tỷ lệ thất bại dự án cao. Khuyến nghị hành động: đầu tư vào mô hình kết hợp <strong>phần mềm bản địa hóa + AI đặc thù ngành + dịch vụ tư vấn chuyển đổi số trọn gói</strong>, nhắm thẳng vào lỗ hổng thị trường – doanh nghiệp siêu nhỏ và SMEs sản xuất chưa được tiế...",
+  "sources_count": 63
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 98.75s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 97/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 25,
+  "depth": 25,
+  "citation": 22,
+  "total_score": 97,
+  "reason": "Cấu trúc báo cáo đầy đủ các phần cần thiết, mã HTML rõ ràng. Thông tin dựa trên thực tế, không có hư cấu, có chỉ rõ giả định và hạn chế dữ liệu. Phân tích sâu sắc, logic, đề xuất chiến lược cụ thể. Có 10 nguồn tham khảo dạng URL, tuy nhiên một số nguồn là blog thông thường hoặc bản dịch, chưa hoàn toàn học thuật, nên trừ nhẹ điểm."
+}

@@ -2,7 +2,13 @@ import asyncio
 import re
 from datetime import datetime
 import httpx
+import os
+import json
+import hashlib
+import time
 from app.config import SERP_API_KEY
+
+CACHE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "cache")
 
 def _collect_text_pairs(node, collected: list):
     if isinstance(node, dict):
@@ -85,12 +91,38 @@ def extract_year(topic: str) -> int:
     return datetime.now().year  
 
 async def search(query: str, client: httpx.AsyncClient) -> dict:
+    # 1. Tạo cache key bằng MD5 hash của query
+    h = hashlib.md5(query.encode("utf-8")).hexdigest()
+    cache_path = os.path.join(CACHE_DIR, f"search_{h}.json")
+    
+    # 2. Đọc từ cache nếu có và chưa hết hạn (ví dụ: 3 ngày = 259200 giây)
+    if os.path.exists(cache_path):
+        try:
+            file_mtime = os.path.getmtime(cache_path)
+            if (time.time() - file_mtime) < 259200:
+                with open(cache_path, "r", encoding="utf-8") as f:
+                    cached_res = json.load(f)
+                print(f" -> [CACHE HIT] Đọc kết quả từ bộ đệm cho: '{query}'")
+                return cached_res
+        except Exception:
+            pass
+
     url = "https://serpapi.com/search.json"
     params = {
         "api_key": SERP_API_KEY,
         "q": query,
         "engine": "google_ai_mode"
     }
+
+    # Hàm nội bộ để lưu kết quả vào cache
+    def _save_to_cache(res_dict):
+        try:
+            os.makedirs(CACHE_DIR, exist_ok=True)
+            with open(cache_path, "w", encoding="utf-8") as f:
+                json.dump(res_dict, f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
+
     try:
         response = await client.get(url, params=params, timeout=45)
         response.raise_for_status()
@@ -102,7 +134,9 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
         references = data.get("references", [])
         
         if not text_blocks:
-            return {"text": "", "sources": [], "html_url": html_url}
+            res = {"text": "", "sources": [], "html_url": html_url}
+            _save_to_cache(res)
+            return res
             
         block_texts = _extract_block_texts(text_blocks)
         reference_links = _extract_reference_links(text_blocks, references)
@@ -156,7 +190,9 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
         if not text and block_texts:
             text = "\n\n".join(block_texts).strip()
             
-        return {"text": text, "sources": sources, "html_url": html_url}
+        res = {"text": text, "sources": sources, "html_url": html_url}
+        _save_to_cache(res)
+        return res
         
     except Exception as e:
         error_body = ""
@@ -179,7 +215,9 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
             references = data.get("references", [])
             
             if not text_blocks:
-                return {"text": "", "sources": [], "html_url": html_url}
+                res = {"text": "", "sources": [], "html_url": html_url}
+                _save_to_cache(res)
+                return res
                 
             block_texts = _extract_block_texts(text_blocks)
             reference_links = _extract_reference_links(text_blocks, references)
@@ -233,7 +271,9 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
             if not text and block_texts:
                 text = "\n\n".join(block_texts).strip()
                 
-            return {"text": text, "sources": sources, "html_url": html_url}
+            res = {"text": text, "sources": sources, "html_url": html_url}
+            _save_to_cache(res)
+            return res
             
         except Exception as retry_error:
             print(f"Search Agent retry lỗi: {retry_error}")
@@ -270,4 +310,84 @@ async def search_market(topic: str) -> dict:
         {"label": "Trends", "url": trends.get("html_url", "")},
         {"label": "Competitors", "url": competitors.get("html_url", "")}
     ]
+    return results
+
+async def search_market_with_queries(original_topic: str, queries: dict) -> dict:
+    overview_queries = queries.get("overview", [])
+    trend_queries = queries.get("trend", [])
+    competition_queries = queries.get("competition", [])
+
+    if not overview_queries:
+        overview_queries = [f"{original_topic} tổng quan thị trường"]
+    if not trend_queries:
+        trend_queries = [f"{original_topic} xu hướng"]
+    if not competition_queries:
+        competition_queries = [f"{original_topic} doanh nghiệp hàng đầu đối thủ cạnh tranh"]
+
+    async with httpx.AsyncClient() as client:
+        overview_tasks = [search(q, client) for q in overview_queries]
+        trend_tasks = [search(q, client) for q in trend_queries]
+        competition_tasks = [search(q, client) for q in competition_queries]
+
+        all_results = await asyncio.gather(*(overview_tasks + trend_tasks + competition_tasks))
+
+    num_overview = len(overview_tasks)
+    num_trend = len(trend_tasks)
+
+    overview_results = all_results[:num_overview]
+    trend_results = all_results[num_overview:num_overview + num_trend]
+    competition_results = all_results[num_overview + num_trend:]
+
+    overview_text = "\n\n".join([r["text"] for r in overview_results if r.get("text")]).strip()
+    trend_text = "\n\n".join([r["text"] for r in trend_results if r.get("text")]).strip()
+    competitors_text = "\n\n".join([r["text"] for r in competition_results if r.get("text")]).strip()
+
+    overview_sources = []
+    for r in overview_results:
+        overview_sources.extend(r.get("sources", []))
+
+    trend_sources = []
+    for r in trend_results:
+        trend_sources.extend(r.get("sources", []))
+
+    competitors_sources = []
+    for r in competition_results:
+        competitors_sources.extend(r.get("sources", []))
+
+    def unique_sources(sources_list):
+        seen_links = set()
+        unique_list = []
+        for s in sources_list:
+            if not isinstance(s, dict):
+                continue
+            link = s.get("link") or s.get("url") or s.get("html_url")
+            if link and link not in seen_links:
+                seen_links.add(link)
+                unique_list.append(s)
+        return unique_list
+
+    overview_sources = unique_sources(overview_sources)
+    trend_sources = unique_sources(trend_sources)
+    competitors_sources = unique_sources(competitors_sources)
+    all_sources = unique_sources(overview_sources + trend_sources + competitors_sources)
+
+    # Check if we got any sources. If not, fallback to the default search_market
+    if not all_sources:
+        print(f" -> [Search Fallback] Không tìm thấy nguồn cho các truy vấn mở rộng. Chuyển sang tìm kiếm mặc định...")
+        return await search_market(original_topic)
+
+    results = {
+        "overview": overview_text,
+        "trends": trend_text,
+        "competitors": competitors_text,
+        "overview_sources": overview_sources,
+        "trends_sources": trend_sources,
+        "competitors_sources": competitors_sources,
+        "sources": all_sources,
+        "html_pages": [
+            {"label": "Overview", "url": overview_results[0].get("html_url", "") if overview_results else ""},
+            {"label": "Trends", "url": trend_results[0].get("html_url", "") if trend_results else ""},
+            {"label": "Competitors", "url": competition_results[0].get("html_url", "") if competition_results else ""}
+        ]
+    }
     return results

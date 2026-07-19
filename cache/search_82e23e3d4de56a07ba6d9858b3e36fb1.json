@@ -1,0 +1,576 @@
+{
+  "text": "Dịch vụ giao hàng bằng chim bồ câu gắn chip GPS không phải là một mô hình vận chuyển thương mại đại trà cho hàng hóa vật lý như drone hay robot tự hành. Thay vào đó, giải pháp này đang phát triển mạnh mẽ dựa trên hai nhánh ngách chính: nghiên cứu khoa học - huấn luyện bồ câu đua chuyên nghiệp và các dự án truyền tải dữ liệu ngoại tuyến (Data Delivery).\n\nThị trường thiết bị định vị dành riêng cho chim bồ câu dự kiến đạt quy mô 320 triệu USD vào năm 2028. Dưới đây là các xu hướng phát triển cốt lõi của giải pháp công nghệ độc đáo này:\n\n1. Xu hướng công nghệ hóa thiết bị đeo (Miniaturization)\n\nĐể không làm ảnh hưởng đến tốc độ bay trung bình (khoảng 64 km/h) của chim bồ câu, công nghệ chip GPS đang dịch chuyển mạnh mẽ theo hướng siêu nhẹ và siêu bền:\n\nTối ưu trọng lượng: Các loại vòng chân tích hợp chip GPS hiện đại được thiết kế siêu nhẹ, chỉ nặng từ 1,7g đến 2,8g, hoàn toàn không gây cản trở cho chim khi bay đường dài.\nKết nối đa mạng: Chip không chỉ ghi dữ liệu thụ động mà còn tích hợp công nghệ kết nối thời gian thực qua mạng 4G/LTE, GSM và LoRaWAN. Nó cho phép người điều hành theo dõi trực tuyến lộ trình tương tự như định vị một shipper công nghệ.\nĐộ bền cao: Vỏ bọc chip đạt tiêu chuẩn chống nước IP67/IP68 và có thời lượng pin ấn tượng, hỗ trợ ghi nhớ liên tục hơn 113 giờ bay.\n\n2. Ứng dụng truyền tải dữ liệu dung lượng lớn (Sneakernet)\n\nTrong kỷ nguyên số, chim bồ câu gắn chip định vị đang được ứng dụng thử nghiệm cho xu hướng giao nhận dữ liệu bảo mật cao hoặc tại các vùng nghèo internet:\n\nNhanh hơn cáp quang: Các thử nghiệm công nghệ chứng minh rằng việc gắn các ổ cứng USB siêu nhỏ (dung lượng vài TB) vào chân bồ câu và thả chúng bay trong cự ly ngắn (dưới 80km) có tốc độ chuyển tập tin nhanh hơn nhiều so với việc tải qua đường truyền Internet thông thường.\nĐịnh vị lộ trình: Chip GPS gắn kèm giúp các kỹ sư đo lường chính xác thời gian di chuyển, tốc độ bay và phát hiện các vùng nhiễu sóng làm ảnh hưởng đến khả năng định hướng bằng khứu giác hoặc từ trường của chim.\n\n3. Xu hướng \"Huấn luyện khoa học\" trong ngành bồ câu đua\n\nSự kết hợp giữa bản năng sinh học của chim và chip GPS đang thay đổi bộ mặt của bộ môn đua chim quốc tế (Pigeon Racing):\n\nPhân tích dữ liệu lớn (Analytics): Người nuôi sử dụng dữ liệu GPS thu được để phân tích chi tiết độ cao bay, vận tốc bứt phá và thói quen chọn lộ trình của từng con. Từ đó sàng lọc ra những cá thể xuất sắc nhất.\nPhát hiện rủi ro: Bản đồ định vị thời gian thực giúp người quản lý phát hiện ngay lập tức các mối đe dọa trên đường bay như vùng có nhiều chim săn mồi, khu vực thời tiết xấu hoặc các trạm sóng gây lạc hướng.\n\n4. Rào cản lớn và Thách thức thực tế\n\nDù có những bước tiến công nghệ, việc biến chim bồ câu thành một dịch vụ giao hàng thương mại phổ thông phải đối mặt với các giới hạn cốt lõi:\n\nGiới hạn trọng tải: Chim bồ câu chỉ có thể mang theo vật thể siêu nhẹ (vài gam) như chip điện tử, thẻ nhớ hoặc thư tín mỏng. Chúng hoàn toàn bất khả thi đối với các gói hàng tiêu dùng.\nNguyên lý bay một chiều: Về mặt sinh học, bồ câu đưa thư chỉ bay từ một địa điểm bất kỳ về lại tổ cố định của nó nhờ khả năng nhận biết ranh giới lãnh thổ gần nhà. Do đó, dịch vụ không thể vận chuyển linh hoạt giữa các địa chỉ bất kỳ như Drone.\nVấn đề đạo đức và pháp lý: Việc lạm dụng chim bồ câu cho các mục đích vận chuyển phi pháp (như buôn lậu chất cấm qua biên giới) đang bị cảnh sát quốc tế siết chặt quản lý. Việc cấy ghép chip can thiệp sâu vào não chim cũng đang vấp phải nhiều tranh cãi lớn về quyền động vật.\n\nNếu bạn quan tâm sâu hơn về mô hình này, hãy cho tôi biết:\n\nBạn đang nghiên cứu ứng dụng này cho ngành vận chuyển dữ liệu hay giải trí/đua chim?\nBạn có muốn tìm hiểu thêm về các thương hiệu chip GPS cho chim tốt nhất hiện nay không?",
+  "sources": [
+    {
+      "position": 1,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Dịch vụ giao hàng bằng chim bồ câu gắn chip GPS không phải là một mô hình vận chuyển thương mại đại trà cho hàng hóa vật lý như drone hay robot tự hành. Thay vào đó, giải pháp này đang phát triển mạnh mẽ dựa trên hai nhánh ngách chính: nghiên cứu khoa học - huấn luyện bồ câu đua chuyên nghiệp và các dự án truyền tải dữ liệu ngoại tuyến (Data Delivery)."
+    },
+    {
+      "position": 2,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Thị trường thiết bị định vị dành riêng cho chim bồ câu dự kiến đạt quy mô 320 triệu USD vào năm 2028. Dưới đây là các xu hướng phát triển cốt lõi của giải pháp công nghệ độc đáo này:"
+    },
+    {
+      "position": 3,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "1. Xu hướng công nghệ hóa thiết bị đeo (Miniaturization)"
+    },
+    {
+      "position": 4,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Để không làm ảnh hưởng đến tốc độ bay trung bình (khoảng 64 km/h) của chim bồ câu, công nghệ chip GPS đang dịch chuyển mạnh mẽ theo hướng siêu nhẹ và siêu bền:"
+    },
+    {
+      "position": 5,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Tối ưu trọng lượng: Các loại vòng chân tích hợp chip GPS hiện đại được thiết kế siêu nhẹ, chỉ nặng từ 1,7g đến 2,8g, hoàn toàn không gây cản trở cho chim khi bay đường dài.\nKết nối đa mạng: Chip không chỉ ghi dữ liệu thụ động mà còn tích hợp công nghệ kết nối thời gian thực qua mạng 4G/LTE, GSM và LoRaWAN. Nó cho phép người điều hành theo dõi trực tuyến lộ trình tương tự như định vị một shipper công nghệ.\nĐộ bền cao: Vỏ bọc chip đạt tiêu chuẩn chống nước IP67/IP68 và có thời lượng pin ấn tượng, hỗ trợ ghi nhớ liên tục hơn 113 giờ bay."
+    },
+    {
+      "position": 6,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "2. Ứng dụng truyền tải dữ liệu dung lượng lớn (Sneakernet)"
+    },
+    {
+      "position": 7,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Trong kỷ nguyên số, chim bồ câu gắn chip định vị đang được ứng dụng thử nghiệm cho xu hướng giao nhận dữ liệu bảo mật cao hoặc tại các vùng nghèo internet:"
+    },
+    {
+      "position": 8,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Nhanh hơn cáp quang: Các thử nghiệm công nghệ chứng minh rằng việc gắn các ổ cứng USB siêu nhỏ (dung lượng vài TB) vào chân bồ câu và thả chúng bay trong cự ly ngắn (dưới 80km) có tốc độ chuyển tập tin nhanh hơn nhiều so với việc tải qua đường truyền Internet thông thường.\nĐịnh vị lộ trình: Chip GPS gắn kèm giúp các kỹ sư đo lường chính xác thời gian di chuyển, tốc độ bay và phát hiện các vùng nhiễu sóng làm ảnh hưởng đến khả năng định hướng bằng khứu giác hoặc từ trường của chim."
+    },
+    {
+      "position": 9,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "3. Xu hướng \"Huấn luyện khoa học\" trong ngành bồ câu đua"
+    },
+    {
+      "position": 10,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Sự kết hợp giữa bản năng sinh học của chim và chip GPS đang thay đổi bộ mặt của bộ môn đua chim quốc tế (Pigeon Racing):"
+    },
+    {
+      "position": 11,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Phân tích dữ liệu lớn (Analytics): Người nuôi sử dụng dữ liệu GPS thu được để phân tích chi tiết độ cao bay, vận tốc bứt phá và thói quen chọn lộ trình của từng con. Từ đó sàng lọc ra những cá thể xuất sắc nhất.\nPhát hiện rủi ro: Bản đồ định vị thời gian thực giúp người quản lý phát hiện ngay lập tức các mối đe dọa trên đường bay như vùng có nhiều chim săn mồi, khu vực thời tiết xấu hoặc các trạm sóng gây lạc hướng."
+    },
+    {
+      "position": 12,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "4. Rào cản lớn và Thách thức thực tế"
+    },
+    {
+      "position": 13,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Dù có những bước tiến công nghệ, việc biến chim bồ câu thành một dịch vụ giao hàng thương mại phổ thông phải đối mặt với các giới hạn cốt lõi:"
+    },
+    {
+      "position": 14,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Giới hạn trọng tải: Chim bồ câu chỉ có thể mang theo vật thể siêu nhẹ (vài gam) như chip điện tử, thẻ nhớ hoặc thư tín mỏng. Chúng hoàn toàn bất khả thi đối với các gói hàng tiêu dùng.\nNguyên lý bay một chiều: Về mặt sinh học, bồ câu đưa thư chỉ bay từ một địa điểm bất kỳ về lại tổ cố định của nó nhờ khả năng nhận biết ranh giới lãnh thổ gần nhà. Do đó, dịch vụ không thể vận chuyển linh hoạt giữa các địa chỉ bất kỳ như Drone.\nVấn đề đạo đức và pháp lý: Việc lạm dụng chim bồ câu cho các mục đích vận chuyển phi pháp (như buôn lậu chất cấm qua biên giới) đang bị cảnh sát quốc tế siết chặt quản lý. Việc cấy ghép chip can thiệp sâu vào não chim cũng đang vấp phải nhiều tranh cãi lớn về quyền động vật."
+    },
+    {
+      "position": 15,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Nếu bạn quan tâm sâu hơn về mô hình này, hãy cho tôi biết:"
+    },
+    {
+      "position": 16,
+      "title": "",
+      "link": "",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": "Bạn đang nghiên cứu ứng dụng này cho ngành vận chuyển dữ liệu hay giải trí/đua chim?\nBạn có muốn tìm hiểu thêm về các thương hiệu chip GPS cho chim tốt nhất hiện nay không?"
+    },
+    {
+      "position": 1,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 2,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 3,
+      "title": "",
+      "link": "https://www.youtube.com/watch?v=WbtEBwxT0QU",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 4,
+      "title": "",
+      "link": "https://genk.vn/chim-bo-cau-truyen-du-lieu-nhanh-hon-ca-duong-truyen-internet-cap-quang-2023090614235923.chn",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 5,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 6,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 7,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 8,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 9,
+      "title": "",
+      "link": "https://viettimes.vn/chim-bo-cau-doi-khi-van-truyen-tin-nhanh-hon-toc-do-internet-post171584.html",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 10,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 11,
+      "title": "",
+      "link": "https://skyleader.com/?srsltid=AfmBOoqn4lkmsRi7QUbJgk1_6o6kSaBmJDQVWGkPMiQ23xslZqA9e-be",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 12,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 13,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 14,
+      "title": "",
+      "link": "https://www.studocu.vn/vn/document/dai-hoc-hue/quan-tri-kinh-doanh/phan-2-ccu-chien-luoc-dich-vu-chuyen-phat-nhanh-viettel-post/132606779",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 15,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 16,
+      "title": "",
+      "link": "https://www.studocu.vn/vn/document/dai-hoc-hue/quan-tri-kinh-doanh/phan-2-ccu-chien-luoc-dich-vu-chuyen-phat-nhanh-viettel-post/132606779",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 17,
+      "title": "",
+      "link": "https://www.youtube.com/watch?v=7beQy5tB-HE&t=5",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 18,
+      "title": "",
+      "link": "https://skyleader.com/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 19,
+      "title": "",
+      "link": "https://genk.vn/chim-bo-cau-truyen-du-lieu-nhanh-hon-ca-duong-truyen-internet-cap-quang-2023090614235923.chn",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 20,
+      "title": "",
+      "link": "https://genk.vn/chim-bo-cau-truyen-du-lieu-nhanh-hon-ca-duong-truyen-internet-cap-quang-2023090614235923.chn",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 21,
+      "title": "",
+      "link": "https://viettimes.vn/chim-bo-cau-doi-khi-van-truyen-tin-nhanh-hon-toc-do-internet-post171584.html",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 22,
+      "title": "",
+      "link": "https://www.youtube.com/watch?v=3otnoQTXvYc&vl=en",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 23,
+      "title": "",
+      "link": "https://tuoitre.vn/video/vi-sao-bo-cau-lai-biet-dua-thu-dieu-bi-an-ma-it-nguoi-biet-den-162175.htm",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 24,
+      "title": "",
+      "link": "https://gearvn.com/blogs/cong-nghe/chuyen-la-do-day-chim-bo-cau-truyen-du-lieu-con-nhanh-hon-ca-cap-quan",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 25,
+      "title": "",
+      "link": "https://gearvn.com/blogs/cong-nghe/chuyen-la-do-day-chim-bo-cau-truyen-du-lieu-con-nhanh-hon-ca-cap-quan?srsltid=AfmBOop9iVwKS9kbCkILbJtmdhqooGry036xfP1eGkgMX8e6i_61t3Nr",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 26,
+      "title": "",
+      "link": "https://www.youtube.com/watch?v=3otnoQTXvYc&vl=en",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 27,
+      "title": "",
+      "link": "https://www.youtube.com/watch?v=3otnoQTXvYc&vl=en",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 28,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 29,
+      "title": "",
+      "link": "https://electronics.alibaba.com/supplier/pigeon-gps-rings",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 30,
+      "title": "",
+      "link": "https://www.flightpathlive.com/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 31,
+      "title": "",
+      "link": "https://tiengchuong.chinhphu.vn/tan-cong-toi-pham-dung-chim-bo-cau-van-chuyen-ma-tuy-o-cac-nuoc-11320996.htm",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 32,
+      "title": "",
+      "link": "https://cand.vn/chim-bo-cau-duoc-su-dung-de-van-chuyen-ma-tuy-post434288.html",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 33,
+      "title": "",
+      "link": "https://genk.vn/chuyen-that-nhu-dua-nga-thu-nghiem-gan-chip-dieu-khien-vao-nao-chim-bo-cong-de-dung-lam-cong-cu-giam-sat-165260209015210469.chn",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 34,
+      "title": "",
+      "link": "https://tiengchuong.chinhphu.vn/tan-cong-toi-pham-dung-chim-bo-cau-van-chuyen-ma-tuy-o-cac-nuoc-11320996.htm",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 35,
+      "title": "",
+      "link": "https://gearvn.com/blogs/cong-nghe/chuyen-la-do-day-chim-bo-cau-truyen-du-lieu-con-nhanh-hon-ca-cap-quan?srsltid=AfmBOop9iVwKS9kbCkILbJtmdhqooGry036xfP1eGkgMX8e6i_61t3Nr",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 36,
+      "title": "",
+      "link": "https://tiengchuong.chinhphu.vn/tan-cong-toi-pham-dung-chim-bo-cau-van-chuyen-ma-tuy-o-cac-nuoc-11320996.htm",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 37,
+      "title": "",
+      "link": "https://tuoitre.vn/video/vi-sao-bo-cau-lai-biet-dua-thu-dieu-bi-an-ma-it-nguoi-biet-den-162175.htm",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 38,
+      "title": "",
+      "link": "https://tuoitre.vn/video/vi-sao-bo-cau-lai-biet-dua-thu-dieu-bi-an-ma-it-nguoi-biet-den-162175.htm",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 39,
+      "title": "",
+      "link": "https://www.youtube.com/shorts/jR3v8M9Ircc",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 40,
+      "title": "",
+      "link": "https://vnreview.vn/threads/su-that-bat-ngo-chim-bo-cau-di-chuyen-mat-khi-bay-vuot-troi-drone-va-mo-duong-cho-robot-tu-hanh.87632/",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    },
+    {
+      "position": 41,
+      "title": "",
+      "link": "https://cand.vn/chim-bo-cau-duoc-su-dung-de-van-chuyen-ma-tuy-post434288.html",
+      "redirect_link": "",
+      "displayed_link": "",
+      "date": "",
+      "source": "",
+      "snippet": ""
+    }
+  ],
+  "html_url": "https://serpapi.com/searches/6a5c85529df9dd9db4d9724a.html"
+}

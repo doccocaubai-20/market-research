@@ -1,0 +1,44 @@
+=== KHỞI CHẠY THỬ NGHIỆM: BY-05 | CẤU HÌNH: proposed ===
+Chủ đề: 'Bối cảnh cạnh tranh của các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hệ thống chưa có dữ liệu tìm kiếm (Search Data là False), do đó cần kích hoạt Search Agent để thu thập dữ liệu từ SerpAPI về bối cảnh cạnh tranh của kính thực tế ảo cho cá voi đại dương.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Bối cảnh cạnh tranh của các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương'
+Data: {
+  "original_topic": "Bối cảnh cạnh tranh của các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương",
+  "search_queries": {
+    "overview": [
+      "kính thực tế ảo cho cá voi đại dương thị trường tổng quan",
+      "virtual reality headsets for whales market overview"
+    ],
+    "trend": [
+      "xu hướng kính thực tế ảo cho cá voi đại dương 2024",
+      "VR for marine mammals trends opportunities"
+    ],
+    "competition": [
+      "các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương",
+      "virtual reality whale headsets companies competitors"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Bối cảnh cạnh tranh của các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường kính thực tế ảo (VR) và nội dung trải nghiệm đại dương/cá voi hiện là một phân khúc vô cùng tiềm năng, kết hợp giữa công nghệ mô phỏng Virtual Reality, giáo dục môi trường và ngành du lịch số sinh thái. Đây không phải là thiết bị đeo trực tiếp cho động vật (cá voi thật), mà là các giải pháp đưa con người lặn xuống đại dương ảo để tương tác với cá voi.\nVirtual Reality\n\nTổng quan thị trường được chia làm các mảng chính dưới đây:\n\nQuy mô và động lực tăng trưởng thị trường du lịch ảo\n\nTốc độ tăng trưởng vượt trội: Phân khúc du lịch đại dương ảo (Virtual Marine Tourism) dự kiến tăng từ 2,9 tỷ USD năm 2025 lên 10,2 tỷ USD vào năm 2032, đạt tốc độ tăng trưởng kép hàng năm (CAGR) lên tới 19,6%.\nVirtual Marine Tourism\nGia tăng doanh thu tour thực tế: Các đơn vị tổ chức tour ngắm cá voi t...",
+  "trends": "Không có xu hướng sản xuất kính thực tế ảo (VR) đeo cho cá voi ngoài đại dương. Bản chất cụ thể của xu hướng công nghệ này là con người đeo kính VR để trải
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=failed | INVALID
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 7.66s
+Trạng thái luồng chạy (Flow Status): INVALID
+Trạng thái kiểm duyệt (Validator Status): FAILED
+Điểm chất lượng (RQS): 0/100

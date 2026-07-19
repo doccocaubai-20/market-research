@@ -1,0 +1,81 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-03 | CẤU HÌNH: proposed ===
+Chủ đề: 'Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Trạng thái hiện tại chưa có dữ liệu tìm kiếm (Search Data: False). Do đó, bước đầu tiên là kích hoạt Search Agent để thu thập dữ liệu từ SerpAPI về chủ đề nghiên cứu thị trường. Hành động này là cần thiết trước khi thực hiện các phân tích tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)'
+Data: {
+  "original_topic": "Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)",
+  "search_queries": {
+    "overview": [
+      "thị trường dịch vụ giặt giày thể thao chuyên dụng",
+      "sneaker care industry overview"
+    ],
+    "trend": [
+      "xu hướng dịch vụ giặt giày thể thao 2024 2025",
+      "sneaker cleaning service trends"
+    ],
+    "competition": [
+      "các công ty dịch vụ giặt giày thể thao hàng đầu",
+      "top sneaker care companies"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường dịch vụ giặt giày thể thao chuyên dụng (sneaker care/spa giày) tại Việt Nam đang bùng nổ mạnh mẽ và chuyển mình thành một ngành công nghiệp dịch vụ có tính chuyên môn cao. Xu hướng này được thúc đẩy bởi văn hóa chơi giày của giới trẻ và nhu cầu bảo dưỡng các sản phẩm thời trang cao cấp.\n\nDưới đây là bức tranh toàn cảnh về thị trường dịch vụ chuyên dụng này:\n\n📈 Động Lực Phát Triển Thị Trường\n\nVăn hóa Sneaker và Thời trang: Giày thể thao không còn đơn thuần là đồ bảo vệ chân mà đã trở thành biểu tượng phong cách sống. Nhiều đôi giày có giá trị từ vài triệu đến hàng chục triệu đồng, đòi hỏi quy trình chăm sóc đặc biệt để không bị hỏng form hay bong keo.\nLối sống bận rộn tại đô thị: Giới trẻ và người đi làm tại các thành phố lớn không có thời gian tự giặt giày, hoặc sợ tự giặt sẽ là...",
+  "trends": "Xu hướng dịch vụ giặt và vệ sinh giày thể thao (sneaker) giai đoạn 2024 - 2025 ghi nhận sự chuyển dịch mạnh mẽ từ các tiệm giặt ủi truyền thống sang mô hình 
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=done | Dữ liệu hợp lệ.
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã có sẵn, nhưng chưa có phân tích xu hướng và đối thủ. Cần kích hoạt phân tích song song để thu thập cả hai loại dữ liệu này trước khi tạo báo cáo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "Dưới đây là phân tích dành cho nhà đầu tư, dựa hoàn toàn trên dữ liệu bài viết:\n\n---\n\n### 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n\n- **Nhóm khách hàng mục tiêu chính:**\n  - Người sở hữu giày thể thao giá trị cao, coi giày là tài sản thời trang.\n  - Nhóm bận rộn, có nhu cầu khẩn cấp (dịch vụ siêu tốc 30-60 phút).\n  - Nhóm chơi thể thao chuyên dụng (cầu lông, tennis) có nhu cầu thay mặt đế.\n  - Nhà sưu tập (sneakerheads) có bộ sưu tập lớn (hướng đến gói subscription).\n  - Người bán lại giày (resellers) – hợp tác B2B để tăng biên lợi nhuận.\n\n- **Họ đang tìm kiếm:**\n  - Quy trình chuyên nghiệp, bảo vệ giày tối đa: giặt tay, hóa chất theo chất liệu (da, lộn, lưới…), sấy lạnh không nhiệt.\n  - Dịch vụ gia tăng giá trị: phục hồi (restoration), thay đế, phủ nano, custom họa tiết.\n  - Sự tiện lợi tối đa: giao..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# BÁO CÁO PHÂN TÍCH CẠNH TRANH: THỊ TRƯỜNG DỊCH VỤ GIẤY THỂ THAO CHUYÊN DỤNG (SNEAKER CARE)\n\n---\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\n### Nhận định chung\nThị trường dịch vụ chăm sóc giày thể thao chuyên dụng tại Việt Nam và quốc tế đang ở giai đoạn **cạnh tranh phân mảnh mức trung bình**, với sự phân hóa rõ rệt giữa các mô hình kinh doanh:\n- Tại Việt Nam, thị trường tập trung tại hai đầu tàu kinh tế: TP. Hồ Chí Minh và Hà Nội, với nhiều đơn vị quy mô vừa và nhỏ cạnh tranh trực tiếp.\n- Ở thị trường quốc tế (chủ yếu là Hoa Kỳ), các thương hiệu DIY (tự làm) chiếm ưu thế về độ phủ sóng toàn cầu, trong khi dịch vụ chuyên nghiệp tập trung vào phân khúc cao cấp.\n\n**Mức độ khốc liệt:** Trung bình – chưa có đơn vị nào chiếm thị phần áp đảo tuyệt đối, còn nhiều khoảng trống cho sự khác biệt hóa.\n\n..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Tất cả dữ liệu cần thiết đã được thu thập và phân tích: dữ liệu tìm kiếm, xu hướng và đối thủ đều đã sẵn sàng. Hành động tiếp theo là kích hoạt Report Agent để tổng hợp và tạo báo cáo chiến lược cuối cùng.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>Báo cáo Cố vấn Chiến lược: Thị trường Dịch vụ Chăm sóc Giày Thể thao Chuyên dụng</h1>\n\n<h2>1. TÓM TẮT THỰC THI (EXECUTIVE SUMMARY)</h2>\n<p>Thị trường dịch vụ chăm sóc giày thể thao chuyên dụng đang ở giai đoạn tăng trưởng nóng với mức tăng trưởng quý lên tới 51%, nhưng cạnh tranh vẫn còn phân mảnh và chưa có người chơi thống lĩnh. Cơ hội lớn nhất nằm ở việc kết hợp mô hình dịch vụ chuyên nghiệp tại chỗ (công nghệ cao, quy trình chuyên sâu) với nền tảng đặt lịch di động và bán lẻ sản phẩm DIY, đồng thời khai thác các phân khúc chưa được phục vụ tốt như phục hồi chuyên sâu, custom và subscription. Rủi ro chí mạng là sự gia tăng cạnh tranh cục bộ dẫn đến giảm biên lợi nhuận, và nguy cơ xuất hiện công nghệ giặt tại nhà hiệu quả cao. Khuyến nghị hành động: xây dựng hệ sinh thái đa kênh (dịc...",
+  "sources_count": 71
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 103.22s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 92/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 22,
+  "depth": 23,
+  "citation": 22,
+  "total_score": 92,
+  "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, có bảng biểu và danh sách. Thông tin xác thực dựa trên thương hiệu và xu hướng thực tế, không có ảo giác, nhưng số liệu tăng trưởng 51%/quý chưa có nguồn cụ thể. Phân tích chi tiết, đề xuất chiến lược sâu sắc. Trích dẫn 10 nguồn có URL, đa dạng nhưng độ tin cậy trung bình."
+}

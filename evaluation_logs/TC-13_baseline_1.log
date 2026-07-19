@@ -1,0 +1,40 @@
+=== KHỞI CHẠY THỬ NGHIỆM: TC-13 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chưa có thông tin nào về chủ đề. Cần tìm kiếm tổng quan về thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh tại Việt Nam hoặc thế giới.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh': cào được 43 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Đã có thông tin tổng quan về công nghệ và lợi ích. Cần thêm thông tin về xu hướng và thách thức để có báo cáo toàn diện.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'xu hướng tự động hóa kho vận thông minh và thách thức'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'xu hướng tự động hóa kho vận thông minh và thách thức': cào được 38 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Thông tin từ hai truy vấn đã cung cấp đầy đủ các khía cạnh tổng quan, công nghệ cốt lõi, lợi ích, xu hướng và thách thức. Đủ để viết báo cáo 7 phần.
+----------------------------------------
+[SINGLE] status=running | Quyết định dừng tìm kiếm và tiến hành tổng hợp báo cáo...
+----------------------------------------
+[SINGLE] status=running | Đang tổng hợp báo cáo kinh doanh cuối cùng...
+----------------------------------------
+[SINGLE] status=done | Đã hoàn thành báo cáo nghiên cứu thị trường.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 57.81s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 82/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 22,
+  "factuality": 20,
+  "depth": 20,
+  "citation": 20,
+  "total_score": 82,
+  "reason": "Cấu trúc báo cáo đầy đủ các phần yêu cầu, trình bày rõ ràng nhưng phần Cảnh quan cạnh tranh còn sơ sài, thiếu chi tiết. Thông tin dựa trên thực tế, có trích nguồn từ các website doanh nghiệp, nhưng thiếu nguồn độc lập và số liệu cụ thể. Phân tích xu hướng và SWOT khá logic, đề xuất chiến lược hợp lý, nhưng chưa đi sâu vào số liệu thị trường. Trích dẫn nhiều URL, tuy nhiên một số nguồn không phải cơ quan nghiên cứu uy tín, và có trùng lặp."
+}

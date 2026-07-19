@@ -1,0 +1,1399 @@
+{
+  "TC-01": {
+    "topic": "Thị trường xe điện (EV) tại Việt Nam giai đoạn 2025 - 2026",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 85.7,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 94,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 94,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần chuẩn, trình bày rõ ràng. Thông tin xác thực, dựa trên các nguồn báo chí và phân tích, có hạn chế dữ liệu chính thức. Phân tích khá sâu, có logic và đề xuất cụ thể. Trích dẫn nguồn đầy đủ, 11 URL từ các trang uy tín."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 111.4,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 97,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 97,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng với các phần chuẩn và HTML dễ đọc. Thông tin dựa trên thực tế, có nguồn trích dẫn uy tín, không có dấu hiệu hư cấu. Phân tích chi tiết, đề xuất cụ thể, nhưng thiếu một số số liệu so sánh chuyên sâu. Có 10 nguồn tham khảo đáng tin cậy."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 90.58,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 98,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 23,
+          "citation": 25,
+          "total_score": 98,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng, dễ đọc. Thông tin dựa trên các nguồn thực tế, không có dấu hiệu ảo giác. Phân tích sâu sắc, có chiến lược cụ thể, nhưng một số đề xuất còn thiếu số liệu chi tiết. Trích dẫn nguồn đầy đủ và đáng tin cậy."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-02": {
+    "topic": "Xu hướng tiêu dùng thực phẩm chức năng và bảo vệ sức khỏe nội địa",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 83.48,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 90,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 20,
+          "citation": 23,
+          "total_score": 90,
+          "reason": "Cấu trúc báo cáo đầy đủ và rõ ràng (25 điểm). Tính xác thực tốt, dựa trên nguồn thực tế nhưng chưa có kiểm chứng từ báo cáo chính thức (22 điểm). Phân tích khá chi tiết về xu hướng, cạnh tranh và đề xuất, nhưng chưa thực sự sâu về dữ liệu tài chính (20 điểm). Trích dẫn nguồn đầy đủ dạng URL, đáng tin cậy ở mức khá (23 điểm)."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 106.86,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 97,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 97,
+          "reason": "Cấu trúc đầy đủ, rõ ràng, đúng format. Thông tin dựa trên thực tế thị trường nội địa, không mắc bẫy hư cấu. Phân tích có chiều sâu nhưng chưa thật cụ thể về số liệu. Nguồn tham khảo đa dạng, đáng tin cậy với 10 URL."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 77.8,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 98,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 23,
+          "citation": 25,
+          "total_score": 98,
+          "reason": "Báo cáo có cấu trúc đầy đủ và rõ ràng, đúng định dạng. Thông tin dựa trên thực tế, không có ảo giác. Phân tích sâu sắc, đề xuất chiến lược logic và có tính thuyết phục. Có 10 liên kết tham khảo đáng tin cậy. Trừ nhẹ ở độ sâu vì một số giả định chưa được kiểm chứng kỹ."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-03": {
+    "topic": "Toàn cảnh thị trường chuỗi cà phê đặc sản tại các thành phố lớn Việt Nam",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 41.46,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 94.59,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 97,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 24,
+          "depth": 24,
+          "citation": 24,
+          "total_score": 97,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần chuẩn, mã HTML rõ ràng. Thông tin dựa trên thực tế thị trường, không bịa đặt. Phân tích xu hướng, cạnh tranh và đề xuất chiến lược có chiều sâu, logic. Có danh sách nguồn tham khảo đáng tin cậy với 10 URL."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 81.33,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 95,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 23,
+          "citation": 22,
+          "total_score": 95,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng với các phần chuẩn như tóm tắt thực thi, tổng quan thị trường, cạnh tranh, SWOT, chiến lược, giả định và nguồn tham khảo. Thông tin dựa trên thực tế ngành cà phê Việt Nam, không bịa đặt. Phân tích sâu sắc, chỉ ra phân khúc giá cụ thể và chiến lược khả thi, dù chưa thực sự chi tiết về số liệu. Có danh sách 10 nguồn tham khảo URL, nhưng một số là bản dịch qua Google Translate, giảm độ tin cậy nhẹ."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-04": {
+    "topic": "Thực trạng và xu hướng phát triển của thương mại điện tử mảng mỹ phẩm",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 65.56,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 94,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 22,
+          "citation": 22,
+          "total_score": 94,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần cần thiết, trình bày rõ ràng. Thông tin dựa trên thực tế và có trích dẫn nguồn. Phân tích xu hướng và cạnh tranh khá chi tiết, đề xuất cụ thể. Trích dẫn 4 nguồn đáng tin cậy, nhưng có thể bổ sung thêm để tăng độ tin cậy."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 76.62,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 93,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 23,
+          "citation": 23,
+          "total_score": 93,
+          "reason": "Cấu trúc báo cáo hoàn chỉnh, rõ ràng, đầy đủ các phần cần thiết. Thông tin dựa trên thực tế, có dẫn nguồn, không bịa đặt. Phân tích sâu sắc, đề xuất chiến lược cụ thể và khả thi. Danh sách nguồn tham khảo phong phú, đáng tin cậy, nhưng thiếu trích dẫn trong bài."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 93.22,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 97,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 97,
+          "reason": "Báo cáo có cấu trúc đầy đủ các phần cần thiết, trình bày rõ ràng với HTML hợp lý. Thông tin dựa trên thực tế, không có dấu hiệu bịa đặt. Phân tích chi tiết, logic nhưng thiếu một số số liệu định lượng cụ thể. Có 10 nguồn tham khảo dạng URL đáng tin cậy."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-05": {
+    "topic": "Cạnh tranh trong ngành dịch vụ giao đồ ăn trực tuyến (Food Delivery)",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 55.39,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 90,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 23,
+          "depth": 20,
+          "citation": 22,
+          "total_score": 90,
+          "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, đúng với yêu cầu của một báo cáo nghiên cứu thị trường. Thông tin dựa trên dữ liệu thực tế và trích dẫn nguồn đáng tin cậy, tuy nhiên có một nguồn Facebook kém chính thống. Phân tích khá tốt nhưng các đề xuất chiến lược còn chung chung, chưa chi tiết. Trích dẫn nguồn đầy đủ với 4 URL, phần lớn uy tín."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 92.61,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 93,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 24,
+          "depth": 23,
+          "citation": 22,
+          "total_score": 93,
+          "reason": "Báo cáo có cấu trúc chuẩn, đầy đủ các phần cần thiết, mã HTML rõ ràng. Thông tin xác thực, dựa trên số liệu thực tế, không bịa đặt. Phân tích sâu, có đối thủ, xu hướng, chiến lược cụ thể. Trích dẫn nguồn đủ 10 liên kết, dù một số từ Facebook có thể kém tin cậy hơn, nhưng vẫn hợp lệ."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 75.8,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 92,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 23,
+          "depth": 24,
+          "citation": 22,
+          "total_score": 92,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần cần thiết, trình bày rõ ràng với HTML hợp lý. Thông tin thị trường (quy mô 2,1 tỷ USD, tăng trưởng 19%, thị phần song mã) dựa trên các nguồn thực tế, không phát hiện sai lệch. Phân tích sâu sắc về hành vi người dùng, chiến lược đối thủ và đề xuất chiến lược cụ thể (bếp ảo, B2B, tỉnh lẻ). Có 10 nguồn tham khảo, đa số là báo uy tín, dù một số là Facebook post thiếu chính thống."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-06": {
+    "topic": "Phân tích thị trường tài chính tiêu dùng và ứng dụng Fintech tại Việt Nam",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 59.98,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 100,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 25,
+          "citation": 25,
+          "total_score": 100,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng, dễ đọc. Thông tin dựa trên thực tế, có trích dẫn nguồn hợp lý. Phân tích xu hướng, cạnh tranh, SWOT và đề xuất chiến lược sâu sắc, thuyết phục. Danh sách nguồn tham khảo rõ ràng với 5 URL."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 118.18,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 96,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 25,
+          "depth": 24,
+          "citation": 23,
+          "total_score": 96,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần chuẩn (Tóm tắt thực thi, Tổng quan thị trường, Cảnh quan cạnh tranh, SWOT, Đề xuất chiến lược, Hạn chế dữ liệu, Kết luận) với HTML rõ ràng, dễ đọc. Thông tin dựa trên thực tế thị trường tài chính tiêu dùng và Fintech Việt Nam, không có ảo giác, các số liệu được dẫn dắt hợp lý. Phân tích xu hướng, đối thủ cạnh tranh và đề xuất chiến lược sâu sắc, logic, có tính thuyết phục cao. Danh sách nguồn tham khảo gồm 10 URL từ các trang tin uy tín như VnEconomy, CafeF, FiinGroup và Data Commons, tuy nhiên một số liên kết Data Commons không trực tiếp liên quan đến nội dung báo cáo, trừ điểm nhẹ."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 97.07,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 92,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 22,
+          "depth": 23,
+          "citation": 24,
+          "total_score": 92,
+          "reason": "Cấu trúc đầy đủ các phần chuẩn, HTML rõ ràng. Thông tin dựa trên thực tế, không bịa đặt. Phân tích sâu sắc về xu hướng, cạnh tranh và chiến lược. Danh sách nguồn tham khảo có 10 URL đáng tin cậy, nhưng thiếu phương pháp luận và một số số liệu chưa được kiểm chứng."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-07": {
+    "topic": "Xu hướng chuyển đổi xanh trong ngành bao bì và logistics nội địa",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 80.39,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 89,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 23,
+          "depth": 20,
+          "citation": 22,
+          "total_score": 89,
+          "reason": "Cấu trúc đầy đủ, rõ ràng (24đ). Thông tin thực tế, không bịa đặt (23đ). Phân tích khá chi tiết nhưng một số phần còn chung chung (20đ). Có 3 nguồn dẫn với URL tin cậy (22đ)."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 81.73,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 93,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 22,
+          "depth": 23,
+          "citation": 25,
+          "total_score": 93,
+          "reason": "Cấu trúc đầy đủ các phần chuẩn, trình bày rõ ràng. Thông tin xác thực, dựa trên thực tế, không có ảo giác. Phân tích xu hướng, đối thủ và đề xuất chiến lược chi tiết, thuyết phục. Có 10 nguồn tham khảo với URL rõ ràng, đáng tin cậy."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 73.25,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 98,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 23,
+          "citation": 25,
+          "total_score": 98,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng, dễ đọc. Thông tin dựa trên thực tế thị trường, trích dẫn nguồn đáng tin cậy. Phân tích sâu sắc, logic, đề xuất chiến lược cụ thể, nhưng thiếu số liệu định lượng về quy mô thị trường. Các nguồn tham khảo phong phú và hợp lý."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-08": {
+    "topic": "Thị trường giáo dục trực tuyến (Edtech) phân khúc K-12 năm 2025",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 55.41,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 97,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 97,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng các phần chuẩn. Thông tin dựa trên thực tế, có trích dẫn nguồn uy tín, không có dấu hiệu ảo giác. Phân tích sâu sắc, đề xuất chiến lược cụ thể, nhưng phần cạnh tranh còn thiếu chi tiết. Danh sách tài liệu tham khảo đầy đủ 5 liên kết."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 92.06,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 88,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 20,
+          "depth": 23,
+          "citation": 20,
+          "total_score": 88,
+          "reason": "Cấu trúc đầy đủ các phần, rõ ràng. Thông tin dựa trên thực tế nhưng thiếu trích dẫn trong bài, chỉ liệt kê nguồn cuối. Phân tích sâu sắc, đề xuất chi tiết. Nguồn tham khảo nhiều nhưng không được nhúng trực tiếp."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 88.44,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 86,
+        "rqs_detail": {
+          "structure": 22,
+          "factuality": 22,
+          "depth": 20,
+          "citation": 22,
+          "total_score": 86,
+          "reason": "Cấu trúc đầy đủ các phần, rõ ràng, có bảng biểu. Thông tin dựa trên nguồn dẫn, không có dấu hiệu bịa đặt nghiêm trọng, nhưng có một số suy diễn về thị trường Việt Nam. Phân tích tương đối sâu, đề xuất cụ thể, nhưng hơi thiên về thị trường Mỹ. Trích dẫn đủ 10 nguồn URL, nhưng thiếu trích dẫn trong văn bản."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-09": {
+    "topic": "Bối cảnh cạnh tranh của các hệ thống chuỗi bán lẻ mẹ và bé",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 50.17,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 89,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 23,
+          "depth": 20,
+          "citation": 22,
+          "total_score": 89,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần, Markdown rõ ràng. Thông tin xác thực, dựa trên nguồn thực tế, không có dấu hiệu bịa đặt. Phân tích có chiều sâu nhưng còn chung chung, thiếu số liệu cụ thể về thị phần và doanh thu. Trích dẫn đầy đủ 7 URL, nhưng một số nguồn không được trích dẫn trực tiếp trong nội dung."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 80.65,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 94,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 23,
+          "depth": 24,
+          "citation": 22,
+          "total_score": 94,
+          "reason": "Cấu trúc đầy đủ, rõ ràng, dễ đọc. Thông tin xác thực, dựa trên thực tế thị trường, không có dấu hiệu hư cấu. Phân tích sâu sắc, chi tiết về đối thủ và khoảng trống thị trường, đề xuất chiến lược cụ thể. Trích dẫn nguồn đầy đủ nhưng một số nguồn không phải chính thống (Facebook, Studocu), làm giảm độ tin cậy nhẹ."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 78.58,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 94,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 24,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 94,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng, dễ đọc. Thông tin dựa trên thực tế thị trường Việt Nam, không phát hiện bịa đặt. Phân tích chi tiết về đối thủ và xu hướng, đưa ra chiến lược cụ thể. Có 10 trích dẫn nguồn đáng tin cậy, dạng URL."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-10": {
+    "topic": "Xu hướng tiêu thụ sữa thực vật (Plant-based milk) tại thị trường Việt Nam",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 65.95,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 90,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 21,
+          "citation": 22,
+          "total_score": 90,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng; thông tin dựa trên thực tế và có hạn chế dữ liệu trung thực; phân tích chi tiết nhưng đề xuất còn chung chung; trích dẫn nhiều nguồn nhưng chưa phải nghiên cứu độc lập."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 92.99,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 93,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 24,
+          "depth": 22,
+          "citation": 24,
+          "total_score": 93,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng; thông tin thực tế, không bịa đặt; phân tích sâu sắc nhưng có thể bổ sung số liệu cụ thể hơn; trích dẫn nhiều nguồn uy tín."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 68.46,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 92,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 23,
+          "depth": 22,
+          "citation": 22,
+          "total_score": 92,
+          "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, đúng chuẩn HTML; thông tin dựa trên thực tế thị trường Việt Nam, không hư cấu; phân tích xu hướng, cạnh tranh và đề xuất khá chi tiết, thuyết phục; có 10 nguồn tham khảo từ các trang uy tín (VnExpress, Vietstock, MQ Flavor) tuy một số nguồn như Scribd có độ tin cậy thấp hơn nhưng đa số là chấp nhận được."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-11": {
+    "topic": "Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay tự túc",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 30.43,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 93.19,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 94,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 23,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 94,
+          "reason": "Cấu trúc đầy đủ, rõ ràng; thông tin thực tế, không bịa đặt; phân tích sâu sắc, có tính thuyết phục; trích dẫn nguồn đầy đủ và đáng tin cậy."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 86.29,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 93,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 21,
+          "citation": 25,
+          "total_score": 93,
+          "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, có table và heading hợp lý. Tính xác thực tốt, thông tin dựa trên thực tế và có nguồn trích dẫn, nhưng thiếu số liệu định lượng và phân tích đối thủ cụ thể. Độ sâu phân tích khá, chỉ ra phân khúc chưa đáp ứng và rủi ro, nhưng cạnh tranh còn sơ sài. Trích dẫn nguồn đầy đủ, 10 link từ các trang uy tín."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-12": {
+    "topic": "Phân tích thị trường căn hộ chung cư phân khúc bình dân tại Hà Nội",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 53.48,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 95,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 23,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 95,
+          "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng. Thông tin dựa trên các nguồn báo chí uy tín, có hạn chế dữ liệu hợp lý. Phân tích khá sâu sắc nhưng có thể chi tiết hơn. Trích dẫn nguồn đầy đủ, cụ thể."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 104.5,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 95,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 23,
+          "depth": 23,
+          "citation": 24,
+          "total_score": 95,
+          "reason": "Cấu trúc đầy đủ, rõ ràng, có các phần chuẩn và dùng HTML hợp lý (25/25). Thông tin dựa trên thực tế thị trường, không có dấu hiệu bịa đặt, nhưng thiếu một số dữ liệu định lượng cụ thể để khẳng định chắc chắn (23/25). Phân tích sâu sắc, có điểm mạnh yếu, chiến lược khả thi, nhưng chưa có phân tích số liệu tài chính chi tiết (23/25). Nguồn tham khảo đa dạng, đáng tin cậy, 10 liên kết cụ thể (24/25)."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 91.41,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 95,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 25,
+          "citation": 20,
+          "total_score": 95,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần chuẩn, rõ ràng, dễ đọc. Thông tin xác thực, dựa trên thực tế thị trường Hà Nội, không có dấu hiệu bịa đặt. Phân tích sâu sắc, logic, có đề xuất chiến lược cụ thể và chỉ ra khoảng trống thị trường. Danh sách trích dẫn có 10 nguồn URL, nhưng một số nguồn (Facebook, YouTube) có độ tin cậy thấp, và nhiều nguồn là bản dịch tự động."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-13": {
+    "topic": "Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 57.81,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 82,
+        "rqs_detail": {
+          "structure": 22,
+          "factuality": 20,
+          "depth": 20,
+          "citation": 20,
+          "total_score": 82,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần yêu cầu, trình bày rõ ràng nhưng phần Cảnh quan cạnh tranh còn sơ sài, thiếu chi tiết. Thông tin dựa trên thực tế, có trích nguồn từ các website doanh nghiệp, nhưng thiếu nguồn độc lập và số liệu cụ thể. Phân tích xu hướng và SWOT khá logic, đề xuất chiến lược hợp lý, nhưng chưa đi sâu vào số liệu thị trường. Trích dẫn nhiều URL, tuy nhiên một số nguồn không phải cơ quan nghiên cứu uy tín, và có trùng lặp."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 20.23,
+        "flow_status": "INSUFFICIENT_EVIDENCE",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "proposed": {
+        "latency": 2.07,
+        "flow_status": "INSUFFICIENT_EVIDENCE",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      }
+    }
+  },
+  "TC-14": {
+    "topic": "Thị trường thiết bị gia dụng thông minh (Smart Home) nội địa",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 149.25,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 91,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 24,
+          "depth": 20,
+          "citation": 24,
+          "total_score": 91,
+          "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, có đủ các phần cần thiết. Tính xác thực cao, số liệu có nguồn tham khảo thực tế. Phân tích khá sâu sắc nhưng đề xuất còn chung chung, thiếu tính cụ thể. Trích dẫn nguồn tốt, nhiều URL đáng tin cậy."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 129.31,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 86,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 20,
+          "depth": 22,
+          "citation": 20,
+          "total_score": 86,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng, đúng định dạng. Thông tin không có dấu hiệu bịa đặt nhưng thiếu kiểm chứng độc lập, dựa nhiều vào giả định. Phân tích xu hướng và chiến lược khá sâu sắc, có phát hiện phân khúc ngách. Nguồn tham khảo đầy đủ nhưng chưa phải dạng học thuật, độ tin cậy trung bình."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 97.36,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 91,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 22,
+          "depth": 23,
+          "citation": 22,
+          "total_score": 91,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng; thông tin dựa trên thực tế thị trường, không có dấu hiệu ảo giác; phân tích sâu về cạnh tranh và khoảng trống thị trường, đề xuất chiến lược cụ thể; danh sách nguồn tham khảo phong phú và đáng tin cậy."
+        },
+        "error": ""
+      }
+    }
+  },
+  "TC-15": {
+    "topic": "Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME",
+    "group": "TC",
+    "runs": {
+      "baseline_1": {
+        "latency": 68.15,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 88,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 22,
+          "depth": 20,
+          "citation": 22,
+          "total_score": 88,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần, dùng Markdown rõ ràng. Thông tin xác thực, dựa trên nguồn blog và bài viết marketing, không bịa đặt. Phân tích có chiều sâu nhưng thiếu số liệu cụ thể, so sánh chi tiết. Trích dẫn đủ 5 URL, tuy nhiên nguồn không phải báo cáo độc lập, một số trích dẫn chưa chính xác."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 98.75,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 97,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 25,
+          "citation": 22,
+          "total_score": 97,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần cần thiết, mã HTML rõ ràng. Thông tin dựa trên thực tế, không có hư cấu, có chỉ rõ giả định và hạn chế dữ liệu. Phân tích sâu sắc, logic, đề xuất chiến lược cụ thể. Có 10 nguồn tham khảo dạng URL, tuy nhiên một số nguồn là blog thông thường hoặc bản dịch, chưa hoàn toàn học thuật, nên trừ nhẹ điểm."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 103.29,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 97,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 23,
+          "depth": 24,
+          "citation": 25,
+          "total_score": 97,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần chuẩn, HTML rõ ràng. Thông tin xác thực, dựa trên thực tế thị trường, không bịa đặt. Phân tích sâu sắc, chi tiết về đối thủ, xu hướng và đề xuất chiến lược cụ thể. Danh sách nguồn tham khảo phong phú, liên kết trực tiếp đến các trang uy tín."
+        },
+        "error": ""
+      }
+    }
+  },
+  "NC-01": {
+    "topic": "Thị trường giải pháp phần mềm quản lý các nông trại trồng sầu riêng tại Đắk Lắk",
+    "group": "NC",
+    "runs": {
+      "baseline_1": {
+        "latency": 62.46,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 81,
+        "rqs_detail": {
+          "structure": 22,
+          "factuality": 23,
+          "depth": 21,
+          "citation": 15,
+          "total_score": 81,
+          "reason": "Cấu trúc đầy đủ các phần, Markdown rõ ràng. Thông tin dựa trên thực tế, không bịa đặt. Phân tích sâu nhưng còn chung chung ở một số chỗ. Trích dẫn nguồn có dạng [1][2] nhưng thiếu URL cụ thể trong báo cáo, chỉ ghi chú danh sách nguồn gốc."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 96.42,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 94,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 25,
+          "depth": 22,
+          "citation": 24,
+          "total_score": 94,
+          "reason": "Báo cáo có cấu trúc đầy đủ các phần cần thiết, rõ ràng và dễ đọc. Thông tin dựa trên thực tế thị trường, không bịa đặt. Phân tích xu hướng, đối thủ và chiến lược khá sâu sắc, có tính thuyết phục. Danh sách nguồn tham khảo gồm 10 URL đáng tin cậy, nhưng chưa được trích dẫn cụ thể trong nội dung."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 85.78,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 95,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 23,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 95,
+          "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, đúng chuẩn. Thông tin xác thực, dựa trên thực tế thị trường và có trích dẫn nguồn uy tín, không bịa đặt. Phân tích sâu sắc, chi tiết về nhu cầu, đối thủ và đề xuất chiến lược cụ thể, nhưng thiếu một số dữ liệu định lượng. Trích dẫn nguồn đầy đủ với 10 URL đáng tin cậy."
+        },
+        "error": ""
+      }
+    }
+  },
+  "NC-02": {
+    "topic": "Xu hướng tiêu dùng phân khúc trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội",
+    "group": "NC",
+    "runs": {
+      "baseline_1": {
+        "latency": 69.86,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 83,
+        "rqs_detail": {
+          "structure": 22,
+          "factuality": 23,
+          "depth": 18,
+          "citation": 20,
+          "total_score": 83,
+          "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, sử dụng Markdown tốt. Thông tin thực tế dựa trên các thương hiệu có thật, không có dấu hiệu bịa đặt. Phân tích xu hướng và cạnh tranh có logic nhưng còn sơ lược, thiếu dữ liệu định lượng và độ sâu chiến lược. Danh sách nguồn tham khảo đầy đủ và đáng tin cậy, tuy nhiên không có trích dẫn trong văn bản."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 131.3,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 92,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 22,
+          "citation": 23,
+          "total_score": 92,
+          "reason": "Cấu trúc đầy đủ, rõ ràng, đúng chuẩn báo cáo chiến lược. Thông tin dựa trên thực tế thị trường, không bịa đặt, nhưng thiếu số liệu định lượng. Phân tích xu hướng và đối thủ khá sâu sắc, đề xuất chiến lược cụ thể. Danh sách nguồn tham khảo phong phú, tuy nhiên một số link có thể không còn hoạt động."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 91.84,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 90,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 23,
+          "citation": 20,
+          "total_score": 90,
+          "reason": "Cấu trúc hoàn chỉnh, rõ ràng; thông tin thực tế, không hư cấu, nhưng thiếu dữ liệu kiểm chứng cụ thể; phân tích sâu sắc, có chiến lược khả thi; danh sách nguồn đầy đủ nhưng thiếu trích dẫn trong văn bản."
+        },
+        "error": ""
+      }
+    }
+  },
+  "NC-03": {
+    "topic": "Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)",
+    "group": "NC",
+    "runs": {
+      "baseline_1": {
+        "latency": 369.95,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 81,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 22,
+          "depth": 20,
+          "citation": 15,
+          "total_score": 81,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần theo yêu cầu, trình bày rõ ràng. Thông tin dựa trên thực tế, không bịa đặt, nhưng thiếu số liệu định lượng. Phân tích khá sâu sắc với bảng phân khúc và SWOT, nhưng còn chung chung. Trích dẫn nguồn có nhiều URL nhưng không đầy đủ, thiếu độ tin cậy."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 97.06,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 94,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 24,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 94,
+          "reason": "Báo cáo có cấu trúc đầy đủ, trình bày rõ ràng với HTML. Thông tin dựa trên thực tế thị trường, không bịa đặt. Phân tích tương đối sâu, có SWOT và đề xuất chiến lược cụ thể. Trích dẫn 10 nguồn tham khảo đáng tin cậy, góp phần tăng tính xác thực."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 103.22,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 92,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 23,
+          "citation": 22,
+          "total_score": 92,
+          "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, có bảng biểu và danh sách. Thông tin xác thực dựa trên thương hiệu và xu hướng thực tế, không có ảo giác, nhưng số liệu tăng trưởng 51%/quý chưa có nguồn cụ thể. Phân tích chi tiết, đề xuất chiến lược sâu sắc. Trích dẫn 10 nguồn có URL, đa dạng nhưng độ tin cậy trung bình."
+        },
+        "error": ""
+      }
+    }
+  },
+  "NC-04": {
+    "topic": "Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công (Handmade Diorama) nội địa",
+    "group": "NC",
+    "runs": {
+      "baseline_1": {
+        "latency": 81.23,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 96,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 24,
+          "depth": 22,
+          "citation": 25,
+          "total_score": 96,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng. Thông tin dựa trên thực tế, có trích dẫn nguồn và thừa nhận hạn chế dữ liệu. Phân tích khá chi tiết và đề xuất chiến lược cụ thể. Danh sách nguồn đầy đủ và đáng tin cậy."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 108.21,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 90,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 23,
+          "citation": 20,
+          "total_score": 90,
+          "reason": "Báo cáo có cấu trúc đầy đủ các phần chính, sử dụng HTML rõ ràng, dễ đọc. Thông tin không bịa đặt, phù hợp với thị trường thực tế, nhưng thiếu dẫn chứng cụ thể cho số liệu tăng trưởng (25%/quý) và một số nhận định. Phân tích xu hướng, đối thủ và đề xuất chiến lược có chiều sâu, logic, cụ thể. Danh sách tham khảo gồm 10 URL, nhưng có trùng lặp (Metric eReport xuất hiện nhiều lần) và không phải tất cả đều đáng tin cậy cao; thiếu trích dẫn trực tiếp trong nội dung."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 110.35,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 88,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 22,
+          "depth": 23,
+          "citation": 20,
+          "total_score": 88,
+          "reason": "Báo cáo có cấu trúc đầy đủ các phần chuẩn (tóm tắt, tổng quan, cạnh tranh, SWOT, đề xuất, hạn chế, kết luận) và mã HTML rõ ràng. Thông tin dựa trên thực tế thị trường diorama thủ công tại Việt Nam, không bịa đặt (không có bẫy hư cấu). Phân tích xu hướng, đối thủ chi tiết, logic, đề xuất chiến lược cụ thể và khả thi. Có danh sách nguồn tham khảo với 10 URL từ các trang khá uy tín (Metric, VnExpress,...), tuy nhiên một số link không trực tiếp liên quan hoặc thiếu kiểm chứng độc lập, nên trừ nhẹ điểm. Tổng thể báo cáo chất lượng tốt."
+        },
+        "error": ""
+      }
+    }
+  },
+  "NC-05": {
+    "topic": "Thực trạng nhu cầu thuê văn phòng chia sẻ (Coworking space) tại Thành phố Thủ Đức",
+    "group": "NC",
+    "runs": {
+      "baseline_1": {
+        "latency": 34.35,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 97.22,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 95,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 23,
+          "citation": 25,
+          "total_score": 95,
+          "reason": "Cấu trúc đầy đủ, rõ ràng, đúng chuẩn báo cáo chiến lược. Thông tin dựa trên thực tế thị trường, không bịa đặt, nhưng một số số liệu thiếu nguồn dẫn cụ thể. Phân tích sâu sắc, có bảng so sánh và đề xuất chiến lược khả thi. Trích dẫn 10 nguồn URL thực tế, đáng tin cậy."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 91.7,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 99,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 24,
+          "citation": 25,
+          "total_score": 99,
+          "reason": "Tiêu chí cấu trúc: Báo cáo có đầy đủ các phần chuẩn, HTML rõ ràng. Tính xác thực: Thông tin dựa trên thực tế, không bịa đặt, phù hợp với thị trường Thủ Đức. Độ sâu: Phân tích chi tiết về phân khúc, đối thủ, SWOT và đề xuất chiến lược có tính thuyết phục. Trích dẫn: Có 10 liên kết thực tế từ các nguồn uy tín."
+        },
+        "error": ""
+      }
+    }
+  },
+  "NC-06": {
+    "topic": "Tiềm năng phát triển của chuỗi cửa hàng bánh mì thanh long hữu cơ tại miền Tây",
+    "group": "NC",
+    "runs": {
+      "baseline_1": {
+        "latency": 74.29,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 83,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 22,
+          "depth": 18,
+          "citation": 20,
+          "total_score": 83,
+          "reason": "Báo cáo có cấu trúc đầy đủ các phần theo yêu cầu, trình bày rõ ràng. Thông tin dựa trên thực tế, không có dấu hiệu bịa đặt, nhưng thiếu số liệu định lượng cụ thể. Phân tích xu hướng và đề xuất chiến lược hợp lý nhưng chưa sâu sắc, còn chung chung. Có danh sách nguồn tham khảo với các URL, tuy nhiên một số nguồn là tin tức thông thường, chưa phải nghiên cứu chuyên sâu."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 149.36,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 34,
+        "rqs_detail": {
+          "structure": 10,
+          "factuality": 12,
+          "depth": 12,
+          "citation": 0,
+          "total_score": 34,
+          "reason": "Cấu trúc báo cáo chưa hoàn chỉnh, thiếu phần Hạn chế dữ liệu và Kết luận, đồng thời bị cắt giữa chừng. Thông tin có vẻ thực tế nhưng không có nguồn trích dẫn, nên điểm thực tế ở mức trung bình. Phân tích sơ lược, chưa sâu sắc, chiến lược mới chỉ nêu 3/5 hành động. Hoàn toàn không có trích dẫn nguồn nào."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 108.18,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 90,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 20,
+          "depth": 23,
+          "citation": 22,
+          "total_score": 90,
+          "reason": "Cấu trúc: báo cáo có đầy đủ các phần, HTML rõ ràng. Tính xác thực: thông tin về thị trường bánh mì thanh long hữu cơ là thực tế, không bịa đặt, nhưng các số liệu (15-30%, 80%) chưa có nguồn dẫn chứng nên trừ 5 điểm. Độ sâu: phân tích xu hướng, cạnh tranh, SWOT và đề xuất chiến lược chi tiết, logic, có giả định và lỗ hổng dữ liệu. Trích dẫn: có danh sách 10 nguồn URL thực tế, nhưng thiếu trích dẫn inline trong nội dung."
+        },
+        "error": ""
+      }
+    }
+  },
+  "NC-07": {
+    "topic": "Phân tích nhu cầu sử dụng ứng dụng di động để đặt lịch chăm sóc thú cưng tại nhà",
+    "group": "NC",
+    "runs": {
+      "baseline_1": {
+        "latency": 64.79,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 87,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 20,
+          "citation": 20,
+          "total_score": 87,
+          "reason": "Cấu trúc đầy đủ các phần và định dạng rõ ràng. Thông tin dựa trên nguồn thực tế, nhưng hạn chế về kiểm chứng độc lập và một số con số chưa được xác thực. Phân tích khá sâu sắc, đề xuất chiến lược hợp lý. Trích dẫn nguồn có URLs nhưng số lượng hạn chế."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 108.57,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 85,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 20,
+          "depth": 22,
+          "citation": 20,
+          "total_score": 85,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần chuẩn, định dạng HTML rõ ràng. Thông tin thị trường và đối thủ có cơ sở thực tế, không phát hiện sai lệch nhưng thiếu dẫn nguồn chi tiết cho các số liệu quan trọng. Phân tích xu hướng, cạnh tranh và chiến lược khá sâu sắc, có tính thuyết phục. Có danh sách 10 nguồn tham khảo nhưng phần lớn là tin tức, không phải báo cáo chuyên sâu."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 76.78,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 91,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 24,
+          "depth": 22,
+          "citation": 22,
+          "total_score": 91,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần yêu cầu, dễ đọc nhưng thiếu mục lục và một số chi tiết nhỏ. Thông tin xác thực dựa trên nguồn tham khảo thực tế, không bịa đặt, có nêu rõ giả định. Phân tích tương đối sâu sắc, có đề xuất cụ thể nhưng phần cạnh tranh còn yếu do thiếu dữ liệu. Trích dẫn nguồn đầy đủ dưới dạng danh sách URL, nhưng không có trích dẫn trực tiếp trong bài."
+        },
+        "error": ""
+      }
+    }
+  },
+  "NC-08": {
+    "topic": "Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản",
+    "group": "NC",
+    "runs": {
+      "baseline_1": {
+        "latency": 70.6,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 89,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 22,
+          "depth": 19,
+          "citation": 23,
+          "total_score": 89,
+          "reason": "Cấu trúc: Báo cáo có đầy đủ các phần chuẩn và trình bày rõ ràng bằng Markdown, đạt tối đa 25 điểm. Tính xác thực: Thông tin dựa trên các nguồn báo chí và trang web thực tế, không có dấu hiệu bịa đặt; tuy nhiên, thiếu số liệu định lượng và chưa xác nhận độ tin cậy của giá tham khảo, nên trừ 3 điểm (đạt 22). Độ sâu: Phân tích xu hướng và đề xuất chiến lược có logic nhưng phần cạnh tranh thiếu chi tiết, chưa thực sự sâu sắc, đạt 19 điểm. Trích dẫn: Có danh sách 11 URL đáng tin cậy, nhưng một số nguồn không hiển thị đầy đủ nội dung, trừ 2 điểm (đạt 23)."
+        },
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 107.23,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 86,
+        "rqs_detail": {
+          "structure": 24,
+          "factuality": 20,
+          "depth": 22,
+          "citation": 20,
+          "total_score": 86,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần cần thiết, HTML rõ ràng. Tính xác thực khá tốt dựa trên các nguồn tham khảo, nhưng thiếu trích dẫn trong văn bản. Phân tích có chiều sâu, chỉ ra khoảng trống thị trường và đề xuất cụ thể, nhưng một số đề xuất còn chung chung. Nguồn tham khảo đầy đủ URL nhưng không có inline citation."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 75.09,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 100,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 25,
+          "citation": 25,
+          "total_score": 100,
+          "reason": "Báo cáo có cấu trúc đầy đủ, rõ ràng (executive summary, tổng quan thị trường, cạnh tranh, SWOT, đề xuất, hạn chế dữ liệu, kết luận, nguồn tham khảo). Thông tin dựa trên thực tế, không có dấu hiệu hư cấu. Phân tích sâu, chi tiết về xu hướng, đối thủ, chiến lược, chỉ ra lỗ hổng dữ liệu. Trích dẫn 10 nguồn URL đáng tin cậy."
+        },
+        "error": ""
+      }
+    }
+  },
+  "BY-01": {
+    "topic": "Phân tích ma trận SWOT của thị trường kẹo mút vị mắm tôm tại Nam Cực",
+    "group": "BY",
+    "runs": {
+      "baseline_1": {
+        "latency": 2.35,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 87.88,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 92,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 22,
+          "citation": 20,
+          "total_score": 92,
+          "reason": "Cấu trúc đầy đủ các phần và trình bày rõ ràng. Factuality tốt vì nhận ra thị trường chỉ là meme, không bịa đặt số liệu thương mại. Depth khá sâu với phân tích xu hướng, đối thủ và đề xuất chiến lược cụ thể, nhưng có thể đi sâu hơn về khía cạnh logistics tại Nam Cực. Citation có danh sách liên kết nhưng một số không trực tiếp liên quan đến chủ đề, gây giảm điểm nhẹ."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 5.7,
+        "flow_status": "INVALID",
+        "validator_status": "FAILED",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      }
+    }
+  },
+  "BY-02": {
+    "topic": "Xu hướng tiêu dùng hệ thống taxi bay chạy bằng năng lượng than đá tại TP.HCM năm 1890",
+    "group": "BY",
+    "runs": {
+      "baseline_1": {
+        "latency": 3.29,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 74.11,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 80,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 20,
+          "citation": 10,
+          "total_score": 80,
+          "reason": "Cấu trúc đầy đủ, rõ ràng; xử lý đúng bản chất hư cấu của đề tài; phân tích logic nhưng chưa sâu; chỉ có một nguồn tham khảo."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 4.41,
+        "flow_status": "INVALID",
+        "validator_status": "FAILED",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      }
+    }
+  },
+  "BY-03": {
+    "topic": "Thị trường cung cấp dịch vụ gọi xe công nghệ bằng ngựa kéo tại trung tâm Hà Nội",
+    "group": "BY",
+    "runs": {
+      "baseline_1": {
+        "latency": 17.57,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 93.49,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 99,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 24,
+          "citation": 25,
+          "total_score": 99,
+          "reason": "Cấu trúc báo cáo đầy đủ và rõ ràng, đúng chuẩn. Tính xác thực tốt vì không bịa đặt thị trường hư cấu mà khéo léo chỉ ra sự không tồn tại và tập trung vào các phân khúc thực tế. Phân tích sâu sắc, có logic và đề xuất chiến lược cụ thể. Trích dẫn đủ 10 nguồn báo thực tế, đáng tin cậy."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 4.98,
+        "flow_status": "INVALID",
+        "validator_status": "FAILED",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      }
+    }
+  },
+  "BY-04": {
+    "topic": "Tác động kinh tế của việc tập đoàn Microsoft mua lại toàn bộ chuỗi quán cà phê võng Việt Nam",
+    "group": "BY",
+    "runs": {
+      "baseline_1": {
+        "latency": 11.57,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 94.71,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 93,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 23,
+          "depth": 23,
+          "citation": 22,
+          "total_score": 93,
+          "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng với các phần chuẩn. Tính xác thực tốt vì báo cáo không bịa đặt thông tin mà dựa trên thị trường cà phê võng có thật, có phần giả định rõ ràng. Độ sâu phân tích khá chi tiết, logic, đề xuất cụ thể. Trích dẫn nguồn có 10 URL nhưng một số không liên quan trực tiếp, vẫn đạt điểm cao."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 5.43,
+        "flow_status": "INVALID",
+        "validator_status": "FAILED",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      }
+    }
+  },
+  "BY-05": {
+    "topic": "Bối cảnh cạnh tranh của các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương",
+    "group": "BY",
+    "runs": {
+      "baseline_1": {
+        "latency": 3.1,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 130.58,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 66,
+        "rqs_detail": {
+          "structure": 23,
+          "factuality": 5,
+          "depth": 18,
+          "citation": 20,
+          "total_score": 66,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần và HTML rõ ràng, đạt điểm cao. Tuy nhiên, chủ đề nghiên cứu gốc là kịch bản hư cấu (kính thực tế ảo cho cá voi đại dương), và báo cáo không nhận ra điều này, khẳng định thị trường có thật và đưa ra số liệu thương mại, dẫn đến điểm factuality rất thấp. Phân tích sâu sắc trong bối cảnh giả định, nhưng thiếu cơ sở thực tế. Các trích dẫn có nhiều URL, nhưng không chứng minh được tính xác thực của chủ đề."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 7.66,
+        "flow_status": "INVALID",
+        "validator_status": "FAILED",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      }
+    }
+  },
+  "BY-06": {
+    "topic": "Chiến lược marketing 4P của sản phẩm smartphone màn hình gập chạy bằng xăng cơ học",
+    "group": "BY",
+    "runs": {
+      "baseline_1": {
+        "latency": 9.94,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 102.75,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 90,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 20,
+          "citation": 20,
+          "total_score": 90,
+          "reason": "Cấu trúc đầy đủ, rõ ràng, các phần được sắp xếp hợp lý. Tính xác thực cao vì báo cáo nhận thức được sản phẩm không tồn tại và chuyển hướng sang khía cạnh giải trí, không bịa đặt số liệu. Độ sâu phân tích khá logic nhưng còn hạn chế do chủ đề hư cấu, các đề xuất mang tính khả thi nhưng chưa thực sự sâu sắc. Trích dẫn đủ số lượng, nhưng một số liên kết chưa thực sự liên quan trực tiếp đến chủ đề."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 5.99,
+        "flow_status": "INVALID",
+        "validator_status": "FAILED",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      }
+    }
+  },
+  "BY-07": {
+    "topic": "Quy mô thị trường xuất khẩu dịch vụ giao hàng bằng chim bồ câu tích hợp chip định vị GPS",
+    "group": "BY",
+    "runs": {
+      "baseline_1": {
+        "latency": 7.45,
+        "flow_status": "FAILED",
+        "validator_status": "SUCCESS",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      },
+      "baseline_2": {
+        "latency": 105.1,
+        "flow_status": "SUCCESS",
+        "validator_status": "SUCCESS",
+        "rqs_score": 96,
+        "rqs_detail": {
+          "structure": 25,
+          "factuality": 25,
+          "depth": 23,
+          "citation": 23,
+          "total_score": 96,
+          "reason": "Cấu trúc báo cáo đầy đủ các phần chuẩn, HTML rõ ràng dễ đọc. Tính xác thực cao: báo cáo nhận định đúng thị trường chính không tồn tại thương mại, chỉ ra cơ hội thực tế ở thiết bị đeo GPS và Sneakernet, không bịa đặt số liệu. Phân tích sâu sắc, có logic về xu hướng, cạnh tranh, SWOT và đề xuất chiến lược cụ thể. Nguồn tham khảo đầy đủ dạng URL, tuy nhiên một số nguồn không phải học thuật chính thống, nhưng vẫn đáng tin cậy và liên quan."
+        },
+        "error": ""
+      },
+      "proposed": {
+        "latency": 5.6,
+        "flow_status": "INVALID",
+        "validator_status": "FAILED",
+        "rqs_score": 0,
+        "rqs_detail": null,
+        "error": ""
+      }
+    }
+  }
+}

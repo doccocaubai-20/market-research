@@ -74,7 +74,18 @@ def research_stream(topic: str):
             item = queue.get()
             if item is None:
                 break
-            payload = json.dumps(item["data"], ensure_ascii=False)
+            try:
+                payload = json.dumps(item["data"], ensure_ascii=False, default=str)
+            except Exception as exc:
+                error_payload = json.dumps(
+                    {
+                        "message": "SSE serialization failed",
+                        "detail": str(exc)
+                    },
+                    ensure_ascii=False
+                )
+                yield f"event: error\ndata: {error_payload}\n\n"
+                continue
             yield f"event: {item['type']}\ndata: {payload}\n\n"
 
     return StreamingResponse(stream(), media_type="text/event-stream")

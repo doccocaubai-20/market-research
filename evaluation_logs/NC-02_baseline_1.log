@@ -1,0 +1,48 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-02 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Xu hướng tiêu dùng phân khúc trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Xu hướng tiêu dùng phân khúc trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chưa có thông tin nào về chủ đề. Cần tìm kiếm tổng quan về xu hướng tiêu dùng trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'xu hướng tiêu dùng trà cụ gốm sứ cao cấp phục vụ trà đạo Hà Nội'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'xu hướng tiêu dùng trà cụ gốm sứ cao cấp phục vụ trà đạo Hà Nội': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Kết quả tìm kiếm đầu tiên không có thông tin cụ thể. Cần thử truy vấn khác để khai thác thông tin về thị trường trà cụ gốm sứ cao cấp tại Hà Nội.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thị trường trà cụ gốm sứ cao cấp Hà Nội'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thị trường trà cụ gốm sứ cao cấp Hà Nội': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Hai truy vấn trước không có kết quả. Cần thử truy vấn mở rộng hơn về trà cụ gốm sứ cao cấp nói chung tại Việt Nam.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'trà cụ gốm sứ cao cấp Hà Nội'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'trà cụ gốm sứ cao cấp Hà Nội': cào được 75 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 4 - Tư duy: Đã có thông tin về các địa chỉ phân phối trà cụ gốm sứ cao cấp tại Hà Nội (Bát Tràng, An Thổ Túc,...) nhưng chưa có dữ liệu về xu hướng tiêu dùng, thị hiếu, đối thủ cạnh tranh. Cần tìm kiếm thêm về xu hướng trà đạo và tiêu dùng gốm sứ cao cấp tại Hà Nội.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'xu hướng trà đạo gốm sứ cao cấp Hà Nội'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'xu hướng trà đạo gốm sứ cao cấp Hà Nội': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=running | Đang tổng hợp báo cáo kinh doanh cuối cùng...
+----------------------------------------
+[SINGLE] status=done | Đã hoàn thành báo cáo nghiên cứu thị trường.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 69.86s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 83/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 22,
+  "factuality": 23,
+  "depth": 18,
+  "citation": 20,
+  "total_score": 83,
+  "reason": "Cấu trúc báo cáo đầy đủ, rõ ràng, sử dụng Markdown tốt. Thông tin thực tế dựa trên các thương hiệu có thật, không có dấu hiệu bịa đặt. Phân tích xu hướng và cạnh tranh có logic nhưng còn sơ lược, thiếu dữ liệu định lượng và độ sâu chiến lược. Danh sách nguồn tham khảo đầy đủ và đáng tin cậy, tuy nhiên không có trích dẫn trong văn bản."
+}

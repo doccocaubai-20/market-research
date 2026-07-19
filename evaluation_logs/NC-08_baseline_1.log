@@ -1,0 +1,46 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-08 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chưa có thông tin nào, cần tìm kiếm tổng quan về thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật Bản': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Kết quả tìm kiếm đầu tiên không có thông tin, cần tìm kiếm thêm với từ khóa khác để xác định xem thị trường này có thực tế hay không.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'xơ mướp xuất khẩu Nhật Bản thủ công mỹ nghệ'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'xơ mướp xuất khẩu Nhật Bản thủ công mỹ nghệ': cào được 40 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Thông tin hiện có đã cho thấy sản phẩm xơ mướp xuất khẩu sang Nhật là có thật và có tiềm năng. Tuy nhiên, cần bổ sung thêm thông tin về tổng quan thị trường, xu hướng tiêu dùng, đối thủ cạnh tranh và các rào cản thương mại để đủ viết báo cáo chi tiết 7 phần.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thị trường sản phẩm thủ công mỹ nghệ Nhật Bản xu hướng tiêu dùng xơ mướp'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thị trường sản phẩm thủ công mỹ nghệ Nhật Bản xu hướng tiêu dùng xơ mướp': cào được 18 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 4 - Tư duy: Đã có thông tin về sản phẩm, quy trình xử lý, tiêu chuẩn kiểm dịch và xu hướng tiêu dùng. Mặc dù thiếu số liệu thị trường cụ thể và thông tin đối thủ cạnh tranh, nhưng đã hết lượt tìm kiếm. Với dữ liệu hiện có, có thể tổng hợp báo cáo 7 phần ở mức tổng quan.
+----------------------------------------
+[SINGLE] status=running | Quyết định dừng tìm kiếm và tiến hành tổng hợp báo cáo...
+----------------------------------------
+[SINGLE] status=running | Đang tổng hợp báo cáo kinh doanh cuối cùng...
+----------------------------------------
+[SINGLE] status=done | Đã hoàn thành báo cáo nghiên cứu thị trường.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 70.60s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 89/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 25,
+  "factuality": 22,
+  "depth": 19,
+  "citation": 23,
+  "total_score": 89,
+  "reason": "Cấu trúc: Báo cáo có đầy đủ các phần chuẩn và trình bày rõ ràng bằng Markdown, đạt tối đa 25 điểm. Tính xác thực: Thông tin dựa trên các nguồn báo chí và trang web thực tế, không có dấu hiệu bịa đặt; tuy nhiên, thiếu số liệu định lượng và chưa xác nhận độ tin cậy của giá tham khảo, nên trừ 3 điểm (đạt 22). Độ sâu: Phân tích xu hướng và đề xuất chiến lược có logic nhưng phần cạnh tranh thiếu chi tiết, chưa thực sự sâu sắc, đạt 19 điểm. Trích dẫn: Có danh sách 11 URL đáng tin cậy, nhưng một số nguồn không hiển thị đầy đủ nội dung, trừ 2 điểm (đạt 23)."
+}

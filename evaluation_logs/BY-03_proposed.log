@@ -1,0 +1,44 @@
+=== KHỞI CHẠY THỬ NGHIỆM: BY-03 | CẤU HÌNH: proposed ===
+Chủ đề: 'Thị trường cung cấp dịch vụ gọi xe công nghệ bằng ngựa kéo tại trung tâm Hà Nội'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Trạng thái hiện tại chưa có dữ liệu tìm kiếm. Theo quy trình, bước đầu tiên là kích hoạt Search Agent để thu thập dữ liệu từ internet thông qua SerpAPI.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Thị trường cung cấp dịch vụ gọi xe công nghệ bằng ngựa kéo tại trung tâm Hà Nội'
+Data: {
+  "original_topic": "Thị trường cung cấp dịch vụ gọi xe công nghệ bằng ngựa kéo tại trung tâm Hà Nội",
+  "search_queries": {
+    "overview": [
+      "dịch vụ gọi xe ngựa công nghệ Hà Nội quy mô thị trường",
+      "báo cáo thị trường xe ngựa kéo du lịch Hà Nội"
+    ],
+    "trend": [
+      "xu hướng dịch vụ gọi xe ngựa kéo ứng dụng công nghệ Hà Nội",
+      "cơ hội và rủi ro kinh doanh xe ngựa kéo tại Hà Nội"
+    ],
+    "competition": [
+      "đối thủ cạnh tranh dịch vụ xe ngựa kéo Hà Nội",
+      "doanh nghiệp cung cấp dịch vụ xe ngựa kéo công nghệ tại Hà Nội"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Thị trường cung cấp dịch vụ gọi xe công nghệ bằng ngựa kéo tại trung tâm Hà Nội'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Tại Hà Nội và Việt Nam nói chung, không tồn tại dịch vụ gọi \"xe ngựa công nghệ\" và không có quy mô thị trường cho loại hình này. Khái niệm này có thể là một sự nhầm lẫn thuật ngữ hoặc một ý tưởng giả định.\n\nThực tế, thị trường gọi xe công nghệ tại Hà Nội hiện nay được thống trị tuyệt đối bởi các phương tiện hiện đại như xe máy điện/xăng, ô tô điện/xăng và các giải pháp giao thông xanh công cộng.\n\nDưới đây là thông tin chi tiết về bức tranh thực tế của thị trường gọi xe công nghệ tại Hà Nội tính đến năm 2026:\n\nQuy mô thị trường gọi xe công nghệ nói chung\n\nGiá trị toàn quốc: Theo báo cáo từ các tổ chức nghiên cứu thị trường như Mordor Intelligence, thị trường gọi xe công nghệ Việt Nam ước tính đạt quy mô khoảng 1 tỷ USD và dự kiến bứt phá lên trên 3 tỷ USD vào năm 2031.\nThị phần doanh nghiệp...",
+  "trends": "Tại Hà Nội, không tồn tại dịch vụ gọi xe ngựa kéo ứng dụng công nghệ hoạt động thương mại hay giao thông công cộng. Do quy định nghiêm ngặt về quản lý đô
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=failed | INVALID
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 4.98s
+Trạng thái luồng chạy (Flow Status): INVALID
+Trạng thái kiểm duyệt (Validator Status): FAILED
+Điểm chất lượng (RQS): 0/100

@@ -42,29 +42,52 @@ export default function Dashboard() {
         eventSourceRef.current = source;
 
         source.addEventListener('progress', (event) => {
-            const data = JSON.parse(event.data);
-            if (data?.status === 'running' && stepKeys.includes(data.agent)) {
-                setActiveSteps((prev) => (prev.includes(data.agent) ? prev : [...prev, data.agent]));
-            }
-            if (data?.status === 'done' && stepKeys.includes(data.agent)) {
-                setDoneSteps((prev) => (prev.includes(data.agent) ? prev : [...prev, data.agent]));
-                setActiveSteps((prev) => prev.filter((agent) => agent !== data.agent));
+            try {
+                const data = JSON.parse(event.data);
+                if (data?.status === 'running' && stepKeys.includes(data.agent)) {
+                    setActiveSteps((prev) => (prev.includes(data.agent) ? prev : [...prev, data.agent]));
+                }
+                if (data?.status === 'done' && stepKeys.includes(data.agent)) {
+                    setDoneSteps((prev) => (prev.includes(data.agent) ? prev : [...prev, data.agent]));
+                    setActiveSteps((prev) => prev.filter((agent) => agent !== data.agent));
+                }
+            } catch (err) {
+                setError('❌ Dữ liệu tiến trình bị lỗi. Vui lòng thử lại.');
+                setLoading(false);
+                source.close();
             }
         });
 
         source.addEventListener('done', (event) => {
-            const data = JSON.parse(event.data);
-            setResult(data);
-            setDoneSteps((prev) => (prev.includes('report') ? prev : [...prev, 'report']));
-            setActiveSteps([]);
-            setProgressPercent(100);
-            setRefreshHistory((r) => r + 1);
-            setLoading(false);
-            source.close();
+            try {
+                const data = JSON.parse(event.data);
+                setResult(data);
+                setDoneSteps((prev) => (prev.includes('report') ? prev : [...prev, 'report']));
+                setActiveSteps([]);
+                setProgressPercent(100);
+                setRefreshHistory((r) => r + 1);
+                setLoading(false);
+                source.close();
+            } catch (err) {
+                setError('❌ Kết quả trả về không hợp lệ. Vui lòng thử lại.');
+                setLoading(false);
+                source.close();
+            }
         });
 
-        source.addEventListener('error', () => {
-            setError('❌ Có lỗi xảy ra. Vui lòng thử lại.');
+        source.addEventListener('error', (event) => {
+            let message = '❌ Có lỗi xảy ra. Vui lòng thử lại.';
+            if (event?.data) {
+                try {
+                    const data = JSON.parse(event.data);
+                    if (data?.message) {
+                        message = `❌ ${data.message}`;
+                    }
+                } catch (err) {
+                    message = '❌ Có lỗi xảy ra. Vui lòng thử lại.';
+                }
+            }
+            setError(message);
             setLoading(false);
             source.close();
         });

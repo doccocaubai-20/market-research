@@ -1,0 +1,223 @@
+Tự động hóa Quy trình Nghiên cứu Thị trường dựa trên kiến trúc Đa tác tử kết hợp LLM DeepSeek và Lightweight RAG
+
+Lê Quang Huy, Nguyễn Quang Hưng
+Posts and Telecommunications Institute of Technology
+Hanoi, Vietnam
+huyle207200@gmail.com
+
+
+TÓM TẮT
+Trong bối cảnh dữ liệu thị trường trực tuyến tăng nhanh về khối lượng, tốc độ cập nhật và mức độ phân tán, việc thu thập, phân tích và tổng hợp thông tin ngày càng đòi hỏi các phương pháp tự động hóa có khả năng xử lý ngôn ngữ tự nhiên, kiểm chứng nguồn dữ liệu và sinh báo cáo có cấu trúc. Các mô hình ngôn ngữ lớn (Large Language Models – LLMs) có tiềm năng lớn trong việc phân tích văn bản và sinh nội dung, tuy nhiên, khi được sử dụng đơn lẻ, các mô hình này thường gặp hạn chế về hiện tượng ảo giác thông tin, thiếu khả năng cập nhật dữ liệu thời gian thực và khó kiểm soát chất lượng đầu ra trong các tác vụ phân tích phức tạp. Bài báo này đề xuất một kiến trúc Multi-Agent kết hợp LLM DeepSeek và SerpAPI nhằm tự động hóa quy trình nghiên cứu thị trường từ một từ khóa đầu vào. Hệ thống được phân rã thành các tác tử chuyên trách gồm Search Agent, Validator Agent, Trend Agent, Competitor Agent và Report Agent, dưới sự điều phối của Manager Agent dựa trên vòng lặp ReAct. Ngoài ra, nghiên cứu tích hợp cơ chế Lightweight RAG thông qua dữ liệu truy xuất trực tuyến, cấu trúc hóa ngữ cảnh bằng thẻ XML và ràng buộc hành vi bằng Prompt Engineering nhằm hạn chế hiện tượng ảo giác thông tin (Hallucination). Thử nghiệm đánh giá hiệu năng hệ thống được đề xuất thiết lập trên 30 kịch bản kiểm thử thuộc 3 nhóm chủ đề khác nhau tại Việt Nam nhằm đo lường thời gian chạy, độ ổn định luồng và khả năng phát hiện dữ liệu ảo giác. Thực nghiệm cho kết quả tỷ lệ hoàn thành là 93.3%, tỉ lệ chặn ảo giác là 85.7% và chất lượng báo cáo đạt trung bình 91.1/100.
+Keywords: Multi-Agent, LLM, DeepSeek, Nghiên cứu thị trường, Lightweight RAG, ReAct.
+GIỚI THIỆU
+Đặt vấn đề
+Sự phát triển nhanh chóng của nền kinh tế số làm cho dữ liệu thị trường trực tuyến trở nên vô cùng phong phú, đa dạng và biến động liên tục. Các nguồn thông tin từ báo chí điện tử, diễn đàn thảo luận, mạng xã hội và các báo cáo ngành mở chứa đựng lượng tri thức có giá trị thương mại lớn về xu hướng tiêu dùng, sự chuyển dịch hành vi khách hàng và các chiến lược cạnh tranh của đối thủ. Tuy nhiên, phần lớn lượng dữ liệu này tồn tại dưới dạng văn bản phi cấu trúc, phân tán trên nhiều nguồn trực tuyến và có chất lượng không đồng nhất. Việc nghiên cứu thị trường theo phương pháp truyền thống thường yêu cầu các chuyên gia phân tích thực hiện thủ công các công việc: tìm kiếm, chọn lọc, đọc hiểu, phân tích và tổng hợp báo cáo. Quy trình này tốn nhiều thời gian, chi phí nhân lực lớn, và khó đáp ứng yêu cầu ra quyết định kịp thời trong các môi trường kinh doanh thay đổi nhanh.
+Thách thức của quy trình nghiên cứu thị trường dựa trên LLM
+Có một số thách thức trong việc ứng dụng LLM vào nghiên cứu thị trường. Thứ nhất, dữ liệu thu thập từ công cụ tìm kiếm có chất lượng không đồng nhất, có thể chứa nội dung quảng cáo, thông tin thiếu ngữ cảnh hoặc các nguồn không đáng tin cậy. Thứ hai, quy trình nghiên cứu thị trường bao gồm nhiều công đoạn có mục tiêu khác nhau, từ truy xuất, thẩm định dữ liệu đến phân tích và tổng hợp báo cáo, làm tăng độ phức tạp trong việc kiểm soát luồng xử lý. Thứ ba, khi không có đủ dữ liệu, LLM có thể suy diễn thêm các số liệu hoặc quan hệ chưa được nguồn truy xuất hỗ trợ.
+Các vấn đề trên có thể xuất hiện trong cả hệ thống Single-Agent và Multi-Agent. Nghiên cứu này khảo sát việc module hóa các công đoạn có giúp kiểm soát chất lượng của hệ thống hay không.
+Hướng giải quyết
+Nghiên cứu đề xuất một workflow LLM cho tác vụ nghiên cứu thị trường trực tuyến. Quy trình được phân tách thành các giai đoạn truy xuất, thẩm định, phân tích xu hướng, phân tích cạnh tranh và tổng hợp báo cáo tương ứng với các agent, dưới sự điều phối của Manager Agent. Việc phân tách này nhằm tăng khả năng kiểm soát trạng thái và cô lập lỗi giữa các công đoạn. Bên cạnh kiến trúc Multi-Agent này là tầng truy xuất trực tuyến, làm phẳng dữ liệu, cấu trúc hóa bằng XML trước khi đưa vào câu lệnh (prompt).
+Khoảng trống nghiên cứu
+Các nghiên cứu về RAG và LLM Agent đã cung cấp nhiều phương pháp kết hợp mô hình ngôn ngữ với tri thức bên ngoài và tổ chức các tác vụ xử lý nhiều bước. Tuy nhiên, việc áp dụng các phương pháp này vào nghiên cứu thị trường trực tuyến vẫn tồn tại nhiều vấn đề cần được xem xét.
+Thứ nhất, nhiều cấu hình RAG được xây dựng trên kho tài liệu đã thu thập và lập chỉ mục trước. Trong khi đó, dữ liệu nghiên cứu thị trường thường thay đổi theo từng truy vấn và cần được cập nhật tại thời điểm thực thi. Vì vậy, cần khảo sát một cấu hình truy xuất trực tuyến nhẹ, trong đó dữ liệu web được thu thập và đưa trực tiếp vào ngữ cảnh của LLM mà không duy trì cơ sở dữ liệu vector lâu dài.
+Thứ hai, dữ liệu từ công cụ tìm kiếm có thể không liên quan, không đủ bằng chứng hoặc mô tả các chủ đề phi thực tế. Nếu không có bước thẩm định trước khi phân tích, các thông tin này có thể được truyền sang các giai đoạn phân tích và tổng hợp báo cáo. Do đó, cần đánh giá vai trò của một thành phần kiểm tra tính hợp lệ của chủ đề và dữ liệu truy xuất trước khi sinh báo cáo.
+Thứ ba, việc phân tách quy trình thành nhiều thành phần chuyên trách có thể tăng khả năng quan sát và kiểm soát luồng, nhưng đồng thời làm tăng số lần gọi mô hình, độ trễ và chi phí. Vì vậy, cần đánh giá thực nghiệm liệu workflow mô-đun hóa có mang lại lợi ích đáng kể so với cấu hình Single-Agent được cung cấp cùng dữ liệu truy xuất hay không.
+Từ các vấn đề trên, nghiên cứu đề xuất và đánh giá một workflow LLM mô-đun hóa kết hợp truy xuất trực tuyến nhẹ và kiểm tra tính hợp lệ của dữ liệu cho nhiệm vụ nghiên cứu thị trường.
+Đóng góp của nghiên cứu
+Nghiên cứu này đề xuất kiến trúc đa tác tử hoàn chỉnh giải quyết các hạn chế trên với các đóng góp chính như sau:
+Thứ nhất, nghiên cứu thiết kế và hiện thực hóa hệ thống với kiến trúc Multi-Agent cho nghiên cứu thị trường.
+Thứ hai, nghiên cứu hiện thực hóa cơ chế Lightweight RAG  không duy trì vector database.
+Thứ ba, nghiên cứu tích hợp Validator Agent như một bước thẩm định trước khi phân tích nhằm kiểm tra dữ liệu truy xuất.
+Thứ tư, nghiên cứu thực hiện đánh giá thực nghiệm các nhóm chủ đề thị trường Việt Nam.
+Mục tiêu và phương pháp nghiên cứu
+Nghiên cứu hướng tới mục tiêu tự động hóa quy trình trích xuất, phân tích và tổng hợp dữ liệu thị trường trực tuyến. Đối tượng nghiên cứu tập trung vào việc tổ chức luồng dữ liệu trong kiến trúc Multi-Agent và khả năng kiểm soát bối cảnh của mô hình DeepSeek. Phạm vi dữ liệu được giới hạn ở các văn bản tiếng Việt thu thập qua SerpAPI tại thị trường Việt Nam. Để hiện thực hóa, đề tài áp dụng phương pháp thực nghiệm: lập trình bộ điều phối vòng lặp ReAct và 5 tác tử chuyên trách bằng ngôn ngữ Python kết hợp framework FastAPI. Hệ thống cuối cùng được triển khai chạy thử nghiệm trên đa dạng các nhóm ngành hàng để đo lường tính ổn định, tốc độ phản hồi và chất lượng đầu ra của báo cáo.
+NGHIÊN CỨU LIÊN QUAN
+Mô hình ngôn ngữ lớn (LLMs)
+Các mô hình ngôn ngữ lớn có khả năng tổng hợp tri thức và suy luận, nhưng các kiến thức lại bị giới hạn tại thời điểm huấn luyện khiến LLM khó phản ánh thông tin thời gian thực.
+Retrieval-Augmented Generation (RAG)
+RAG tăng cường mô hình sinh bằng tri thức truy xuất từ nguồn ngoài, trong đó một phương thức triển khai phổ biến là sử dụng dense retrieval trên cơ sở tri thức được lập chỉ mục bằng vector [1]. Trong bài toán nghiên cứu thị trường, dữ liệu thay đổi theo từng truy vấn nên việc duy trì kho vector lâu dài có thể không cần thiết. Nhờ cửa sổ ngữ cảnh lớn của mô hình DeepSeek [8], hệ thống đưa trực tiếp các kết quả truy vấn đã được làm phẳng vào prompt. Nghiên cứu gọi cấu hình truy xuất trực tuyến không sử dụng cơ sở dữ liệu vector này là Lightweight RAG.
+Hệ thống tác tử thông minh (LLM Agents)
+Hệ thống tác tử ứng dụng LLM làm lõi nhận thức, tích hợp bộ nhớ, khả năng lập kế hoạch và tương tác với các công cụ ngoại vi (APIs) để xử lý các tác vụ phức tạp. Cơ chế vòng lặp ReAct kết hợp chặt chẽ giữa năng lực suy luận của LLM và hành động thực thi theo từng bước, giúp nâng cao tính tự chủ của hệ thống. Đồng thời, việc phân rã một quy trình nguyên khối thành sự cộng tác của nhiều tác tử chuyên trách giúp giảm tải nhận thức cho mô hình trong từng phiên làm việc [2].
+Prompt Engineering trong hệ thống đa tác tử
+Prompt Engineering đóng vai trò định nghĩa ranh giới ngữ nghĩa, vai trò chuyên môn và giao thức giao tiếp giữa các tác tử [6]. 
+PHƯƠNG PHÁP ĐỀ XUẤT
+Kiến trúc hệ thống tổng thể
+Hệ thống được thiết kế theo cấu trúc phân tầng gồm các thành phần cốt lõi như hình vẽ luồng dữ liệu dưới đây:
+
+Hình 1. Thiết kế kiến trúc hệ thống Multi-Agent
+Thiết kế chi tiết các Agent
+Kiến trúc đa tác tử trong nghiên cứu đề xuất được xây dựng dựa trên sự phân rã một bài toán nghiên cứu thị trường tổng thể thành các bài toán con chuyên biệt có tính độc lập cao. Mỗi bài toán con được xử lý bởi một Agent với prompt hệ thống và cách thức hoạt động riêng biệt, đảm bảo khả năng mở rộng và dễ dàng tối ưu hóa. Trong nghiên cứu này, một Agent được định nghĩa là một thành phần có vai trò, prompt, đầu vào và lược đồ đầu ra riêng. Các Agent có thể sử dụng cùng một mô hình LLM nền tảng; do đó, việc phân tách Agent nhằm mô-đun hóa workflow và kiểm soát luồng dữ liệu, không hàm ý mỗi Agent là một mô hình độc lập.
+Dưới đây là đề xuất thiết kế các tác tử.
+
+Bảng I. Chức năng các thành phần hệ thống
+Thành phần
+Đầu vào
+Chức năng
+Đầu ra
+Search
+Chủ đề hoặc truy vấn sửa đổi
+Truy xuất dữ liệu web
+Tập kết quả tìm kiếm
+Validator
+Chủ đề và dữ liệu truy xuất
+Kiểm tra tính tồn tại và độ phù hợp
+Hợp lệ/Không hợp lệ
+Trend
+Dữ liệu
+Phân tích xu hướng
+Bản phân tích xu hướng
+Competitor
+Dữ liệu
+Phân tích cạnh tranh
+Bản phân tích cạnh tranh
+Report
+Phân tích và nguồn dữ liệu
+Tổng hợp báo cáo
+Báo cáo định dạng HTML
+Manager
+Trạng thái workflow
+Chọn bước xử lý tiếp theo
+Hành động điều phối
+
+
+Cơ chế Lightweight RAG
+. Hệ thống sử dụng một biến thể Lightweight RAG  nhằm cung cấp dữ liệu thị trường cập nhật cho các tác tử mà không duy trì cơ sở dữ liệu vector. Khác với các cấu hình RAG dựa trên kho tài liệu được lập chỉ mục trước, dữ liệu trong nghiên cứu này được truy xuất theo từng chủ đề và chỉ được sử dụng trong phạm vi của một phiên phân tích. Cơ chế gồm ba giai đoạn:
+Truy xuất dữ liệu
+Từ chủ đề đầu vào, Search Agent tạo truy vấn liên quan và gửi đến SerpAPI để thu thập kết quả tìm kiếm trực tuyến. Với mỗi kết quả, hệ thống trích xuất tiêu đề, URL, đoạn mô tả và vị trí xếp hạng.
+Xử lý và tăng cường ngữ cảnh
+Các kết quả truy xuất được chuẩn hóa về một cấu trúc thống nhất, loại bỏ URL trùng lặp và các bản ghi không chứa nội dung cần thiết. Dữ liệu sau xử lý được đóng gói trong thẻ XML phân biệt phần truy xuất với phần chỉ dẫn của prompt. Tập ngữ cảnh sau đó được chuyển đến Validator Agent để kiểm tra mức độ phù hợp với chủ đề trước khi sử dụng cho các bước phân tích.
+Sinh nội dung
+Sau khi được chấp nhận, tập ngữ cảnh được đưa trực tiếp vào prompt của Trend Agent và Competitor Agent. Các tác tử được yêu cầu chỉ sử dụng thông tin có trong ngữ cảnh, gắn nhận định với nguồn tương ứng và đánh dấu các nội dung không đủ bằng chứng. Report Agent tổng hợp các kết quả trung gian thành báo cáo cuối cùng.
+THIẾT LẬP THỰC NGHIỆM
+Môi trường thực nghiệm và tập kịch bản kiểm thử
+Môi trường thực nghiệm
+Hệ thống được triển khai bằng Python và sử dụng SerpAPI để truy xuất kết quả từ Google Search. Tất cả cấu hình đối chứng sử dụng cùng mô hình LLM, cùng kết quả tìm kiếm được lưu đệm và cùng giới hạn đầu vào-đầu ra.
+Tập kịch bản kiểm thử
+Thực nghiệm sử dụng bộ 30 test case thuộc 3 nhóm chủ đề khác nhau tại thị trường Việt Nam để đánh giá độ bền vững và khả năng lọc ảo giác của hệ thống.
+
+Bảng II. Danh sách 30 Test cases
+Test case
+Topic
+Group
+TC-01
+Thị trường xe điện (EV) tại Việt Nam giai đoạn 2025 - 2026
+Standard
+TC-02
+Xu hướng tiêu dùng thực phẩm chức năng và bảo vệ sức khỏe nội địa
+Standard
+TC-03
+Toàn cảnh thị trường chuỗi cà phê đặc sản tại các thành phố lớn
+Standard
+TC-04
+Thực trạng và xu hướng thương mại điện tử mảng mỹ phẩm
+Standard
+TC-05
+Cạnh tranh trong ngành dịch vụ giao đồ ăn trực tuyến (Food Delivery)
+Standard
+TC-06
+Phân tích thị trường tài chính tiêu dùng và ứng dụng Fintech
+Standard
+TC-07
+Xu hướng chuyển đổi xanh trong ngành bao bì và logistics nội địa
+Standard
+TC-08
+Thị trường giáo dục trực tuyến (Edtech) phân khúc K-12 năm 2025
+Standard
+TC-09
+Bối cảnh cạnh tranh của các hệ thống chuỗi bán lẻ mẹ và bé
+Standard
+TC-10
+Xu hướng tiêu thụ sữa thực vật (Plant-based milk) tại Việt Nam
+Standard
+TC-11
+Động lực tăng trưởng của ngành du lịch nghỉ dưỡng và homestay
+Standard
+TC-12
+Phân tích thị trường căn hộ chung cư phân khúc bình dân tại Hà Nội
+Standard
+TC-13
+Thực trạng ứng dụng tự động hóa trong quản lý kho vận thông minh
+Standard
+TC-14
+Thị trường thiết bị gia dụng thông minh (Smart Home) nội địa
+Standard
+TC-15
+Xu hướng sử dụng phần mềm quản trị doanh nghiệp (SaaS ERP) cho SME
+Standard
+NC-01
+Thị trường phần mềm quản lý nông trại trồng sầu riêng tại Đắk Lắk
+Niche
+NC-02
+Xu hướng tiêu dùng trà cụ gốm sứ cao cấp phục vụ trà đạo tại Hà Nội
+Niche
+NC-03
+Cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng
+Niche
+NC-04
+Thị trường kinh doanh mô hình đồ chơi lắp ráp thủ công nội địa
+Niche
+NC-05
+Thực trạng nhu cầu thuê văn phòng chia sẻ tại TP. Thủ Đức
+Niche
+NC-06
+Tiềm năng phát triển chuỗi cửa hàng bánh mì thanh long ở miền Tây
+Niche
+NC-07
+Nhu cầu ứng dụng di động để đặt lịch chăm sóc thú cưng tại nhà
+Niche
+NC-08
+Thị trường xuất khẩu sản phẩm thủ công mỹ nghệ từ xơ mướp sang Nhật
+Niche
+BY-01
+Phân tích ma trận SWOT của thị trường kẹo mút vị mắm tôm tại Nam Cực
+Trick
+BY-02
+Taxi bay chạy bằng năng lượng than đá tại TP.HCM năm 1890
+Trick
+BY-03
+Thị trường cung cấp dịch vụ gọi xe công nghệ bằng ngựa kéo tại Hà Nội
+Trick
+BY-04
+Microsoft mua lại toàn bộ chuỗi quán cà phê võng Việt Nam
+Trick
+BY-05
+Cạnh tranh của các doanh nghiệp bán kính thực tế ảo cho cá voi
+Trick
+BY-06
+Marketing 4P của sản phẩm smartphone màn hình gập chạy bằng xăng
+Trick
+BY-07
+Xuất khẩu dịch vụ giao hàng bằng chim bồ câu tích hợp chip định vị GPS
+Trick
+
+
+
+KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN
+Kết luận
+Nghiên cứu này đã đề xuất và đánh giá thành công một kiến trúc hệ thống đa tác tử chuyên biệt cho tác vụ tự động hóa nghiên cứu thị trường. Bằng việc phân rã quy trình thành các tác tử độc lập và tích hợp cơ chế kiểm soát lỗi kép (Validator Agent kết hợp Query Reformulation), hệ thống đã giải quyết hiệu quả bài toán ảo giác thông tin (Hallucination) – điểm yếu chí mạng của LLMs hiện nay.
+Kết quả thực nghiệm trên 30 kịch bản kiểm thử cho thấy cấu hình Proposed đạt được sự cân bằng tối ưu với Tỷ lệ hoàn thành nhiệm vụ lên tới 93.3% và Tỷ lệ chặn ảo giác ngữ nghĩa đạt 85.7%. So với phương pháp tiếp cận tác tử đơn lẻ dễ bị đánh lừa hoàn toàn, hay phương pháp tiếp cận bài toán mà không có tầng diễn đạt lại truy vấn làm gián đoạn luồng xử lý, hệ thống đề xuất thể hiện sự vượt trội nhờ khả năng bóc tách và tinh chỉnh dữ liệu linh hoạt. Kiến trúc này cho phép chủ động loại bỏ các yếu tố nhiễu trong những truy vấn phi logic để trích xuất chính xác thực thể lõi, từ đó duy trì tiến trình sinh báo cáo thực tế mà vẫn đảm bảo tính xác thực và chất lượng phân tích chuyên sâu với điểm chất lượng báo cáo đạt mức cao 91.1/100 điểm.
+Hạn chế của nghiên cứu
+ Mặc dù đã đạt được các mục tiêu đề ra, phương pháp và hệ thống hiện tại vẫn tồn tại một số hạn chế nhất định:
+Phụ thuộc nguồn dữ liệu bề mặt
+Hệ thống hiện đang phụ thuộc hoàn toàn vào thuật toán xếp hạng của Google Search qua SerpAPI. Nếu các kết quả trả về thuộc các trang web chứa nội dung quảng cáo sai lệch hoặc tin giả, hệ thống chưa có cơ chế tự động đánh giá và loại trừ các nguồn kém uy tín này.
+Bên cạnh đó cũng cần thảo luận sự cần thiết với dữ liệu cào qua các trang web. Một trang HTML lộn xộn cũng là những rào cản kỹ thuật cho các hệ thống tự đồng cần sự chính xác cũng như đầy đủ.
+Hạn chế về chiều sâu và tính thực dụng của báo cáo
+Mặc dù báo cáo đầu ra đã có cấu trúc chuẩn hóa các phần cần thiết cho một bản báo cáo phân tích thị trường, nhưng tính thực dụng và chiều sâu của báo cáo vẫn còn là vấn đề cần xem xét. Với sự phức tạp và đa dạng của một thị trường thực thể thì không chỉ một vài bản báo cáo là có thể phác họa ra được bức tranh toàn cảnh được. Đây là một quá trình dài, đòi hỏi sự liên tục cũng như nguồn dữ liệu chuyên sâu và sự nhạy bén thực tiễn của các chuyên gia con người.
+Hướng phát triển tiếp theo
+Để khắc phục các giới hạn hiện tại và đưa kiến trúc tiến gần hơn đến khả năng ứng dụng thực tiễn trong môi trường doanh nghiệp, các nghiên cứu tiếp theo sẽ được tập trung vào các hướng trọng điểm:
+Tích hợp dữ liệu chuyên sâu và hệ thống nội bộ
+Ứng dụng công nghệ RAG để truy xuất trực tiếp vào các kho dữ liệu đa phương tiện và cơ sở dữ liệu chuyên ngành nội bộ của doanh nghiệp, giúp cá nhân hóa và nâng cao tính thực tiễn cho các khuyến nghị chiến lược.
+Ứng dụng Đồ thị tri thức kiểm chứng số liệu
+Xây dựng phân hệ xác thực độc lập dựa trên Đồ thị tri thức tại khâu kết xuất cuối cùng. Phân hệ này sẽ quét và đối chiếu chéo mọi thông số quy mô, tỷ lệ nhằm triệt tiêu hoàn toàn rủi ro ảo giác số liệu định lượng phát sinh từ LLM.
+
+TÀI LIỆU THAM KHẢO
+
+P. Lewis et al.,Retrieval-Augmented Generation for KnowledgeIntensive NLP Tasks. In Advances in Neural Information Processing Systems, volume 33, pages 9459–9474. Curran Associates, Inc., 2020.
+G. Li, Hasan A. Hammoud, H. Itani, D. Khizbullin, Bernard Ghanem (2023), “CAMEL: Communicative Agents for “Mind” Exploration of Large Language Model Society”, arXiv preprint, arXiv:2303.17760.
+S. Yao et al., ReAct: “Synergizing Reasoning and Acting in Language Models," International Conference on Learning Representations (ICLR), 2023.
+J. Wei et al., "Chain-of-Thought Prompting Elicits Reasoning in Large Language Models," Advances in Neural Information Processing Systems, vol. 35, pp. 24824–24837, 2022.
+L. Zheng et al., "Judging LLM-as-a-Judge with MT-Bench and Chatbot Arena," Advances in Neural Information Processing Systems, vol. 36, 2023.
+J. White et al., "A Prompt Pattern Catalog to Enhance Prompt Engineering with ChatGPT," arXiv preprint arXiv:2302.11382, 2023.
+N. Gomez et al., "Attention is all you need," Advances in Neural Information Processing Systems, vol. 30, 2017.
+DeepSeek-AI, "deepseek-ai/DeepSeek-V4-Pro," Hugging Face, Apr. 2026. Address: https://huggingface.co/deepseek-ai.
+Z. Ji et al., "Survey of hallucination in natural language generation," ACM Computing Surveys (CSUR), vol. 55, no. 12, pp. 1-38, 2023.

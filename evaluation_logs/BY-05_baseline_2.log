@@ -1,0 +1,77 @@
+=== KHỞI CHẠY THỬ NGHIỆM: BY-05 | CẤU HÌNH: baseline_2 ===
+Chủ đề: 'Bối cảnh cạnh tranh của các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại hệ thống chưa có dữ liệu tìm kiếm nào, vì vậy cần kích hoạt Search Agent để thu thập thông tin từ Internet trước khi có thể thực hiện các phân tích tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Bối cảnh cạnh tranh của các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương'
+Data: {
+  "original_topic": "Bối cảnh cạnh tranh của các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương",
+  "search_queries": {
+    "overview": [
+      "kính thực tế ảo cho cá voi đại dương thị trường tổng quan",
+      "virtual reality headsets for whales market overview"
+    ],
+    "trend": [
+      "xu hướng kính thực tế ảo cho cá voi đại dương 2024",
+      "VR for marine mammals trends opportunities"
+    ],
+    "competition": [
+      "các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương",
+      "virtual reality whale headsets companies competitors"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Bối cảnh cạnh tranh của các doanh nghiệp kinh doanh kính thực tế ảo cho cá voi đại dương'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường kính thực tế ảo (VR) và nội dung trải nghiệm đại dương/cá voi hiện là một phân khúc vô cùng tiềm năng, kết hợp giữa công nghệ mô phỏng Virtual Reality, giáo dục môi trường và ngành du lịch số sinh thái. Đây không phải là thiết bị đeo trực tiếp cho động vật (cá voi thật), mà là các giải pháp đưa con người lặn xuống đại dương ảo để tương tác với cá voi.\nVirtual Reality\n\nTổng quan thị trường được chia làm các mảng chính dưới đây:\n\nQuy mô và động lực tăng trưởng thị trường du lịch ảo\n\nTốc độ tăng trưởng vượt trội: Phân khúc du lịch đại dương ảo (Virtual Marine Tourism) dự kiến tăng từ 2,9 tỷ USD năm 2025 lên 10,2 tỷ USD vào năm 2032, đạt tốc độ tăng trưởng kép hàng năm (CAGR) lên tới 19,6%.\nVirtual Marine Tourism\nGia tăng doanh thu tour thực tế: Các đơn vị tổ chức tour ngắm cá voi t...",
+  "trends": "Không có xu hướng sản xuất kính thực tế ảo (VR) đeo cho cá voi ngoài đại dương. Bản chất cụ thể của xu hướng công nghệ này là con người đeo kính VR để trải
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công (Không qua kiểm duyệt).
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã có, nhưng chưa có phân tích xu hướng và đối thủ. Cần kích hoạt phân tích song song để tiết kiệm thời gian và đáp ứng điều kiện của hệ thống.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "**PHÂN TÍCH THỊ TRƯỜNG VR CÁ VOI ĐẠI DƯƠNG GÓC NHÀ ĐẦU TƯ**\n\n---\n\n### 1. XU HƯỚNG TIÊU DÙNG NỔI BẬT\n\n- **Nhóm khách hàng mục tiêu chính:**\n  - Tổ chức bảo tồn biển và phi lợi nhuận (WDC, The Hydrous).\n  - Ngành giáo dục (trường học, chương trình khoa học).\n  - Du khách sinh thái (eco-tourist) muốn trải nghiệm không gây hại.\n  - Nhà nghiên cứu, trường đào tạo thú y biển.\n- **Họ đang tìm kiếm:**\n  - Giải pháp thay thế du lịch thực tế (giảm tác động môi trường).\n  - Công cụ giáo dục trực quan, tạo sự đồng cảm.\n  - Nội dung khoa học chính xác (digital twins, dữ liệu thực).\n- **Hành vi mua hàng thay đổi:**\n  - Chuyển từ mua vé tham quan thủy cung → thuê/dùng thử VR tại nhà hoặc trường.\n  - Xu hướng “đồng cảm đại dương” thúc đẩy chi tiêu cho trải nghiệm nhập vai.\n  - Nhu cầu đào tạo chuyên môn (..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# Báo Cáo Cạnh Tranh: Thị Trường Kính Thực Tế Ảo cho Trải Nghiệm Cá Voi Đại Dương\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\n**Nhận định mức độ khốc liệt của thị trường:**  \nThị trường này thực chất là mảng trải nghiệm VR về đại dương dành cho con người, với sự xuất hiện của các đơn vị sản xuất nội dung chuyên biệt và các tập đoàn công nghệ lớn sản xuất phần cứng. Mức độ cạnh tranh được đánh giá là **khá cao**, đặc biệt trong phân khúc phần cứng, nơi Meta Platforms chiếm ưu thế tuyệt đối với hơn 60% thị phần XR toàn cầu. Trong khi đó, các nhà sản xuất nội dung như Wevr, Immotion Group cũng đang cạnh tranh gay gắt để tạo ra trải nghiệm chân thực và độc đáo nhất.\n\n**Top 5 đối thủ/thương hiệu dẫn đầu (trên toàn hệ sinh thái):**\n\n| Thứ hạng | Thương hiệu | Vai trò chính | Cơ sở xếp hạng |\n|-------..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Cả dữ liệu xu hướng và dữ liệu đối thủ đã sẵn sàng, báo cáo cuối cùng chưa được tạo. Vì vậy, tôi sẽ kích hoạt Report Agent để hợp nhất và tạo báo cáo chiến lược.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>Báo cáo Cố vấn Chiến lược: Thị trường Kính Thực tế Ảo cho Cá voi Đại dương</h1>\n\n<h2>1. Tóm tắt Thực thi (Executive Summary)</h2>\n<p>Thị trường VR cá voi đại dương đang ở giai đoạn chuyển dịch mạnh từ du lịch truyền thống sang trải nghiệm nhập vai, với các nhóm khách hàng chính là tổ chức bảo tồn, giáo dục và du khách sinh thái. Cơ hội lớn nhất nằm ở hai phân khúc ít cạnh tranh: <strong>đào tạo thú y biển</strong> (mô phỏng khám nghiệm không rủi ro) và <strong>simulator hàng hải tích hợp theo dõi cá voi</strong> (thị trường mô phỏng hàng hải 1,9 tỷ USD). Rủi ro chí mạng là chi phí thiết bị VR còn cao (Meta Quest 3 ~500 USD) và sự phụ thuộc vào công nghệ cập nhật nhanh, cùng với thiếu dữ liệu thị trường Việt Nam. Khuyến nghị hành động: tập trung nguồn lực vào phát triển giải pháp VR cho...",
+  "sources_count": 69
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 130.58s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 66/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 23,
+  "factuality": 5,
+  "depth": 18,
+  "citation": 20,
+  "total_score": 66,
+  "reason": "Cấu trúc báo cáo đầy đủ các phần và HTML rõ ràng, đạt điểm cao. Tuy nhiên, chủ đề nghiên cứu gốc là kịch bản hư cấu (kính thực tế ảo cho cá voi đại dương), và báo cáo không nhận ra điều này, khẳng định thị trường có thật và đưa ra số liệu thương mại, dẫn đến điểm factuality rất thấp. Phân tích sâu sắc trong bối cảnh giả định, nhưng thiếu cơ sở thực tế. Các trích dẫn có nhiều URL, nhưng không chứng minh được tính xác thực của chủ đề."
+}

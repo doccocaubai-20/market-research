@@ -1,0 +1,46 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-01 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Thị trường giải pháp phần mềm quản lý các nông trại trồng sầu riêng tại Đắk Lắk'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Thị trường giải pháp phần mềm quản lý các nông trại trồng sầu riêng tại Đắk Lắk'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chưa có thông tin nào về thị trường phần mềm quản lý nông trại sầu riêng tại Đắk Lắk. Cần tìm kiếm tổng quan về nhu cầu, các giải pháp hiện có và đối thủ cạnh tranh.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'phần mềm quản lý nông trại sầu riêng Đắk Lắk'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'phần mềm quản lý nông trại sầu riêng Đắk Lắk': cào được 29 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 2 - Tư duy: Kết quả tìm kiếm đã cho thấy một số phần mềm cụ thể, nhưng thiếu thông tin tổng quan về thị trường như quy mô, xu hướng, nhu cầu và đối thủ cạnh tranh. Cần tìm thêm để có bức tranh toàn diện.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'thị trường giải pháp nông nghiệp số quản lý sầu riêng Đắk Lắk'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'thị trường giải pháp nông nghiệp số quản lý sầu riêng Đắk Lắk': cào được 38 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 3 - Tư duy: Thông tin hiện có đã đề cập đến các giải pháp và động lực thị trường, nhưng còn thiếu dữ liệu về quy mô thị trường, các đối thủ cạnh tranh chính và thách thức trong triển khai. Cần tìm kiếm thêm về thách thức và cơ hội.
+----------------------------------------
+[SINGLE] status=running | Gọi công cụ tìm kiếm cho truy vấn: 'khó khăn triển khai phần mềm quản lý nông trại sầu riêng Đắk Lắk'...
+----------------------------------------
+[SINGLE] status=debug | Kết quả tìm kiếm cho 'khó khăn triển khai phần mềm quản lý nông trại sầu riêng Đắk Lắk': cào được 0 nguồn.
+----------------------------------------
+[SINGLE] status=deciding | Vòng 4 - Tư duy: Sau 3 lượt tìm kiếm, đã có thông tin về các giải pháp phần mềm cụ thể (NextX Farm, TraceFarm, VIIS SmartFarm), động lực thị trường (xuất khẩu, mã vùng trồng) và các phân khúc giải pháp số. Mặc dù thiếu dữ liệu về khó khăn triển khai, nhưng thông tin hiện tại đã đủ để xây dựng báo cáo tổng quan thị trường với 7 phần theo yêu cầu.
+----------------------------------------
+[SINGLE] status=running | Quyết định dừng tìm kiếm và tiến hành tổng hợp báo cáo...
+----------------------------------------
+[SINGLE] status=running | Đang tổng hợp báo cáo kinh doanh cuối cùng...
+----------------------------------------
+[SINGLE] status=done | Đã hoàn thành báo cáo nghiên cứu thị trường.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 62.46s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 81/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 22,
+  "factuality": 23,
+  "depth": 21,
+  "citation": 15,
+  "total_score": 81,
+  "reason": "Cấu trúc đầy đủ các phần, Markdown rõ ràng. Thông tin dựa trên thực tế, không bịa đặt. Phân tích sâu nhưng còn chung chung ở một số chỗ. Trích dẫn nguồn có dạng [1][2] nhưng thiếu URL cụ thể trong báo cáo, chỉ ghi chú danh sách nguồn gốc."
+}

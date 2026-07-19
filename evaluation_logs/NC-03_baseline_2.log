@@ -1,0 +1,77 @@
+=== KHỞI CHẠY THỬ NGHIỆM: NC-03 | CẤU HÌNH: baseline_2 ===
+Chủ đề: 'Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Hiện tại chưa có dữ liệu tìm kiếm nào. Tôi cần kích hoạt Search Agent để thu thập thông tin từ internet về cảnh quan cạnh tranh của dịch vụ giặt giày thể thao chuyên dụng. Sau đó mới có thể thực hiện các bước phân tích tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)'
+Data: {
+  "original_topic": "Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)",
+  "search_queries": {
+    "overview": [
+      "thị trường dịch vụ giặt giày thể thao chuyên dụng",
+      "sneaker care industry overview"
+    ],
+    "trend": [
+      "xu hướng dịch vụ giặt giày thể thao 2024 2025",
+      "sneaker cleaning service trends"
+    ],
+    "competition": [
+      "các công ty dịch vụ giặt giày thể thao hàng đầu",
+      "top sneaker care companies"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Cảnh quan cạnh tranh của các dịch vụ giặt là giày thể thao chuyên dụng (Sneaker care)'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường dịch vụ giặt giày thể thao chuyên dụng (sneaker care/spa giày) tại Việt Nam đang bùng nổ mạnh mẽ và chuyển mình thành một ngành công nghiệp dịch vụ có tính chuyên môn cao. Xu hướng này được thúc đẩy bởi văn hóa chơi giày của giới trẻ và nhu cầu bảo dưỡng các sản phẩm thời trang cao cấp.\n\nDưới đây là bức tranh toàn cảnh về thị trường dịch vụ chuyên dụng này:\n\n📈 Động Lực Phát Triển Thị Trường\n\nVăn hóa Sneaker và Thời trang: Giày thể thao không còn đơn thuần là đồ bảo vệ chân mà đã trở thành biểu tượng phong cách sống. Nhiều đôi giày có giá trị từ vài triệu đến hàng chục triệu đồng, đòi hỏi quy trình chăm sóc đặc biệt để không bị hỏng form hay bong keo.\nLối sống bận rộn tại đô thị: Giới trẻ và người đi làm tại các thành phố lớn không có thời gian tự giặt giày, hoặc sợ tự giặt sẽ là...",
+  "trends": "Xu hướng dịch vụ giặt và vệ sinh giày thể thao (sneaker) giai đoạn 2024 - 2025 ghi nhận sự chuyển dịch mạnh mẽ từ các tiệm giặt ủi truyền thống sang mô hình 
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[SEARCH] status=done | Thu thập dữ liệu Internet thành công (Không qua kiểm duyệt).
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm đã có, nhưng chưa có phân tích xu hướng và đối thủ. Cần kích hoạt phân tích song song để tiết kiệm thời gian và đáp ứng điều kiện cho bước tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Kích hoạt luồng song song: Trend Agent & Competitor Agent...
+----------------------------------------
+[TREND] status=debug | Trend response (truncated)
+Data: "Dưới đây là phân tích dành cho nhà đầu tư, dựa hoàn toàn trên dữ liệu đã cho:\n\n### 1. Xu hướng tiêu dùng nổi bật\n- **Nhóm khách hàng mục tiêu chính:** Sneakerhead, người chơi thể thao chuyên dụng, người bận rộn có thu nhập khá, và các nhà bán lại giày (reseller) – những người coi giày là tài sản đầu tư.\n- **Họ đang tìm kiếm:** Quy trình chuyên nghiệp (giặt tay, hóa chất cao cấp, sấy lạnh), dịch vụ gia tăng (phục hồi, phủ nano, thay đế, custom), và sự tiện lợi tối đa (giao nhận tận nơi, lấy liền, đặt qua app).\n- **Hành vi mua hàng thay đổi:** Chuyển từ giặt ủi truyền thống sang Shoes Spa chuyên biệt; sẵn sàng chi trả cao hơn cho bảo dưỡng định kỳ; bị ảnh hưởng mạnh bởi video \"biến hình\" trên TikTok/Reels; mua combo hoặc đăng ký gói subscription.\n\n### 2. Cơ hội chưa được khai thác\n- **Phân k..."
+----------------------------------------
+[COMPETITOR] status=debug | Competitor response (truncated)
+Data: "# BÁO CÁO CẠNH TRANH THỊ TRƯỜNG DỊCH VỤ GIẤY GIÀY THỂ THAO CHUYÊN DỤNG (SNEAKER CARE)\n\n---\n\n## 1. Bức tranh Cạnh tranh Tổng quan\n\nThị trường sneaker care đang ở mức cạnh tranh **khốc liệt**, với sự phân hóa rõ rệt giữa hai mảng: (i) sản phẩm DIY (tự vệ sinh tại nhà) và (ii) dịch vụ vệ sinh chuyên nghiệp (tại cửa hàng/giao nhận tận nơi). Tại Việt Nam, các đơn vị tập trung chủ yếu ở TP.HCM và Hà Nội; trong khi ở thị trường quốc tế, các thương hiệu lớn chiếm ưu thế về nhận diện thương hiệu và quy mô.\n\n**Top 5 thương hiệu/đối thủ dẫn đầu** (xếp theo mức độ nổi bật trong tập dữ liệu):\n\n| Hạng | Thương hiệu | Khu vực | Đặc điểm nổi bật |\n|------|-------------|---------|------------------|\n| 1 | **Reshoevn8r** | Quốc tế | Bộ dụng cụ giặt toàn diện, kết hợp dịch vụ chuyên nghiệp |\n| 2 | **Jason Ma..."
+----------------------------------------
+[ORCHESTRATOR] status=done | Luồng song song hoàn thành cấu trúc nháp.
+----------------------------------------
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm, xu hướng và đối thủ đã đầy đủ, cần tạo báo cáo chiến lược cuối cùng.
+----------------------------------------
+[REPORT] status=running | Report Agent đang tổng hợp báo cáo chiến lược cuối cùng...
+----------------------------------------
+[REPORT] status=debug | Report response (truncated)
+Data: {
+  "content": "<h1>BÁO CÁO CỐ VẤN CHIẾN LƯỢC: GIA NHẬP THỊ TRƯỜNG DỊCH VỤ GIẶT GIÀY THỂ THAO CHUYÊN DỤNG (SNEAKER CARE)</h1>\n\n<h2>1. TÓM TẮT THỰC THI (EXECUTIVE SUMMARY)</h2>\n<p>Thị trường sneaker care đang ở giai đoạn “vàng” với cạnh tranh khốc liệt nhưng chưa có đối thủ áp đảo tuyệt đối. Cơ hội lớn nhất nằm ở phân khúc <strong>reseller (B2B)</strong> và <strong>gói subscription</strong> cho bộ sưu tập lớn – những khe trống ít cạnh tranh, tạo dòng tiền đều. Rủi ro chí mạng đến từ sự nhạy cảm về giá khi kinh tế khó khăn và cạnh tranh từ các thương hiệu DIY giá rẻ. Khuyến nghị hành động: tập trung vào dịch vụ subscription cho reseller, kết hợp ứng dụng di động (giống mô hình HERAMO) và quy trình kỹ thuật chuyên sâu (như EXTRIM) để khác biệt hóa.</p>\n\n<h2>2. TỔNG QUAN THỊ TRƯỜNG & XU HƯỚNG TIÊU DÙNG</h2>\n<...",
+  "sources_count": 71
+}
+----------------------------------------
+[REPORT] status=done | Báo cáo kinh doanh đã được tạo dựng.
+----------------------------------------
+[ORCHESTRATOR] status=completed | Finish Task!
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 97.06s
+Trạng thái luồng chạy (Flow Status): SUCCESS
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 94/100
+Chi tiết đánh giá RQS:
+{
+  "structure": 23,
+  "factuality": 24,
+  "depth": 22,
+  "citation": 25,
+  "total_score": 94,
+  "reason": "Báo cáo có cấu trúc đầy đủ, trình bày rõ ràng với HTML. Thông tin dựa trên thực tế thị trường, không bịa đặt. Phân tích tương đối sâu, có SWOT và đề xuất chiến lược cụ thể. Trích dẫn 10 nguồn tham khảo đáng tin cậy, góp phần tăng tính xác thực."
+}

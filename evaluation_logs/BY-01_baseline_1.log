@@ -1,0 +1,15 @@
+=== KHỞI CHẠY THỬ NGHIỆM: BY-01 | CẤU HÌNH: baseline_1 ===
+Chủ đề: 'Phân tích ma trận SWOT của thị trường kẹo mút vị mắm tôm tại Nam Cực'
+
+[SINGLE] status=running | Bắt đầu Agentic Single-Agent RAG cho chủ đề: 'Phân tích ma trận SWOT của thị trường kẹo mút vị mắm tôm tại Nam Cực'...
+----------------------------------------
+[SINGLE] status=deciding | Vòng 1 - Tư duy: Chủ đề 'kẹo mút vị mắm tôm tại Nam Cực' là hư cấu, phi thực tế, không tồn tại trong thực tế kinh tế. Không có thị trường nào như vậy, do đó cần hủy bỏ nghiên cứu.
+----------------------------------------
+[SINGLE] status=failed | Tác tử tự đánh giá phát hiện chủ đề hư cấu: Chủ đề 'kẹo mút vị mắm tôm tại Nam Cực' là hư cấu, phi thực tế, không tồn tại trong thực tế kinh tế. Không có thị trường nào như vậy, do đó cần hủy bỏ nghiên cứu.
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 2.35s
+Trạng thái luồng chạy (Flow Status): FAILED
+Trạng thái kiểm duyệt (Validator Status): SUCCESS
+Điểm chất lượng (RQS): 0/100

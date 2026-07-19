@@ -1,0 +1,44 @@
+=== KHỞI CHẠY THỬ NGHIỆM: BY-07 | CẤU HÌNH: proposed ===
+Chủ đề: 'Quy mô thị trường xuất khẩu dịch vụ giao hàng bằng chim bồ câu tích hợp chip định vị GPS'
+
+[ORCHESTRATOR] status=deciding | Tư duy: Dữ liệu tìm kiếm chưa có, cần kích hoạt Search Agent để thu thập thông tin thị trường từ SerpAPI trước khi thực hiện các phân tích tiếp theo.
+----------------------------------------
+[ORCHESTRATOR] status=running | Đang phân tích mở rộng truy vấn tìm kiếm...
+----------------------------------------
+[ORCHESTRATOR] status=query_generation | Đã sinh tập truy vấn tìm kiếm cho: 'Quy mô thị trường xuất khẩu dịch vụ giao hàng bằng chim bồ câu tích hợp chip định vị GPS'
+Data: {
+  "original_topic": "Quy mô thị trường xuất khẩu dịch vụ giao hàng bằng chim bồ câu tích hợp chip định vị GPS",
+  "search_queries": {
+    "overview": [
+      "thị trường xuất khẩu dịch vụ giao hàng bằng chim bồ câu GPS",
+      "quy mô ngành dịch vụ giao hàng bằng bồ câu đưa thư tích hợp định vị toàn cầu"
+    ],
+    "trend": [
+      "xu hướng phát triển dịch vụ giao hàng bằng chim bồ câu gắn chip GPS",
+      "cơ hội và rủi ro thị trường giao hàng bằng bồ câu có định vị"
+    ],
+    "competition": [
+      "các doanh nghiệp cung cấp dịch vụ giao hàng bằng chim bồ câu GPS hàng đầu",
+      "thị phần xuất khẩu dịch vụ vận chuyển bằng bồ câu đưa thư công nghệ cao"
+    ]
+  }
+}
+----------------------------------------
+[SEARCH] status=running | Đang tiến hành tìm kiếm song song cho 'Quy mô thị trường xuất khẩu dịch vụ giao hàng bằng chim bồ câu tích hợp chip định vị GPS'...
+----------------------------------------
+[SEARCH] status=debug | Search response (truncated)
+Data: {
+  "overview": "Thị trường xuất khẩu dịch vụ giao hàng bằng chim bồ câu gắn GPS hiện là một ý tưởng độc đáo, kết hợp giữa phương thức vận chuyển sinh học cổ điển và công nghệ định vị hiện đại.\n\nDưới đây là phân tích chi tiết về tiềm năng kinh doanh, phân khúc khách hàng và các rào cản pháp lý khi triển khai mô hình này ra quốc tế.\n\n1. Phân khúc khách hàng mục tiêu toàn cầu\n\nDịch vụ này không hướng tới số đông mà tập trung vào các thị trường ngách có tính bảo mật cao hoặc địa hình đặc thù:\n\nVận chuyển tài liệu bảo mật cao: Cơ quan ngoại giao, văn phòng luật sư hoặc doanh nghiệp cần chuyển giao khóa mã hóa phần cứng (crypto wallet), tài liệu tuyệt mật nhằm chống hacker can thiệp mạng.\nY tế tại vùng sâu vùng xa: Vận chuyển nhanh các mẫu máu, thuốc đặc trị hoặc vắc-xin liều nhỏ tại các quốc gia có địa hình ch...",
+  "trends": "Dịch vụ giao hàng bằng chim bồ câu gắn chip GPS không phải là một mô hình vận chuyển thương mại đại trà cho hàng hóa vật lý như drone hay robot tự hành. Th
+... (Dữ liệu bị rút ngắn trong log) ...
+----------------------------------------
+[VALIDATOR] status=running | Đang thẩm định tính hợp lệ của dữ liệu...
+----------------------------------------
+[VALIDATOR] status=failed | INVALID
+----------------------------------------
+
+=== KẾT QUẢ CUỐI CÙNG ===
+Thời gian chạy (Latency): 5.60s
+Trạng thái luồng chạy (Flow Status): INVALID
+Trạng thái kiểm duyệt (Validator Status): FAILED
+Điểm chất lượng (RQS): 0/100

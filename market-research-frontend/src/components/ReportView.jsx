@@ -75,7 +75,13 @@ export default function ReportView({ topic, report, sources, details }) {
 
             <div id="report-content" className="report-content">
                 {activeTab === 'report' && (
-                    <div>{renderReport(report)}</div>
+                    <div>
+                        {/<[a-z][\s\S]*>/i.test(report) ? (
+                            <div dangerouslySetInnerHTML={{ __html: report }} />
+                        ) : (
+                            renderReport(report)
+                        )}
+                    </div>
                 )}
 
                 {activeTab === 'trends' && (
