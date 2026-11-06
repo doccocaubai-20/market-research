@@ -12,6 +12,7 @@ GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
 
 SERP_API_KEY = os.getenv("SERP_API_KEY")
 
+MAX_TOKEN_LIMIT = int(os.getenv("MAX_TOKEN_LIMIT", "300000"))
 
 DATABASE_URL = os.getenv(
     "DATABASE_URL",

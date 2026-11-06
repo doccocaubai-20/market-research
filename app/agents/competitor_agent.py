@@ -1,5 +1,5 @@
 from openai import AsyncOpenAI 
-from app.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL
+from app.config import DEEPSEEK_API_KEY, DEEPSEEK_BASE_URL, DEEPSEEK_MODEL, MAX_TOKEN_LIMIT
 
 client = AsyncOpenAI(
     api_key=DEEPSEEK_API_KEY,
@@ -20,6 +20,11 @@ async def analyze_competitors(topic: str, search_results) -> str:
         ])
     if not context:
         context = "Chưa có đủ dữ liệu"
+
+    # Đảm bảo context gửi tới DeepSeek không vượt quá giới hạn 300.000 tokens
+    max_chars = int(MAX_TOKEN_LIMIT * 2.1)
+    if len(context) > max_chars:
+        context = context[:max_chars] + f"\n\n...[Ngữ cảnh đã được cắt gọn ở ngưỡng {MAX_TOKEN_LIMIT:,} tokens]..."
 
     prompt = f"""Dựa trên tập dữ liệu thô dưới đây về thị trường '{topic}':
 

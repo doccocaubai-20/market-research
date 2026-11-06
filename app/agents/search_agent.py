@@ -6,83 +6,115 @@ import os
 import json
 import hashlib
 import time
-from app.config import SERP_API_KEY
+from bs4 import BeautifulSoup
+import html2text
+from app.config import SERP_API_KEY, MAX_TOKEN_LIMIT
 
 CACHE_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "cache")
 
-def _collect_text_pairs(node, collected: list):
-    if isinstance(node, dict):
-        title = node.get("title") or node.get("heading") or node.get("name")
-        snippet = node.get("snippet") or node.get("text") or node.get("description")
-        if title and snippet:
-            collected.append(f"{title}: {snippet}")
-        elif snippet:
-            collected.append(snippet)
-        elif title:
-            collected.append(title)
-        for value in node.values():
-            _collect_text_pairs(value, collected)
-    elif isinstance(node, list):
-        for item in node:
-            _collect_text_pairs(item, collected)
+def estimate_tokens(text: str) -> int:
+    """Ước tính số token cho văn bản tiếng Việt/markdown (trung bình ~2.1 ký tự/token)"""
+    if not text:
+        return 0
+    return max(1, int(len(text) / 2.1))
 
-def _extract_block_texts(text_blocks: list) -> list:
-    texts = []
-    for block in text_blocks:
-        if not isinstance(block, dict):
-            continue
-        block_type = block.get("type")
-        if block_type == "list":
-            items = block.get("list", [])
-            for item in items:
-                if not isinstance(item, dict):
-                    continue
-                snippet = item.get("snippet") or item.get("text") or item.get("title") or item.get("heading")
-                if snippet:
-                    texts.append(snippet)
-        snippet = block.get("snippet") or block.get("text")
-        title = block.get("title") or block.get("heading")
-        if title and snippet:
-            texts.append(f"{title}: {snippet}")
-        elif snippet:
-            texts.append(snippet)
-        elif title:
-            texts.append(title)
-    return texts
+def truncate_to_token_limit(text: str, max_tokens: int = MAX_TOKEN_LIMIT) -> str:
+    """Giới hạn văn bản không vượt quá ngân sách token định sẵn (mặc định 300.000 tokens)"""
+    if not text:
+        return ""
+    max_chars = int(max_tokens * 2.1)
+    if len(text) > max_chars:
+        return text[:max_chars] + f"\n\n...[Dữ liệu đã được cắt gọn để tuân thủ giới hạn {max_tokens:,} tokens]..."
+    return text
 
-def _extract_reference_links(text_blocks: list, references: list) -> list:
-    links = []
-    def _append_link(value):
-        if isinstance(value, str) and value:
-            links.append(value)
-    def _append_link_items(items):
-        for item in items:
-            if isinstance(item, dict) and item.get("link"):
-                links.append(item.get("link"))
-            elif isinstance(item, str) and item:
-                links.append(item)
-    for block in text_blocks:
-        if not isinstance(block, dict):
-            continue
-        for ref in block.get("reference_links", []) or []:
-            _append_link_items([ref])
-        _append_link_items(block.get("snippet_links", []) or [])
-        for ref_index in block.get("reference_indexes", []) or []:
-            if isinstance(ref_index, int) and 0 <= ref_index < len(references):
-                ref = references[ref_index]
-                _append_link_items([ref])
-        if block.get("type") == "list":
-            for item in block.get("list", []) or []:
-                if not isinstance(item, dict):
-                    continue
-                for ref in item.get("reference_links", []) or []:
-                    _append_link_items([ref])
-                _append_link_items(item.get("snippet_links", []) or [])
-                for ref_index in item.get("reference_indexes", []) or []:
-                    if isinstance(ref_index, int) and 0 <= ref_index < len(references):
-                        ref = references[ref_index]
-                        _append_link_items([ref])
-    return links
+async def crawl_with_crawl4ai(url: str, max_chars: int = 150000) -> str:
+    """Sử dụng Crawl4AI (headless browser) bóc tách dữ liệu cho trang web JavaScript/SPA phức tạp."""
+    try:
+        from crawl4ai import AsyncWebCrawler
+        async with AsyncWebCrawler(verbose=False) as crawler:
+            res = await crawler.arun(url=url, bypass_cache=True)
+            if res and res.markdown:
+                text = res.markdown.strip()
+                if len(text) > max_chars:
+                    text = text[:max_chars] + "..."
+                return text
+    except Exception as e:
+        print(f"Crawl4AI fallback không thành công cho {url}: {e}")
+    return ""
+
+async def crawl_webpage(url: str, client: httpx.AsyncClient, max_chars: int = 150000) -> str:
+    """
+    Truy cập sâu vào URL trang web thực tế, bóc tách cấu trúc HTML và trích xuất nội dung văn bản bài viết cốt lõi.
+    Áp dụng thuật toán chọn lọc vùng chứa văn bản phong phú nhất (Smart Container Extraction),
+    loại bỏ quảng cáo rác, và fallback sang Crawl4AI nếu trang web render bằng Javascript.
+    """
+    if not url or not url.startswith(("http://", "https://")):
+        return ""
+        
+    # Bỏ qua các định dạng tệp nhị phân
+    if any(url.lower().endswith(ext) for ext in [".pdf", ".jpg", ".png", ".zip", ".mp4", ".mp3", ".xlsx", ".docx"]):
+        return ""
+        
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "Accept-Language": "vi,en-US;q=0.9,en;q=0.8"
+    }
+    
+    clean_text = ""
+    try:
+        resp = await client.get(url, headers=headers, follow_redirects=True, timeout=8.0)
+        if resp.status_code == 200 and resp.text:
+            content_type = resp.headers.get("content-type", "").lower()
+            if "text/html" in content_type or "text/plain" in content_type:
+                soup = BeautifulSoup(resp.text, "html.parser")
+                
+                # 1. Loại bỏ các thẻ rác, quảng cáo, điều hướng
+                for tag in soup(["script", "style", "nav", "footer", "header", "noscript", "svg", "iframe", "form", "button", "aside"]):
+                    tag.decompose()
+                    
+                # 2. Tìm kiếm tất cả các vùng chứa tiềm năng có chứa bài viết
+                candidates = []
+                for tag_name in ["article", "main", "section", "div"]:
+                    for el in soup.find_all(tag_name):
+                        cls = " ".join(el.get("class", [])) if el.get("class") else ""
+                        el_id = el.get("id", "")
+                        if re.search(r'(content|article|post|detail|story|body|news|entry)', f"{cls} {el_id}", re.I):
+                            t = el.get_text(strip=True)
+                            if len(t) > 250:
+                                candidates.append((len(t), el))
+                                
+                converter = html2text.HTML2Text()
+                converter.ignore_links = True
+                converter.ignore_images = True
+                converter.ignore_emphasis = True
+                converter.body_width = 0
+                
+                if candidates:
+                    candidates.sort(key=lambda x: x[0], reverse=True)
+                    best_el = candidates[0][1]
+                    text = converter.handle(str(best_el))
+                else:
+                    ps = [p.get_text(strip=True) for p in soup.find_all("p") if len(p.get_text(strip=True)) > 40]
+                    text = "\n\n".join(ps)
+                    
+                lines = [line.strip() for line in text.splitlines() if line.strip()]
+                clean_text = "\n".join(lines)
+                
+                if len(clean_text) >= 200:
+                    if len(clean_text) > max_chars:
+                        clean_text = clean_text[:max_chars] + "..."
+                    return clean_text
+    except Exception:
+        pass
+
+    # Fallback sang Crawl4AI nếu trang web render bằng JavaScript (SPA) hoặc chặn HTTP request
+    c4ai_text = await crawl_with_crawl4ai(url, max_chars)
+    if c4ai_text and len(c4ai_text) >= 200:
+        return c4ai_text
+        
+    return clean_text
+
 
 def extract_year(topic: str) -> int:
     match = re.search(r'\b(20\d{2})\b', topic)
@@ -90,12 +122,83 @@ def extract_year(topic: str) -> int:
         return int(match.group(1))
     return datetime.now().year  
 
+async def _process_search_response(data: dict, client: httpx.AsyncClient) -> tuple[str, list]:
+    """
+    Xử lý dữ liệu organic_results từ SerpAPI:
+    Cào sâu nội dung các trang web thực tế, trích xuất văn bản cốt lõi và tổng hợp.
+    """
+    organic_results = data.get("organic_results", [])
+    if not organic_results:
+        return "", []
+        
+    # Cào sâu nội dung cho tối đa 4 link trang web hàng đầu
+    items_to_crawl = organic_results[:4]
+    
+    async def fetch_item(item, idx):
+        title = item.get("title", "")
+        link = item.get("link", "")
+        snippet = item.get("snippet", "")
+        source_name = item.get("source", "")
+        date = item.get("date", "")
+        
+        crawled_body = ""
+        if link:
+            crawled_body = await crawl_webpage(link, client)
+            
+        # Nếu cào sâu thành công thì dùng nội dung trang web; nếu bị chặn thì fallback về đoạn trích Google
+        final_content = crawled_body if crawled_body and len(crawled_body) > 100 else snippet
+        
+        return {
+            "position": idx,
+            "title": title,
+            "link": link,
+            "redirect_link": "",
+            "displayed_link": link,
+            "date": date,
+            "source": source_name,
+            "snippet": final_content,
+            "is_deep_crawled": bool(crawled_body and len(crawled_body) > 100)
+        }
+        
+    crawled_sources = await asyncio.gather(*(fetch_item(item, i) for i, item in enumerate(items_to_crawl, start=1)))
+    
+    # Các kết quả organic còn lại (nếu có) lưu dưới dạng snippet Google
+    remaining_sources = []
+    for i, item in enumerate(organic_results[4:], start=len(items_to_crawl)+1):
+        remaining_sources.append({
+            "position": i,
+            "title": item.get("title", ""),
+            "link": item.get("link", ""),
+            "redirect_link": "",
+            "displayed_link": item.get("link", ""),
+            "date": item.get("date", ""),
+            "source": item.get("source", ""),
+            "snippet": item.get("snippet", ""),
+            "is_deep_crawled": False
+        })
+        
+    sources = list(crawled_sources) + remaining_sources
+    
+    # Tạo chuỗi text tổng hợp từ nội dung cào sâu thực tế
+    content_parts = []
+    for s in sources:
+        t = s.get("title", "")
+        l = s.get("link", "")
+        snip = s.get("snippet", "")
+        if snip:
+            tag = "[Dữ liệu cào sâu từ Website]" if s.get("is_deep_crawled") else "[Trích đoạn Google]"
+            content_parts.append(f"### {tag}: {t}\nNguồn: {l}\nNội dung thực tế:\n{snip}")
+            
+    text = "\n\n".join(content_parts).strip()
+    text = truncate_to_token_limit(text, max_tokens=MAX_TOKEN_LIMIT)
+    return text, sources
+
 async def search(query: str, client: httpx.AsyncClient) -> dict:
     # 1. Tạo cache key bằng MD5 hash của query
     h = hashlib.md5(query.encode("utf-8")).hexdigest()
     cache_path = os.path.join(CACHE_DIR, f"search_{h}.json")
     
-    # 2. Đọc từ cache nếu có và chưa hết hạn (ví dụ: 3 ngày = 259200 giây)
+    # 2. Đọc từ cache nếu có và chưa hết hạn (3 ngày = 259200 giây)
     if os.path.exists(cache_path):
         try:
             file_mtime = os.path.getmtime(cache_path)
@@ -107,14 +210,17 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
         except Exception:
             pass
 
+    # Sử dụng Google Search tiêu chuẩn thay vì google_ai_mode để lấy link thật và cào sâu
     url = "https://serpapi.com/search.json"
     params = {
         "api_key": SERP_API_KEY,
         "q": query,
-        "engine": "google_ai_mode"
+        "engine": "google",
+        "gl": "vn",
+        "hl": "vi",
+        "num": 5
     }
 
-    # Hàm nội bộ để lưu kết quả vào cache
     def _save_to_cache(res_dict):
         try:
             os.makedirs(CACHE_DIR, exist_ok=True)
@@ -124,72 +230,14 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
             pass
 
     try:
-        response = await client.get(url, params=params, timeout=45)
+        response = await client.get(url, params=params, timeout=30)
         response.raise_for_status()
         data = response.json()
         
         search_id = data.get("search_metadata", {}).get("id")
         html_url = f"https://serpapi.com/searches/{search_id}.html" if search_id else ""
-        text_blocks = data.get("text_blocks", [])
-        references = data.get("references", [])
         
-        if not text_blocks:
-            res = {"text": "", "sources": [], "html_url": html_url}
-            _save_to_cache(res)
-            return res
-            
-        block_texts = _extract_block_texts(text_blocks)
-        reference_links = _extract_reference_links(text_blocks, references)
-        sources = []
-        
-        for i, block in enumerate(text_blocks, start=1):
-            if not isinstance(block, dict):
-                continue
-            nested_texts = []
-            _collect_text_pairs(block, nested_texts)
-            combined_text = "\n".join([t for t in nested_texts if t]).strip()
-            sources.append({
-                "position": i,
-                "title": block.get("title", "") or block.get("heading", ""),
-                "link": block.get("link", "") or block.get("source", ""),
-                "redirect_link": "",
-                "displayed_link": block.get("source", ""),
-                "date": "",
-                "source": block.get("source", ""),
-                "snippet": combined_text or block.get("text", "") or block.get("snippet", "")
-            })
-            
-        for i, link in enumerate(reference_links, start=1):
-            sources.append({
-                "position": i,
-                "title": "",
-                "link": link,
-                "redirect_link": "",
-                "displayed_link": "",
-                "date": "",
-                "source": "",
-                "snippet": ""
-            })
-            
-        if block_texts and not any(s.get("snippet") for s in sources):
-            sources = [
-                {
-                    "position": i,
-                    "title": "",
-                    "link": "",
-                    "redirect_link": "",
-                    "displayed_link": "",
-                    "date": "",
-                    "source": "",
-                    "snippet": text
-                }
-                for i, text in enumerate(block_texts, start=1)
-            ]
-            
-        text = "\n\n".join([s.get("snippet", "") for s in sources if s.get("snippet")]).strip()
-        if not text and block_texts:
-            text = "\n\n".join(block_texts).strip()
-            
+        text, sources = await _process_search_response(data, client)
         res = {"text": text, "sources": sources, "html_url": html_url}
         _save_to_cache(res)
         return res
@@ -205,72 +253,14 @@ async def search(query: str, client: httpx.AsyncClient) -> dict:
         
         # Cơ chế Retry bất đồng bộ
         try:
-            response = await client.get(url, params=params, timeout=90)
+            response = await client.get(url, params=params, timeout=60)
             response.raise_for_status()
             data = response.json()
             
             search_id = data.get("search_metadata", {}).get("id")
             html_url = f"https://serpapi.com/searches/{search_id}.html" if search_id else ""
-            text_blocks = data.get("text_blocks", [])
-            references = data.get("references", [])
             
-            if not text_blocks:
-                res = {"text": "", "sources": [], "html_url": html_url}
-                _save_to_cache(res)
-                return res
-                
-            block_texts = _extract_block_texts(text_blocks)
-            reference_links = _extract_reference_links(text_blocks, references)
-            sources = []
-            
-            for i, block in enumerate(text_blocks, start=1):
-                if not isinstance(block, dict):
-                    continue
-                nested_texts = []
-                _collect_text_pairs(block, nested_texts)
-                combined_text = "\n".join([t for t in nested_texts if t]).strip()
-                sources.append({
-                    "position": i,
-                    "title": block.get("title", "") or block.get("heading", ""),
-                    "link": block.get("link", "") or block.get("source", ""),
-                    "redirect_link": "",
-                    "displayed_link": block.get("source", ""),
-                    "date": "",
-                    "source": block.get("source", ""),
-                    "snippet": combined_text or block.get("text", "") or block.get("snippet", "")
-                })
-                
-            for i, link in enumerate(reference_links, start=1):
-                sources.append({
-                    "position": i,
-                    "title": "",
-                    "link": link,
-                    "redirect_link": "",
-                    "displayed_link": "",
-                    "date": "",
-                    "source": "",
-                    "snippet": ""
-                })
-                
-            if block_texts and not any(s.get("snippet") for s in sources):
-                sources = [
-                    {
-                        "position": i,
-                        "title": "",
-                        "link": "",
-                        "redirect_link": "",
-                        "displayed_link": "",
-                        "date": "",
-                        "source": "",
-                        "snippet": text
-                    }
-                    for i, text in enumerate(block_texts, start=1)
-                ]
-                
-            text = "\n\n".join([s.get("snippet", "") for s in sources if s.get("snippet")]).strip()
-            if not text and block_texts:
-                text = "\n\n".join(block_texts).strip()
-                
+            text, sources = await _process_search_response(data, client)
             res = {"text": text, "sources": sources, "html_url": html_url}
             _save_to_cache(res)
             return res
@@ -338,9 +328,9 @@ async def search_market_with_queries(original_topic: str, queries: dict) -> dict
     trend_results = all_results[num_overview:num_overview + num_trend]
     competition_results = all_results[num_overview + num_trend:]
 
-    overview_text = "\n\n".join([r["text"] for r in overview_results if r.get("text")]).strip()
-    trend_text = "\n\n".join([r["text"] for r in trend_results if r.get("text")]).strip()
-    competitors_text = "\n\n".join([r["text"] for r in competition_results if r.get("text")]).strip()
+    overview_text = truncate_to_token_limit("\n\n".join([r["text"] for r in overview_results if r.get("text")]).strip(), max_tokens=MAX_TOKEN_LIMIT)
+    trend_text = truncate_to_token_limit("\n\n".join([r["text"] for r in trend_results if r.get("text")]).strip(), max_tokens=MAX_TOKEN_LIMIT)
+    competitors_text = truncate_to_token_limit("\n\n".join([r["text"] for r in competition_results if r.get("text")]).strip(), max_tokens=MAX_TOKEN_LIMIT)
 
     overview_sources = []
     for r in overview_results:
@@ -371,7 +361,7 @@ async def search_market_with_queries(original_topic: str, queries: dict) -> dict
     competitors_sources = unique_sources(competitors_sources)
     all_sources = unique_sources(overview_sources + trend_sources + competitors_sources)
 
-    # Check if we got any sources. If not, fallback to the default search_market
+    # Nếu không tìm thấy nguồn cho các truy vấn mở rộng, fallback về search_market mặc định
     if not all_sources:
         print(f" -> [Search Fallback] Không tìm thấy nguồn cho các truy vấn mở rộng. Chuyển sang tìm kiếm mặc định...")
         return await search_market(original_topic)

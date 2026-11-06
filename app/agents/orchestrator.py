@@ -2,6 +2,7 @@ import json
 import asyncio
 from openai import AsyncOpenAI
 from app.agents.search_agent import search_market_with_queries
+from app.agents.evidence_retriever import format_evidence, retrieve_evidence
 from app.agents.trend_agent import analyze_trends
 from app.agents.competitor_agent import analyze_competitors
 from app.agents.report_agent import generate_report
@@ -185,8 +186,39 @@ Bạn bắt buộc phải phản hồi bằng một đối tượng JSON duy nh�
             update({"agent": "orchestrator", "status": "running", "message": f"Kích hoạt luồng song song: Trend Agent & Competitor Agent..."})
             
             search_data = system_state["search_data"] or {}
-            task_trend = analyze_trends(topic, search_data.get("trends", ""))
-            task_competitor = analyze_competitors(topic, search_data.get("competitors", ""))
+            evidence = retrieve_evidence(topic, search_data.get("sources", []))
+            if evidence:
+                trend_context = format_evidence(evidence["trend"])
+                competitor_context = format_evidence(evidence["competitor"])
+                update({
+                    "agent": "search",
+                    "status": "debug",
+                    "message": "Lightweight RAG: các đoạn được BM25 chọn theo tác tử.",
+                    "data": {
+                        role: [
+                            {
+                                "id": passage.id,
+                                "url": passage.url,
+                                "source_type": passage.source_type,
+                                "excerpt": _truncate(passage.text, limit=240),
+                            }
+                            for passage in passages
+                        ]
+                        for role, passages in evidence.items()
+                    },
+                })
+            else:
+                # Older cache entries can have aggregate text without source-level excerpts.
+                trend_context = search_data.get("trends", "")
+                competitor_context = search_data.get("competitors", "")
+                update({
+                    "agent": "search",
+                    "status": "debug",
+                    "message": "Không có đoạn văn gắn URL để chạy BM25. Dùng ngữ cảnh tìm kiếm sẵn có.",
+                })
+
+            task_trend = analyze_trends(topic, trend_context)
+            task_competitor = analyze_competitors(topic, competitor_context)
             
             trends_res, competitors_res = await asyncio.gather(task_trend, task_competitor)
 
